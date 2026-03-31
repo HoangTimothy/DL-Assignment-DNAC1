@@ -1,0 +1,34 @@
+# Python environments
+.venv/
+venv/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+
+# Large artifacts (adjust as needed)
+*.pt
+*.pth
+*.ckpt
+*.h5
+*.onnx
+*.npy
+*.npz
+*.pkl
+*.joblib
