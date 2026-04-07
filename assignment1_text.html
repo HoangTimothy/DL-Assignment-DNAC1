@@ -1,27 +1,211 @@
 <!doctype html>
-<html lang="vi">
+<html lang="en">
 
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>BTL 1 - Deep Learning</title>
+    <title>Assignment Report - Deep Learning</title>
     <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-    <main class="container">
-        <h1>Bai tap lon 1</h1>
-        <p>Trang nay gom cac lien ket bat buoc theo de:</p>
-        <ul>
-            <li>Video demo</li>
-            <li>Video trinh bay bao cao</li>
-            <li>Code</li>
-            <li>EDA va mo ta dataset</li>
-            <li>Dataset, dataloader, augmentation</li>
-            <li>Xay dung, huan luyen, danh gia, so sanh mo hinh</li>
-            <li>Bang so lieu, bieu do, phan tich ket qua</li>
-            <li>Noi dung mo rong (neu co)</li>
-        </ul>
+    <div class="page-glow"></div>
+
+    <header class="hero container">
+        <p class="hero-kicker">CO3133 - Deep Learning</p>
+        <h1>Text Classification Report: DBPedia 14</h1>
+        <p class="hero-subtitle">
+            Complete submission page based on DL_BTL2_Text.ipynb,
+            including where to insert figures from notebook outputs.
+        </p>
+
+        <section class="team-panel">
+            <p><strong>Course:</strong> Deep Learning (CO3133)</p>
+            <p><strong>Topic:</strong> BiLSTM vs DistilBERT on DBPedia 14 with extended experiments</p>
+            <p><strong>Notebook source:</strong> notebooks/DL_BTL2_Text.ipynb</p>
+            <p>
+                <strong>Note:</strong> Every item marked as "Figure needed" specifies exactly which notebook cell output
+                to use.
+            </p>
+        </section>
+
+        <div class="pill-row">
+            <a class="pill" href="#">Demo video (add link)</a>
+            <a class="pill" href="#">Presentation video (add link)</a>
+            <a class="pill" href="#">Source code (add repo link)</a>
+            <a class="pill link-pill" href="notebooks/DL_BTL2_Text.ipynb">Open notebook</a>
+        </div>
+    </header>
+
+    <main class="container content-grid">
+        <section class="section-card intro">
+            <h2>1. Problem Overview</h2>
+            <p>
+                This project tackles DBPedia 14-class text classification. The notebook includes:
+            </p>
+            <ul>
+                <li>Core model comparison between BiLSTM (RNN) and DistilBERT (Transformer).</li>
+                <li>Extended experiments on ensemble, calibration, robustness, efficiency, fine-tuning strategy, and
+                    error analysis.</li>
+                <li>Evaluation using Accuracy, Macro-F1, Weighted-F1, classification reports, and confusion matrices.
+                </li>
+            </ul>
+        </section>
+
+        <section class="section-card">
+            <h2>2. Submission Links</h2>
+            <div class="cards">
+                <a class="card" href="#">
+                    <span class="card-title">Demo Video</span>
+                    <span class="card-desc">Add the URL for the notebook demo and results walkthrough.</span>
+                </a>
+                <a class="card" href="#">
+                    <span class="card-title">Presentation Video</span>
+                    <span class="card-desc">Add the URL for the full presentation.</span>
+                </a>
+                <a class="card" href="#">
+                    <span class="card-title">Code + Notebook</span>
+                    <span class="card-desc">Add repository link containing source code and notebooks.</span>
+                </a>
+                <a class="card" href="#">
+                    <span class="card-title">Slides / PDF Report</span>
+                    <span class="card-desc">Optional, but useful for quick grading and reference.</span>
+                </a>
+            </div>
+            <div class="section-card status-note" style="margin-top:14px;">
+                <p>This page content is complete. You only need to replace the "#" placeholders with real URLs.</p>
+            </div>
+        </section>
+
+        <section class="section-card intro">
+            <h2>3. Dataset Description and EDA</h2>
+            <ul>
+                <li>Dataset: DBPedia 14 with 14 labels and large-scale train/test splits.</li>
+                <li>Class-balanced sampling is used for fair and practical experiments.</li>
+                <li>Main preprocessing modes include minimal and remove_stopwords (plus additional ablation variants).
+                </li>
+            </ul>
+
+            <h3>Figure needed / output source</h3>
+            <ol>
+                <li>Figure 1 - Environment and device info: screenshot output from Cell 3 (stdout/stderr).</li>
+                <li>Figure 2 - Dataset loading, split sizes, runtime profile: screenshot output from Cell 5.</li>
+                <li>Figure 3 - Length distribution and class distribution chart: image from Cell 7 (image/png).</li>
+                <li>Figure 4 - Top frequent tokens chart: image from Cell 8 (image/png).</li>
+                <li>Figure 5 - Length statistics by class table: capture output from Cell 9 (text/html).</li>
+                <li>Figure 6 - Sample rows per class table: capture output from Cell 10 (text/html).</li>
+            </ol>
+        </section>
+
+        <section class="section-card intro">
+            <h2>4. Dataset Pipeline, DataLoader, and Augmentation</h2>
+            <ul>
+                <li>The same DistilBERT tokenizer is used for both RNN and Transformer to keep inputs consistent.</li>
+                <li>Train/validation/test split is stratified by labels.</li>
+                <li>Augmentation experiments include light token dropout and noisy text stress testing.</li>
+            </ul>
+
+            <h3>Figure needed / output source</h3>
+            <ol>
+                <li>Figure 7 - DataLoader creation confirmation: capture output from Cell 13 ("Loaders ready.").</li>
+                <li>Figure 8 - Clean vs noisy robustness table: capture output from Cell 23 (text/html).</li>
+            </ol>
+        </section>
+
+        <section class="section-card intro">
+            <h2>5. Model Building, Training, Evaluation, and Comparison</h2>
+            <ul>
+                <li>RNN model: BiLSTM using pretrained DistilBERT embeddings.</li>
+                <li>Transformer model: DistilBERT fine-tuning for 14-class classification.</li>
+                <li>Evaluation on the same test split with Accuracy, Macro-F1, Weighted-F1, classification report, and
+                    confusion matrix.</li>
+            </ul>
+
+            <h3>Figure needed / output source</h3>
+            <ol>
+                <li>Figure 9 - RNN epoch logs and test metrics: capture output from Cell 16.</li>
+                <li>Figure 10 - Transformer epoch logs and test metrics: capture output from Cell 17.</li>
+                <li>Figure 11 - Main comparison summary table: capture output from Cell 18.</li>
+                <li>Figure 12 - RNN confusion matrix: image from Cell 18 (image/png).</li>
+                <li>Figure 13 - Transformer confusion matrix: image from Cell 18 (image/png).</li>
+            </ol>
+        </section>
+
+        <section class="section-card intro">
+            <h2>6. Result Tables, Charts, and Analysis</h2>
+            <ul>
+                <li>Entropy-based ensemble improves stability against single-model predictions.</li>
+                <li>Temperature scaling improves probability calibration (lower ECE).</li>
+                <li>Efficiency is analyzed through trainable parameters and inference latency.</li>
+            </ul>
+
+            <h3>Figure needed / output source</h3>
+            <ol>
+                <li>Figure 14 - Ensemble vs RNN vs Transformer metrics table: output from Cell 20.</li>
+                <li>Figure 15 - Best temperature and ECE before/after calibration: output from Cell 21.</li>
+                <li>Figure 16 - Reliability diagram (raw vs calibrated): image from Cell 22.</li>
+                <li>Figure 17 - Clean/noisy robustness and ECE bar chart: image from Cell 24.</li>
+                <li>Figure 18 - Interpretability table (top influential tokens): output from Cell 25.</li>
+                <li>Figure 19 - Efficiency table (parameters + latency): output from Cell 27.</li>
+                <li>Figure 20 - Freeze encoder vs full fine-tune table: output from Cell 29.</li>
+            </ol>
+        </section>
+
+        <section class="section-card intro">
+            <h2>7. Additional Experiments</h2>
+            <ul>
+                <li>Adaptive entropy ensemble.</li>
+                <li>Calibration with Temperature Scaling, Reliability Diagram, and ECE.</li>
+                <li>Robustness test on corrupted text.</li>
+                <li>Fine-tuning strategy study (freeze vs full).</li>
+                <li>10-config DBPedia ablation.</li>
+                <li>Error analysis on 2-3 high-confidence mistakes from the best configuration.</li>
+                <li>W&amp;B tracking and inline visualization in the notebook.</li>
+            </ul>
+
+            <h3>Figure needed / output source</h3>
+            <ol>
+                <li>Figure 21 - 10-configuration ablation table: output from Cell 32.</li>
+                <li>Figure 22 - Top error samples (2-3 cases): output from Cell 33.</li>
+                <li>Figure 23 - W&amp;B inline charts and dashboard embed: output from Cell 38.</li>
+            </ol>
+        </section>
+
+        <section class="section-card intro">
+            <h2>8. Recommended Figure File Names</h2>
+            <p>Store figure files under assets/assignment1/ using this naming scheme:</p>
+            <ul>
+                <li>01_env_cell3.png</li>
+                <li>02_dataset_cell5.png</li>
+                <li>03_eda_len_cell7.png</li>
+                <li>04_top_tokens_cell8.png</li>
+                <li>05_len_by_class_cell9.png</li>
+                <li>06_samples_cell10.png</li>
+                <li>07_loaders_cell13.png</li>
+                <li>08_robustness_table_cell23.png</li>
+                <li>09_rnn_train_cell16.png</li>
+                <li>10_trf_train_cell17.png</li>
+                <li>11_main_summary_cell18.png</li>
+                <li>12_cm_rnn_cell18.png</li>
+                <li>13_cm_trf_cell18.png</li>
+                <li>14_ensemble_cell20.png</li>
+                <li>15_calibration_cell21.png</li>
+                <li>16_reliability_cell22.png</li>
+                <li>17_robustness_plot_cell24.png</li>
+                <li>18_interpretability_cell25.png</li>
+                <li>19_efficiency_cell27.png</li>
+                <li>20_strategy_cell29.png</li>
+                <li>21_ablation_cell32.png</li>
+                <li>22_error_samples_cell33.png</li>
+                <li>23_wandb_cell38.png</li>
+            </ul>
+            <div class="section-card status-note" style="margin-top:14px;">
+                <p>
+                    After inserting all figures listed above, this page fully covers dataset/EDA,
+                    data pipeline, train-evaluate-compare workflow, analysis tables/charts, and additional experiments.
+                </p>
+            </div>
+        </section>
     </main>
 </body>
 

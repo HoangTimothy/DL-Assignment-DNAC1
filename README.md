@@ -1,104 +1,63 @@
-# CO3133 - Deep Learning and Its Applications
+# Deep Learning Project (CO3133)
 
-Workspace nay duoc khoi tao de lam cac bai tap lon theo de trong file `assignment-vne.pdf`.
+Repository for the CO3133 course (Deep Learning and Its Applications), group **DNA-C1**.
 
-## 1) Muc tieu BTL 1
+## Course Information
+- **University:** Ho Chi Minh City University of Technology (HCMUT)
+- **Faculty:** Faculty of Computer Science and Engineering
+- **Instructor:** Le Thanh Sach
+- **Academic Year:** 2025-2026, Semester 2
 
-Thuc hien bai toan classification tren 3 loai du lieu:
+## Team Members
+- **Le Tien Dat** (23xxxx)
+- **Cao Huu Thien Hoang** (2311030)
 
-1. Image classification
-2. Text classification
-3. Multimodal classification (image + text)
+## Project Overview
+This repository aggregates major assignments for the course, focusing on classification problems in deep learning.
 
-## 2) Rang buoc bat buoc theo de
+The currently public scope is **Major Assignment 1 (BTL1)**, including three tasks:
+- **Image Classification:** Crop Pest and Disease Detection.
+- **Text Classification:** DBPedia Classes.
+- **Text-Image Classification:** CUB-200-2011.
 
-- Moi dataset co it nhat 5 lop.
-- Dataset du lon de danh gia thuyet phuc (uu tien tu vai nghin mau tro len).
-- Multimodal dataset phai la cap image-text dung nghia (khong ghep ngau nhien).
+**BTL2** and **BTL3** are currently under preparation.
 
-## 3) So sanh ky thuat can co
+## Main Directory Structure
+- `index.html`, `assignments/`, `assets/`: landing page and navigation assets
+- `btl1/`: full content of Major Assignment 1
+- `data/`: datasets used in experiments
+- `notebooks/`: training and evaluation notebooks
+- `artifacts/`: result tables, summaries, checkpoint metadata
+- `reports/`: detailed report pages
+- `demo/`, `scripts/`: demo applications and utility scripts
+- `btl2/`, `btl3/`: folder skeletons for upcoming assignments
+- `docs/`, `legacy/`, `logs/`: references, legacy versions, execution logs
 
-- Image: CNN vs ViT (pretrained + fine-tuning).
-- Text: RNN/LSTM vs Transformer.
-- Multimodal: Zero-shot vs Few-shot.
+## Quick Access
+- **Landing page:** `index.html`
+- **Major Assignment 1 page:** `assignments/assignment-1.html`
+- **Final result summary:** `btl1/reports/final-results.html`
 
-Metric toi thieu: Accuracy. Neu mat can bang lop can bo sung F1-score.
+### Task-Specific Reports
+- **Text:** `btl1/reports/text-report.html`
+- **Multimodal:** `btl1/reports/multimodal-report.html`
+- **Image:** `btl1/reports/image-report.html`
 
-## 4) Cau truc du an
+### Main Notebooks
+- `btl1/notebooks/text_classification.ipynb`
+- `btl1/notebooks/text_image_classification.ipynb`
+- `btl1/notebooks/image_classification.ipynb`
 
-```
-.
-|-- assignment-vne.pdf
-|-- README.md
-|-- requirements.txt
-|-- docs/
-|   `-- CHECKLIST.md
-|-- index.html
-|-- style.css
-|-- main.js
-|-- assignment1.html
-|-- assignment2.html
-|-- assignment3.html
-|-- btl_mr.html
-|-- assets/
-|   `-- .gitkeep
-|-- assignment1/
-|   `-- README.md
-|-- assignment2/
-|   `-- README.md
-|-- assignment3/
-|   `-- README.md
-|-- btl_mr/
-|   `-- README.md
-`-- notebooks/
-		|-- BTL1_deep_learning.ipynb
-		|-- BTL1_traditional.ipynb
-		|-- BTL2_deep_learning.ipynb
-		|-- BTL2_traditional.ipynb
-		|-- BTL3_deep_learning.ipynb
-		|-- BTL3_traditional.ipynb
-		`-- BTL_Extra_HMM.ipynb
-```
+### Representative Artifacts
+- `btl1/artifacts/text/text_model_comparison.csv`
+- `btl1/artifacts/multimodal/n24news_model_comparison_full_finetune.csv`
+- `btl1/artifacts/multimodal/n24news_model_comparison_all_variants.csv`
+- `btl1/artifacts/image/training_summary.json`
 
-## 5) Landing Page (GitHub Pages)
-
-Trang chu va cac trang assignment da duoc tao khung:
-
-- `index.html`: thong tin nhom, thanh vien, giang vien, link den cac bai tap.
-- `assignment1.html`, `assignment2.html`, `assignment3.html`, `btl_mr.html`:
-	trang rieng cho tung bai.
-
-Can cap nhat them:
-
-- Link video demo.
-- Link video trinh bay (YouTube).
-- Link code.
-- Link bao cao EDA, dataset/dataloader/augmentation, huan luyen va so sanh.
-
-## 6) Tien do de xuat
-
-1. Chot 3 dataset dap ung rang buoc.
-2. Viet notebook baseline cho tung bai toan.
-3. Fine-tune va danh gia theo cap mo hinh bat buoc.
-4. Tong hop bang so lieu, bieu do, phan tich loi.
-5. Bo sung mot huong mo rong de tang diem.
-6. Cap nhat landing page va video.
-
-## 7) Moc han theo de
-
-- Bao cao lan 1: 23:59 - 26/03/2026.
-- Bao cao cuoi: 23:59 - 06/04/2026.
-- Tre han: tru 20% diem phan trinh bay moi tuan.
-
-## 8) Cai dat nhanh
-
-```bash
-python -m venv .venv
-.venv\\Scripts\\activate
-pip install -r requirements.txt
-```
-
-## 9) Ghi chu
-
-- Dung `docs/CHECKLIST.md` de bam sat de va kiem tra truoc khi nop.
-- Khong commit du lieu qua lon truc tiep vao git repo.
+## Current Status
+- Primary research and implementation focus: **BTL1**
+- Best-performing models (as shown on landing page):
+  - **Text:** BERT
+  - **Multimodal:** VisualBERT
+  - **Image:** ViT-Base
+- **BTL2** and **BTL3** have not published full experimental results yet.
