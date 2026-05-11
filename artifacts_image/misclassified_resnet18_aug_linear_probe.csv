@@ -1,0 +1,223 @@
+path,target,pred,pred_confidence,true_class_probability,target_name,pred_name
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato verticulium wilt\verticulium wilt431_.jpg,21,20,0.35016865,0.18713112,Tomato verticulium wilt,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato verticulium wilt\verticulium wilt145_.jpg,21,20,0.44541276,0.21893719,Tomato verticulium wilt,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato leaf blight\leaf blight103_.jpg,18,20,0.5260544,0.12555988,Tomato leaf blight,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato leaf blight\leaf blight443_.jpg,18,21,0.45381132,0.15170237,Tomato leaf blight,Tomato verticulium wilt
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Maize leaf spot\leaf spot838_.jpg,15,14,0.7132346,0.16082354,Maize leaf spot,Maize leaf blight
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato verticulium wilt\verticulium wilt522_.jpg,21,20,0.6412093,0.18581542,Tomato verticulium wilt,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Cassava brown spot\brown spot89_.jpg,6,5,0.44987997,0.29937902,Cassava brown spot,Cassava bacterial blight
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato verticulium wilt\leaf blight914_.jpg,21,20,0.51810545,0.3086159,Tomato verticulium wilt,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Maize fall armyworm\fall armyworm175_.jpg,10,5,0.4211458,0.057195865,Maize fall armyworm,Cassava bacterial blight
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato verticulium wilt\verticulium wilt91_.jpg,21,20,0.42999744,0.25312537,Tomato verticulium wilt,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato healthy\healthy127_.jpg,17,9,0.48276728,0.1391813,Tomato healthy,Cassava mosaic
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato verticulium wilt\verticulium wilt263_.jpg,21,20,0.49654233,0.17684788,Tomato verticulium wilt,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Cassava bacterial blight\bacterial blight1274_.jpg,5,8,0.5558507,0.102102235,Cassava bacterial blight,Cassava healthy
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Cashew gumosis\gumosis285_.jpg,1,5,0.44242543,0.15919864,Cashew gumosis,Cassava bacterial blight
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato leaf curl\leaf curl377_.jpg,19,20,0.5965202,0.044602975,Tomato leaf curl,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato leaf blight\leaf blight1274_.jpg,18,20,0.72960323,0.1143002,Tomato leaf blight,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Maize streak virus\streak virus598_.jpg,16,15,0.32672527,0.26394835,Maize streak virus,Maize leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato leaf blight\leaf blight488_.jpg,18,20,0.6618822,0.08330963,Tomato leaf blight,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato leaf blight\leaf blight515_.jpg,18,20,0.4374194,0.20796905,Tomato leaf blight,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Cashew anthracnose\anthracnose1352_.jpg,0,2,0.77140623,0.1023177,Cashew anthracnose,Cashew healthy
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato verticulium wilt\leaf blight927_.jpg,21,20,0.5786269,0.22982883,Tomato verticulium wilt,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato leaf blight\leaf blight362_.jpg,18,20,0.48569134,0.36205247,Tomato leaf blight,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato leaf blight\leaf blight783_.jpg,18,20,0.5445804,0.22474442,Tomato leaf blight,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Cassava brown spot\brown spot1152_.jpg,6,9,0.42051968,0.12922318,Cassava brown spot,Cassava mosaic
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Maize leaf spot\leaf spot830_.jpg,15,14,0.46652073,0.18079299,Maize leaf spot,Maize leaf blight
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato verticulium wilt\verticulium wilt635_.jpg,21,20,0.562735,0.29367864,Tomato verticulium wilt,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Maize leaf blight\leaf blight22_.jpg,14,15,0.4635925,0.43494856,Maize leaf blight,Maize leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato septoria leaf spot\septoria leaf spot105_.jpg,20,18,0.4427313,0.072370544,Tomato septoria leaf spot,Tomato leaf blight
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Cassava green mite\green mite310_.jpg,7,8,0.5170925,0.15070072,Cassava green mite,Cassava healthy
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Cassava brown spot\brown spot686_.jpg,6,5,0.8828781,0.06982629,Cassava brown spot,Cassava bacterial blight
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Cassava green mite\green mite213_.jpg,7,5,0.5657625,0.07362565,Cassava green mite,Cassava bacterial blight
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Maize fall armyworm\fall armyworm10_.jpg,10,11,0.29411903,0.19334231,Maize fall armyworm,Maize grasshoper
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato leaf curl\leaf curl23_.jpg,19,18,0.40865484,0.033257924,Tomato leaf curl,Tomato leaf blight
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Cashew anthracnose\anthracnose984_.jpg,0,3,0.9050003,0.03588736,Cashew anthracnose,Cashew leaf miner
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato verticulium wilt\verticulium wilt56_.jpg,21,20,0.51765174,0.112649895,Tomato verticulium wilt,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato verticulium wilt\verticulium wilt429_.jpg,21,20,0.7273632,0.056373667,Tomato verticulium wilt,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato verticulium wilt\verticulium wilt746_.jpg,21,20,0.70323884,0.041639842,Tomato verticulium wilt,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato verticulium wilt\verticulium wilt48_.jpg,21,20,0.52993613,0.19119789,Tomato verticulium wilt,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato leaf curl\leaf curl20_.jpg,19,20,0.5400323,0.09126635,Tomato leaf curl,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Cashew anthracnose\anthracnose954_.jpg,0,3,0.8050006,0.017076759,Cashew anthracnose,Cashew leaf miner
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Maize leaf spot\leaf spot1124_.jpg,15,12,0.8606158,0.08917158,Maize leaf spot,Maize healthy
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato verticulium wilt\verticulium wilt601_.jpg,21,20,0.46533114,0.1841976,Tomato verticulium wilt,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato leaf blight\leaf blight851_.jpg,18,20,0.7369963,0.115316205,Tomato leaf blight,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Cassava bacterial blight\bacterial blight2187_.jpg,5,6,0.53515685,0.40635782,Cassava bacterial blight,Cassava brown spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Maize leaf spot\leaf spot1223_.jpg,15,14,0.49986407,0.3371368,Maize leaf spot,Maize leaf blight
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Maize leaf blight\leaf blight828_.jpg,14,15,0.5597944,0.31411213,Maize leaf blight,Maize leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato leaf blight\leaf blight1216_.jpg,18,20,0.4218667,0.118673615,Tomato leaf blight,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato leaf blight\leaf blight1025_.jpg,18,20,0.85470027,0.0652591,Tomato leaf blight,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato leaf blight\leaf blight1003_.jpg,18,20,0.47159404,0.4339002,Tomato leaf blight,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Maize leaf blight\leaf blight663_.jpg,14,16,0.5141973,0.121477455,Maize leaf blight,Maize streak virus
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato verticulium wilt\verticulium wilt311_.jpg,21,18,0.46108207,0.33112466,Tomato verticulium wilt,Tomato leaf blight
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Maize leaf spot\leaf spot432_.jpg,15,14,0.5270107,0.28366232,Maize leaf spot,Maize leaf blight
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Cashew anthracnose\anthracnose1259_.jpg,0,3,0.54776156,0.24581605,Cashew anthracnose,Cashew leaf miner
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato septoria leaf spot\septoria leaf spot507_.jpg,20,19,0.3893807,0.33417845,Tomato septoria leaf spot,Tomato leaf curl
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato septoria leaf spot\septoria leaf spot86_.jpg,20,18,0.64854443,0.21244144,Tomato septoria leaf spot,Tomato leaf blight
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato leaf blight\leaf blight452_.jpg,18,20,0.36287472,0.19229022,Tomato leaf blight,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Maize leaf spot\leaf spot957_.jpg,15,16,0.30647045,0.10090252,Maize leaf spot,Maize streak virus
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato septoria leaf spot\septoria leaf spot171_.jpg,20,18,0.50614214,0.3246559,Tomato septoria leaf spot,Tomato leaf blight
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato leaf blight\leaf blight231_.jpg,18,20,0.38672507,0.28513852,Tomato leaf blight,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato verticulium wilt\verticulium wilt392_.jpg,21,20,0.6979194,0.09367337,Tomato verticulium wilt,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Maize streak virus\streak virus313_.jpg,16,13,0.28390676,0.23663789,Maize streak virus,Maize leaf beetle
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato septoria leaf spot\septoria leaf spot75_.jpg,20,18,0.54392177,0.21955372,Tomato septoria leaf spot,Tomato leaf blight
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato verticulium wilt\verticulium wilt724_.jpg,21,18,0.39072356,0.33281124,Tomato verticulium wilt,Tomato leaf blight
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Maize leaf blight\leaf blight1000_.jpg,14,15,0.39380208,0.316754,Maize leaf blight,Maize leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Cassava bacterial blight\bacterial blight1368_.jpg,5,6,0.62514246,0.30949143,Cassava bacterial blight,Cassava brown spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Cashew anthracnose\anthracnose1300_.jpg,0,4,0.59098536,0.21490258,Cashew anthracnose,Cashew red rust
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato leaf blight\leaf blight735_.jpg,18,20,0.48985258,0.1864656,Tomato leaf blight,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Maize leaf blight\leaf blight587_.jpg,14,15,0.57032186,0.2947759,Maize leaf blight,Maize leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Cassava brown spot\brown spot908_.jpg,6,5,0.529612,0.17431235,Cassava brown spot,Cassava bacterial blight
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Maize leaf blight\leaf blight904_.jpg,14,15,0.7637186,0.15526783,Maize leaf blight,Maize leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato leaf blight\leaf blight1043_.jpg,18,20,0.40785182,0.23281358,Tomato leaf blight,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato septoria leaf spot\septoria leaf spot90_.jpg,20,18,0.7741154,0.10565027,Tomato septoria leaf spot,Tomato leaf blight
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato verticulium wilt\verticulium wilt470_.jpg,21,20,0.57507545,0.19743472,Tomato verticulium wilt,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Maize leaf spot\leaf spot801_.jpg,15,14,0.4721176,0.42456448,Maize leaf spot,Maize leaf blight
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato leaf blight\leaf blight1100_.jpg,18,20,0.4354275,0.43515712,Tomato leaf blight,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato septoria leaf spot\septoria leaf spot2080_.jpg,20,17,0.77408403,0.04428116,Tomato septoria leaf spot,Tomato healthy
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Cashew anthracnose\anthracnose1373_.jpg,0,2,0.4008139,0.39770734,Cashew anthracnose,Cashew healthy
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato verticulium wilt\verticulium wilt708_.jpg,21,19,0.47703993,0.121557534,Tomato verticulium wilt,Tomato leaf curl
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato verticulium wilt\verticulium wilt655_.jpg,21,20,0.45930165,0.26589635,Tomato verticulium wilt,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato leaf blight\leaf blight944_.jpg,18,20,0.50971687,0.28516385,Tomato leaf blight,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato verticulium wilt\verticulium wilt313_.jpg,21,20,0.45286432,0.13424142,Tomato verticulium wilt,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato septoria leaf spot\septoria leaf spot2258_.jpg,20,21,0.50306207,0.18970847,Tomato septoria leaf spot,Tomato verticulium wilt
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato leaf blight\leaf blight486_.jpg,18,20,0.52356803,0.12909824,Tomato leaf blight,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Maize leaf beetle\leaf beetle872_.jpg,13,12,0.46227863,0.095481016,Maize leaf beetle,Maize healthy
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Maize leaf spot\leaf spot1051_.jpg,15,16,0.3264741,0.32373416,Maize leaf spot,Maize streak virus
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Maize leaf spot\leaf spot582_.jpg,15,14,0.53092206,0.33184704,Maize leaf spot,Maize leaf blight
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato septoria leaf spot\septoria leaf spot307_.jpg,20,18,0.41008332,0.29209876,Tomato septoria leaf spot,Tomato leaf blight
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato leaf blight\leaf blight1291_.jpg,18,20,0.59811455,0.2829382,Tomato leaf blight,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato septoria leaf spot\septoria leaf spot196_.jpg,20,14,0.4302078,0.10147268,Tomato septoria leaf spot,Maize leaf blight
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Maize leaf blight\leaf blight884_.jpg,14,15,0.6664038,0.2706898,Maize leaf blight,Maize leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato verticulium wilt\leaf blight925_.jpg,21,20,0.4944255,0.21355557,Tomato verticulium wilt,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato verticulium wilt\verticulium wilt51_.jpg,21,0,0.24533482,0.15392634,Tomato verticulium wilt,Cashew anthracnose
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Cassava bacterial blight\bacterial blight227_.jpg,5,6,0.69528425,0.13329434,Cassava bacterial blight,Cassava brown spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato leaf curl\leaf curl221_.jpg,19,18,0.420623,0.053222246,Tomato leaf curl,Tomato leaf blight
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato verticulium wilt\verticulium wilt751_.jpg,21,20,0.4199901,0.11096103,Tomato verticulium wilt,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Maize leaf spot\leaf spot921_.jpg,15,14,0.66770047,0.2509319,Maize leaf spot,Maize leaf blight
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Cassava green mite\green mite48_.jpg,7,5,0.69431466,0.17161933,Cassava green mite,Cassava bacterial blight
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Cassava brown spot\brown spot738_.jpg,6,9,0.3250699,0.22037397,Cassava brown spot,Cassava mosaic
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato verticulium wilt\verticulium wilt255_.jpg,21,20,0.33214974,0.2297974,Tomato verticulium wilt,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Maize leaf spot\leaf spot1131_.jpg,15,12,0.65247816,0.24199489,Maize leaf spot,Maize healthy
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Cassava mosaic\mosaic1057_.jpg,9,7,0.7553483,0.11516277,Cassava mosaic,Cassava green mite
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato verticulium wilt\verticulium wilt301_.jpg,21,20,0.69118714,0.11393543,Tomato verticulium wilt,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Cashew leaf miner\leaf miner1331_.jpg,3,5,0.3084415,0.28900057,Cashew leaf miner,Cassava bacterial blight
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Maize leaf spot\leaf spot510_.jpg,15,12,0.72258985,0.25056735,Maize leaf spot,Maize healthy
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Maize leaf spot\leaf spot1261_.jpg,15,16,0.46305174,0.36637613,Maize leaf spot,Maize streak virus
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Cassava brown spot\brown spot1481_.jpg,6,5,0.5037712,0.34352747,Cassava brown spot,Cassava bacterial blight
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato septoria leaf spot\septoria leaf spot878_.jpg,20,21,0.37015656,0.27877218,Tomato septoria leaf spot,Tomato verticulium wilt
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Cassava brown spot\brown spot1310_.jpg,6,5,0.46436125,0.29228893,Cassava brown spot,Cassava bacterial blight
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Cassava bacterial blight\bacterial blight421_.jpg,5,6,0.37644795,0.19379432,Cassava bacterial blight,Cassava brown spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Cashew anthracnose\anthracnose1214_.jpg,0,2,0.49020627,0.12260193,Cashew anthracnose,Cashew healthy
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato verticulium wilt\verticulium wilt480_.jpg,21,20,0.65856653,0.20192723,Tomato verticulium wilt,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Maize streak virus\streak virus213_.jpg,16,15,0.39427498,0.27537608,Maize streak virus,Maize leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato verticulium wilt\verticulium wilt128_.jpg,21,20,0.65432024,0.21148773,Tomato verticulium wilt,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato leaf curl\leaf curl514_.jpg,19,21,0.4998844,0.03073226,Tomato leaf curl,Tomato verticulium wilt
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato septoria leaf spot\septoria leaf spot1342_.jpg,20,18,0.26190037,0.23953673,Tomato septoria leaf spot,Tomato leaf blight
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Maize leaf blight\leaf blight568_.jpg,14,15,0.52079856,0.29220977,Maize leaf blight,Maize leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Cassava brown spot\brown spot472_.jpg,6,5,0.53251034,0.4071946,Cassava brown spot,Cassava bacterial blight
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Maize leaf blight\leaf blight582_.jpg,14,15,0.6093502,0.27303413,Maize leaf blight,Maize leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato leaf blight\leaf blight1234_.jpg,18,19,0.2576051,0.15451035,Tomato leaf blight,Tomato leaf curl
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Maize leaf blight\leaf blight1002_.jpg,14,16,0.48895377,0.27314472,Maize leaf blight,Maize streak virus
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Cassava mosaic\mosaic458_.jpg,9,7,0.54993284,0.08869951,Cassava mosaic,Cassava green mite
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Maize streak virus\streak virus599_.jpg,16,15,0.2887026,0.2735347,Maize streak virus,Maize leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Maize leaf spot\leaf spot429_.jpg,15,14,0.65488666,0.24623553,Maize leaf spot,Maize leaf blight
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato leaf blight\leaf blight882_.jpg,18,20,0.49477068,0.20405278,Tomato leaf blight,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Maize healthy\healthy3_.jpg,12,15,0.40585628,0.15928859,Maize healthy,Maize leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Cashew anthracnose\anthracnose835_.jpg,0,3,0.8719567,0.06654695,Cashew anthracnose,Cashew leaf miner
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato leaf blight\leaf blight650_.jpg,18,20,0.49498174,0.2046563,Tomato leaf blight,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato leaf curl\leaf curl142_.jpg,19,20,0.3790597,0.28680277,Tomato leaf curl,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato leaf blight\leaf blight1054_.jpg,18,20,0.8437832,0.07200473,Tomato leaf blight,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Cassava brown spot\brown spot1244_.jpg,6,5,0.49958265,0.37644747,Cassava brown spot,Cassava bacterial blight
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato leaf blight\leaf blight386_.jpg,18,6,0.13979277,0.047550675,Tomato leaf blight,Cassava brown spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato leaf blight\leaf blight691_.jpg,18,21,0.6444789,0.18750297,Tomato leaf blight,Tomato verticulium wilt
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Cashew red rust\red rust356_.jpg,4,3,0.7358646,0.012062206,Cashew red rust,Cashew leaf miner
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato leaf blight\leaf blight356_.jpg,18,20,0.589518,0.37007618,Tomato leaf blight,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato leaf blight\leaf blight1279_.jpg,18,20,0.55383664,0.059076734,Tomato leaf blight,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Cashew anthracnose\anthracnose6_.jpg,0,3,0.7524192,0.09298765,Cashew anthracnose,Cashew leaf miner
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato leaf blight\leaf blight759_.jpg,18,20,0.7428442,0.043037836,Tomato leaf blight,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato verticulium wilt\verticulium wilt212_.jpg,21,20,0.59979343,0.17009924,Tomato verticulium wilt,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato leaf curl\leaf curl287_.jpg,19,18,0.3653512,0.01910814,Tomato leaf curl,Tomato leaf blight
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Maize leaf spot\leaf spot886_.jpg,15,14,0.5535414,0.3337224,Maize leaf spot,Maize leaf blight
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Cassava green mite\green mite584_.jpg,7,8,0.73683417,0.09650682,Cassava green mite,Cassava healthy
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato leaf blight\leaf blight897_.jpg,18,20,0.56232065,0.072333686,Tomato leaf blight,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato leaf curl\leaf curl185_.jpg,19,20,0.6292672,0.2032476,Tomato leaf curl,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato leaf blight\leaf blight818_.jpg,18,20,0.5457959,0.07428114,Tomato leaf blight,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato verticulium wilt\verticulium wilt740_.jpg,21,20,0.22820757,0.22449234,Tomato verticulium wilt,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Cassava bacterial blight\bacterial blight1874_.jpg,5,6,0.5534985,0.31895024,Cassava bacterial blight,Cassava brown spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato leaf curl\leaf curl208_.jpg,19,20,0.7745932,0.0702294,Tomato leaf curl,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato verticulium wilt\verticulium wilt620_.jpg,21,20,0.4373234,0.31941238,Tomato verticulium wilt,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Maize leaf blight\leaf blight775_.jpg,14,16,0.3125901,0.25401556,Maize leaf blight,Maize streak virus
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato leaf blight\leaf blight825_.jpg,18,20,0.6031094,0.21446192,Tomato leaf blight,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Cassava healthy\healthy24_.jpg,8,7,0.49539614,0.23171261,Cassava healthy,Cassava green mite
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato septoria leaf spot\septoria leaf spot1135_.jpg,20,18,0.4353661,0.26752877,Tomato septoria leaf spot,Tomato leaf blight
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato leaf curl\leaf curl196_.jpg,19,20,0.8701159,0.008060813,Tomato leaf curl,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato leaf curl\leaf curl251_.jpg,19,20,0.7726817,0.04043211,Tomato leaf curl,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Cassava brown spot\brown spot903_.jpg,6,5,0.5095203,0.108103886,Cassava brown spot,Cassava bacterial blight
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato leaf blight\leaf blight124_.jpg,18,20,0.34992057,0.269227,Tomato leaf blight,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Maize grasshoper\grasshoper285_.jpg,11,15,0.39178678,0.12811437,Maize grasshoper,Maize leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato verticulium wilt\verticulium wilt236_.jpg,21,20,0.5914814,0.1419014,Tomato verticulium wilt,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Maize leaf spot\leaf spot1089_.jpg,15,12,0.76942384,0.19600035,Maize leaf spot,Maize healthy
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato verticulium wilt\verticulium wilt60_.jpg,21,20,0.43253055,0.36933848,Tomato verticulium wilt,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato leaf blight\leaf blight1225_.jpg,18,20,0.50430775,0.07997063,Tomato leaf blight,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Cassava bacterial blight\bacterial blight1248_.jpg,5,6,0.65256387,0.14240202,Cassava bacterial blight,Cassava brown spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Maize leaf spot\leaf spot1055_.jpg,15,12,0.58594257,0.3429338,Maize leaf spot,Maize healthy
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Maize leaf spot\leaf spot1047_.jpg,15,12,0.6912255,0.248866,Maize leaf spot,Maize healthy
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Maize leaf blight\leaf blight597_.jpg,14,15,0.54325986,0.271003,Maize leaf blight,Maize leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Maize fall armyworm\fall armyworm111_.jpg,10,11,0.31293178,0.17919563,Maize fall armyworm,Maize grasshoper
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato leaf blight\leaf blight746_.jpg,18,20,0.5223061,0.05582189,Tomato leaf blight,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato verticulium wilt\verticulium wilt498_.jpg,21,18,0.6219286,0.30024472,Tomato verticulium wilt,Tomato leaf blight
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato verticulium wilt\verticulium wilt526_.jpg,21,20,0.6062068,0.18096696,Tomato verticulium wilt,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato leaf blight\leaf blight742_.jpg,18,20,0.49782193,0.08176734,Tomato leaf blight,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato leaf blight\leaf blight104_.jpg,18,17,0.26791638,0.23018394,Tomato leaf blight,Tomato healthy
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Maize leaf beetle\leaf beetle400_.jpg,13,15,0.43163922,0.28181612,Maize leaf beetle,Maize leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Maize leaf spot\leaf spot1130_.jpg,15,12,0.6877778,0.27256498,Maize leaf spot,Maize healthy
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato verticulium wilt\verticulium wilt377_.jpg,21,20,0.72090334,0.07141054,Tomato verticulium wilt,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Cashew anthracnose\anthracnose799_.jpg,0,2,0.30751595,0.18175176,Cashew anthracnose,Cashew healthy
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato leaf curl\leaf curl158_.jpg,19,20,0.41341016,0.40369913,Tomato leaf curl,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Maize leaf beetle\leaf beetle392_.jpg,13,10,0.4545802,0.43506017,Maize leaf beetle,Maize fall armyworm
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato verticulium wilt\verticulium wilt249_.jpg,21,20,0.4927146,0.22627787,Tomato verticulium wilt,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Maize leaf spot\leaf spot1226_.jpg,15,12,0.34917876,0.20539568,Maize leaf spot,Maize healthy
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato leaf blight\leaf blight977_.jpg,18,20,0.67380166,0.11305298,Tomato leaf blight,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato verticulium wilt\verticulium wilt535_.jpg,21,20,0.44550264,0.18342787,Tomato verticulium wilt,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato verticulium wilt\leaf blight928_.jpg,21,20,0.62717545,0.2354729,Tomato verticulium wilt,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato septoria leaf spot\septoria leaf spot1285_.jpg,20,17,0.70945686,0.108176224,Tomato septoria leaf spot,Tomato healthy
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato leaf blight\leaf blight428_.jpg,18,20,0.5070296,0.14660731,Tomato leaf blight,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato leaf blight\leaf blight339_.jpg,18,20,0.21970579,0.20938064,Tomato leaf blight,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Maize leaf spot\leaf spot1111_.jpg,15,12,0.5345137,0.42536747,Maize leaf spot,Maize healthy
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Cashew anthracnose\anthracnose1709_.jpg,0,2,0.81193644,0.029426083,Cashew anthracnose,Cashew healthy
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Maize leaf spot\leaf spot915_.jpg,15,14,0.8125872,0.14921273,Maize leaf spot,Maize leaf blight
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Maize leaf spot\leaf spot1071_.jpg,15,12,0.6699418,0.30533278,Maize leaf spot,Maize healthy
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Maize leaf blight\leaf blight424_.jpg,14,15,0.5288094,0.24706715,Maize leaf blight,Maize leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Maize leaf blight\leaf blight414_.jpg,14,15,0.49774453,0.43377084,Maize leaf blight,Maize leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato verticulium wilt\verticulium wilt473_.jpg,21,20,0.47450626,0.24087471,Tomato verticulium wilt,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Maize grasshoper\grasshoper266_.jpg,11,13,0.49721825,0.11840083,Maize grasshoper,Maize leaf beetle
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Maize leaf spot\leaf spot818_.jpg,15,14,0.54546505,0.37249255,Maize leaf spot,Maize leaf blight
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato verticulium wilt\verticulium wilt361_.jpg,21,20,0.61195916,0.24750824,Tomato verticulium wilt,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato leaf blight\leaf blight978_.jpg,18,20,0.47048974,0.07509153,Tomato leaf blight,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Maize leaf spot\leaf spot897_.jpg,15,14,0.5390239,0.38522485,Maize leaf spot,Maize leaf blight
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato leaf curl\leaf curl267_.jpg,19,21,0.36594415,0.11860945,Tomato leaf curl,Tomato verticulium wilt
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Maize leaf spot\leaf spot424_.jpg,15,14,0.58725256,0.3549698,Maize leaf spot,Maize leaf blight
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato leaf blight\leaf blight544_.jpg,18,19,0.32910413,0.067591,Tomato leaf blight,Tomato leaf curl
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato leaf blight\leaf blight1277_.jpg,18,20,0.73514736,0.080587134,Tomato leaf blight,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato verticulium wilt\verticulium wilt560_.jpg,21,18,0.54007477,0.3029191,Tomato verticulium wilt,Tomato leaf blight
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Maize leaf spot\leaf spot354_.jpg,15,16,0.36069256,0.33213508,Maize leaf spot,Maize streak virus
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Maize leaf beetle\leaf beetle386_.jpg,13,16,0.3348409,0.1052215,Maize leaf beetle,Maize streak virus
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Cassava bacterial blight\bacterial blight1366_.jpg,5,6,0.34843034,0.34768113,Cassava bacterial blight,Cassava brown spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato septoria leaf spot\septoria leaf spot154_.jpg,20,18,0.6499545,0.22083813,Tomato septoria leaf spot,Tomato leaf blight
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato verticulium wilt\verticulium wilt618_.jpg,21,18,0.6641384,0.24496293,Tomato verticulium wilt,Tomato leaf blight
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato leaf blight\leaf blight850_.jpg,18,20,0.7522167,0.07021549,Tomato leaf blight,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Maize leaf spot\leaf spot127_.jpg,15,14,0.53881836,0.42088312,Maize leaf spot,Maize leaf blight
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Cassava brown spot\brown spot204_.jpg,6,5,0.5108105,0.47106877,Cassava brown spot,Cassava bacterial blight
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato leaf blight\leaf blight481_.jpg,18,20,0.2861054,0.25802547,Tomato leaf blight,Tomato septoria leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Maize leaf blight\leaf blight16_.jpg,14,15,0.6196841,0.2879257,Maize leaf blight,Maize leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Maize streak virus\streak virus1003_.jpg,16,15,0.39783436,0.37254822,Maize streak virus,Maize leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Cassava green mite\green mite25_.jpg,7,9,0.7205449,0.13548374,Cassava green mite,Cassava mosaic
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Tomato leaf curl\leaf curl385_.jpg,19,17,0.85869193,0.012096812,Tomato leaf curl,Tomato healthy
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Maize leaf spot\leaf spot491_.jpg,15,14,0.51424223,0.36779293,Maize leaf spot,Maize leaf blight
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Maize leaf spot\leaf spot129_.jpg,15,14,0.7514814,0.20507498,Maize leaf spot,Maize leaf blight
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Maize leaf blight\leaf blight566_.jpg,14,15,0.5283148,0.32012966,Maize leaf blight,Maize leaf spot
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Cassava healthy\healthy35_.jpg,8,7,0.7988863,0.056511275,Cassava healthy,Cassava green mite
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Maize grasshoper\grasshoper383_.jpg,11,13,0.45715043,0.41702703,Maize grasshoper,Maize leaf beetle
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Cashew anthracnose\anthracnose785_.jpg,0,2,0.51050055,0.1286644,Cashew anthracnose,Cashew healthy
+C:\Users\haitr\OneDrive\Desktop\DL-Assignment-DNAC1\data\crop-pest-and-disease-detection\Cashew anthracnose\anthracnose1288_.jpg,0,5,0.450474,0.22228473,Cashew anthracnose,Cassava bacterial blight

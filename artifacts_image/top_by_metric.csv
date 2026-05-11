@@ -1,0 +1,9 @@
+metric,rank,run_name,model,augmentation,finetune,value
+accuracy,1,efficientnet_b0_aug_finetune_all,efficientnet_b0,aug,finetune_all,0.903123345685548
+accuracy,2,vit_base_patch16_224_aug_linear_probe,vit_base_patch16_224,aug,linear_probe,0.8861831656961355
+precision,1,efficientnet_b0_aug_finetune_all,efficientnet_b0,aug,finetune_all,0.8876237753109089
+precision,2,resnet18_aug_linear_probe,resnet18,aug,linear_probe,0.8814260847799953
+recall,1,efficientnet_b0_aug_finetune_all,efficientnet_b0,aug,finetune_all,0.8991043275800241
+recall,2,vit_base_patch16_224_aug_linear_probe,vit_base_patch16_224,aug,linear_probe,0.8705382785118722
+f1,1,efficientnet_b0_aug_finetune_all,efficientnet_b0,aug,finetune_all,0.8906750023591204
+f1,2,vit_base_patch16_224_aug_linear_probe,vit_base_patch16_224,aug,linear_probe,0.8744476867231015
