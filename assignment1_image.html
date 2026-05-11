@@ -1,18 +1,860 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="vi">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>BTL 2 - Deep Learning</title>
-    <link rel="stylesheet" href="style.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BTL 1 — Phân loại ảnh (Crop Pest &amp; Disease)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg0: #0f172a;
+      --bg1: #1e293b;
+      --bg-card: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+      --accent: #4f46e5;
+      --accent2: #0ea5e9;
+      --accent-soft: rgba(79, 70, 229, 0.12);
+      --border: #e2e8f0;
+      --radius-lg: 22px;
+      --radius-md: 14px;
+      --shadow: 0 18px 50px rgba(15, 23, 42, 0.08);
+      --mono: "JetBrains Mono", ui-monospace, monospace;
+      --sans: "DM Sans", system-ui, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--sans);
+      color: var(--text);
+      background: linear-gradient(165deg, #e0e7ff 0%, #f0f9ff 38%, #f8fafc 100%);
+      min-height: 100vh;
+      line-height: 1.65;
+    }
+
+    a {
+      color: var(--accent);
+    }
+
+    .wrap {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 4rem;
+    }
+
+    .hero {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      padding: 2rem 2rem 1.75rem;
+      margin-bottom: 1.25rem;
+      border: 1px solid var(--border);
+    }
+
+    .hero h1 {
+      margin: 0 0 0.75rem;
+      font-size: clamp(1.55rem, 3vw, 2.1rem);
+      letter-spacing: -0.02em;
+    }
+
+    .hero p.lead {
+      margin: 0 0 1.25rem;
+      color: var(--muted);
+      max-width: 72ch;
+    }
+
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .badge {
+      font-size: 0.82rem;
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, #f8fafc, #f1f5f9);
+      color: var(--muted);
+    }
+
+    nav.toc {
+      position: sticky;
+      top: 0.5rem;
+      z-index: 20;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(10px);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      padding: 0.65rem 0.85rem;
+      margin-bottom: 1.5rem;
+    }
+
+    nav.toc ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem 0.75rem;
+      justify-content: center;
+    }
+
+    nav.toc a {
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--muted);
+      padding: 0.25rem 0.4rem;
+      border-radius: 8px;
+    }
+
+    nav.toc a:hover {
+      color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    section.card {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      padding: 1.75rem 1.75rem 1.5rem;
+      margin-bottom: 1.25rem;
+      border: 1px solid var(--border);
+    }
+
+    .sec-title {
+      display: flex;
+      align-items: baseline;
+      gap: 0.65rem;
+      margin: 0 0 1rem;
+      font-size: 1.25rem;
+    }
+
+    .sec-num {
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+      color: var(--accent2);
+      font-size: 1.05rem;
+    }
+
+    .muted {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 820px) {
+      .grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .grid-4 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .stat-box {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 0.85rem 1rem;
+      background: #f8fafc;
+    }
+
+    .stat-box .label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+    }
+
+    .stat-box .value {
+      font-weight: 700;
+      font-size: 1.05rem;
+      margin-top: 0.2rem;
+    }
+
+    .img-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.6rem;
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 640px) {
+      .img-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .ph-img {
+      aspect-ratio: 1;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #e0e7ff, #bae6fd);
+      border: 1px dashed #94a3b8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-align: center;
+      padding: 0.5rem;
+    }
+
+    .ph-chart {
+      min-height: 220px;
+      border-radius: var(--radius-md);
+      background: linear-gradient(180deg, #f1f5f9, #e2e8f0);
+      border: 1px dashed #94a3b8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .split-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+      margin: 1rem 0;
+    }
+
+    @media (max-width: 560px) {
+      .split-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .split-card {
+      text-align: center;
+      padding: 1rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      background: #fff;
+    }
+
+    .split-card strong {
+      display: block;
+      font-size: 1.35rem;
+      color: var(--accent);
+    }
+
+    pre.code {
+      margin: 1rem 0 0;
+      padding: 1rem 1.1rem;
+      border-radius: var(--radius-md);
+      background: #0f172a;
+      color: #e2e8f0;
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      overflow-x: auto;
+      line-height: 1.5;
+    }
+
+    .backbone-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 720px) {
+      .backbone-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .model-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+      background: #fafbff;
+    }
+
+    .model-card header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.75rem;
+      font-weight: 700;
+    }
+
+    .tag {
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 0.2rem 0.5rem;
+      border-radius: 6px;
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 1rem 0;
+    }
+
+    .tab {
+      padding: 0.45rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid var(--accent);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: default;
+      background: #fff;
+      color: var(--accent);
+    }
+
+    .tab.active {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .chart-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    @media (max-width: 720px) {
+      .chart-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .mini-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 0.75rem;
+      background: #fff;
+    }
+
+    .mini-card h4 {
+      margin: 0 0 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 1rem 0;
+    }
+
+    table.results {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+      margin-top: 0.5rem;
+    }
+
+    table.results th,
+    table.results td {
+      border: 1px solid var(--border);
+      padding: 0.5rem 0.45rem;
+      text-align: center;
+    }
+
+    table.results th {
+      background: #f1f5f9;
+      font-weight: 600;
+    }
+
+    table.results tbody tr:nth-child(even) {
+      background: #f8fafc;
+    }
+
+    .legend-inline {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 0.75rem;
+    }
+
+    .swatch {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border-radius: 3px;
+      margin-right: 0.35rem;
+      vertical-align: middle;
+    }
+
+    .cm-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.65rem;
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 900px) {
+      .cm-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .cam-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 720px) {
+      .cam-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .cam-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 0.85rem;
+      background: #fafbff;
+    }
+
+    .cam-card h4 {
+      margin: 0 0 0.65rem;
+      font-size: 0.88rem;
+    }
+
+    .tri-img {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.35rem;
+    }
+
+    @media (max-width: 520px) {
+      .tri-img {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .gradio-mock {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      background: linear-gradient(180deg, #fff, #f8fafc);
+      margin-top: 1rem;
+    }
+
+    .gradio-mock h3 {
+      margin: 0 0 0.35rem;
+      font-size: 1.1rem;
+      color: #1e3a5f;
+    }
+
+    .mono-block {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      background: #e2e8f0;
+      padding: 0.65rem 0.75rem;
+      border-radius: 8px;
+      margin: 0.75rem 0;
+      word-break: break-word;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 720px) {
+      .two-col {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .field-label {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 0.2rem 0.45rem;
+      border-radius: 6px;
+      background: rgba(14, 165, 233, 0.18);
+      color: #0369a1;
+      margin-bottom: 0.35rem;
+    }
+
+    .fake-input {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.65rem 0.75rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+      background: #fff;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 2rem;
+    }
+  </style>
 </head>
 
 <body>
-    <main class="container">
-        <h1>Bai tap lon 2</h1>
-        <p>Cap nhat noi dung theo cung mau voi BTL 1.</p>
-    </main>
+  <div class="wrap">
+    <header class="hero" id="top">
+      <h1>BTL 1 — Báo cáo phân loại ảnh</h1>
+      <p class="lead">
+        Báo cáo tóm tắt pipeline trong notebook <strong>DL_BTL1_Image.ipynb</strong>: từ EDA, chia dữ liệu,
+        <code>timm</code> backbone + đầu phân loại tùy chỉnh, huấn luyện theo lưới thử nghiệm (mô hình × augmentation × chiến lược fine-tuning),
+        theo dõi Weights &amp; Biases, đánh giá test, confusion matrix, tới GradCAM/EigenCAM và demo Gradio.
+        Các con số cụ thể và hình ảnh thực nghiệm sẽ được chèn sau — hiện tại dùng placeholder.
+      </p>
+      <div class="badges">
+        <span class="badge">Dataset: Crop Pest &amp; Disease Detection (Kaggle)</span>
+        <span class="badge">Framework: PyTorch + timm</span>
+        <span class="badge">Tracking: Weights &amp; Biases</span>
+        <span class="badge">Giải thích: GradCAM / EigenCAM</span>
+      </div>
+    </header>
+
+    <nav class="toc" aria-label="Mục lục">
+      <ul>
+        <li><a href="#s01">Giới thiệu</a></li>
+        <li><a href="#s02">EDA</a></li>
+        <li><a href="#s03">Data &amp; Augmentation</a></li>
+        <li><a href="#s04">Backbone</a></li>
+        <li><a href="#s05">Training (W&amp;B)</a></li>
+        <li><a href="#s06">Kết quả &amp; thảo luận</a></li>
+        <li><a href="#s07">GradCAM</a></li>
+        <li><a href="#s08">Gradio</a></li>
+      </ul>
+    </nav>
+
+    <!-- 01 -->
+    <section class="card" id="s01">
+      <h2 class="sec-title"><span class="sec-num">01</span> Giới thiệu và mô tả bài toán</h2>
+      <p class="muted">
+        Bài toán <strong>phân loại đa lớp</strong> trên ảnh lá cây / sâu bệnh: mỗi ảnh thuộc một nhãn lớp tương ứng thư mục trong
+        <code>crop-pest-and-disease-detection</code>. Ảnh đầu vào được resize / crop về <strong>[IMG_SIZE]×[IMG_SIZE]</strong> (trong notebook mặc định 224).
+        Mục tiêu tối ưu các metric như <strong>Accuracy</strong> và <strong>Macro F1</strong> trên tập test, đồng thời ghi nhận chi phí (tham số, thời gian train, suy luận).
+      </p>
+      <div class="grid-4">
+        <div class="stat-box">
+          <div class="label">Bài toán</div>
+          <div class="value">Multi-class classification</div>
+        </div>
+        <div class="stat-box">
+          <div class="label">Số lớp</div>
+          <div class="value">[NUM_CLASSES] classes</div>
+        </div>
+        <div class="stat-box">
+          <div class="label">Metrics chính</div>
+          <div class="value">Macro F1 + Accuracy</div>
+        </div>
+        <div class="stat-box">
+          <div class="label">Số cấu hình chạy</div>
+          <div class="value">[NUM_RUNS] experiments</div>
+        </div>
+      </div>
+      <p class="muted" style="margin-top:1rem;">Một vài ảnh mẫu ngẫu nhiên từ tập huấn luyện (placeholder):</p>
+      <div class="img-grid" aria-label="Ảnh mẫu placeholder">
+        <div class="ph-img">[Ảnh mẫu 1]</div>
+        <div class="ph-img">[Ảnh mẫu 2]</div>
+        <div class="ph-img">[Ảnh mẫu 3]</div>
+        <div class="ph-img">[Ảnh mẫu 4]</div>
+        <div class="ph-img">[Ảnh mẫu 5]</div>
+        <div class="ph-img">[Ảnh mẫu 6]</div>
+      </div>
+    </section>
+
+    <!-- 02 -->
+    <section class="card" id="s02">
+      <h2 class="sec-title"><span class="sec-num">02</span> EDA (Exploratory Data Analysis)</h2>
+      <p class="muted">
+        Notebook quét thư mục dữ liệu, xây <code>DataFrame</code> đường dẫn–nhãn, in kích thước tập và số lớp, vẽ phân bố số ảnh theo lớp,
+        và hiển thị lưới ảnh mẫu để kiểm tra chất lượng / độ lệch lớp trước khi huấn luyện.
+      </p>
+      <p><strong>Thống kê (placeholder):</strong> Tổng số ảnh <strong>[TOTAL_IMAGES]</strong> — số lớp <strong>[NUM_CLASSES]</strong>.</p>
+      <div class="two-col" style="margin-top:1rem;">
+        <div>
+          <h3 style="margin:0 0 0.5rem;font-size:1rem;">Phân bố theo lớp</h3>
+          <div class="ph-chart" style="min-height:260px;">[Biểu đồ cột: số ảnh / lớp]</div>
+          <p class="muted" style="margin-top:0.5rem;font-size:0.85rem;">Chèn biểu đồ từ notebook hoặc export matplotlib.</p>
+        </div>
+        <div>
+          <h3 style="margin:0 0 0.5rem;font-size:1rem;">Ảnh mẫu ngẫu nhiên</h3>
+          <div class="ph-chart" style="min-height:260px;">[Lưới ảnh EDA — placeholder]</div>
+          <p class="muted" style="margin-top:0.5rem;font-size:0.85rem;">Gắn nhãn lớp dưới mỗi ảnh khi xuất báo cáo.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 -->
+    <section class="card" id="s03">
+      <h2 class="sec-title"><span class="sec-num">03</span> Dataset, DataLoader &amp; Augmentation pipeline</h2>
+      <p class="muted">
+        Chia tập <strong>stratify theo nhãn</strong>: <strong>70% train</strong> / <strong>15% validation</strong> / <strong>15% test</strong>
+        (tương ứng <code>1 - val_ratio - test_ratio</code> với <code>val_ratio=test_ratio=0.15</code> trong <code>CFG</code>).
+        <code>ImageClassificationDataset</code> đọc ảnh RGB (PIL), có cơ chế thử lại khi file lỗi/truncated.
+        <code>DataLoader</code> dùng batch size, số worker và pin memory theo cấu hình; Windows notebook thường để <code>num_workers=0</code>.
+      </p>
+      <div class="split-row">
+        <div class="split-card"><span class="muted">Train</span><strong>70%</strong></div>
+        <div class="split-card"><span class="muted">Validation</span><strong>15%</strong></div>
+        <div class="split-card"><span class="muted">Test</span><strong>15%</strong></div>
+      </div>
+      <p class="muted">
+        Mỗi backbone lấy <code>mean</code>/<code>std</code> chuẩn hóa từ <code>timm.data.resolve_model_data_config</code> để khớp pretrain.
+        Khi <code>use_aug=True</code>, pipeline train trong notebook gồm các bước sau (eval chỉ resize + tensor + normalize):
+      </p>
+      <ul class="muted">
+        <li><code>RandomResizedCrop</code> (scale 0.7–1.0)</li>
+        <li><code>RandomHorizontalFlip</code>, <code>RandomVerticalFlip(p=0.1)</code></li>
+        <li><code>ColorJitter</code>, <code>RandomRotation(20)</code>, <code>RandomGrayscale(p=0.05)</code></li>
+        <li><code>ToTensor</code> + <code>Normalize</code></li>
+      </ul>
+      <pre class="code"><code>transform = transforms.Compose([
+    transforms.RandomResizedCrop(IMG_SIZE, scale=(0.7, 1.0)),
+    transforms.RandomHorizontalFlip(),
+    transforms.RandomVerticalFlip(p=0.1),
+    transforms.ColorJitter(brightness=0.3, contrast=0.3, saturation=0.2, hue=0.1),
+    transforms.RandomRotation(20),
+    transforms.RandomGrayscale(p=0.05),
+    transforms.ToTensor(),
+    transforms.Normalize(mean=mean, std=std),  # từ timm theo model_name
+])</code></pre>
+      <p class="muted" style="margin-top:0.75rem;">
+        Huấn luyện có thể bật <strong>early stopping</strong> theo validation macro F1 (<code>early_stopping_patience</code> trong <code>CFG</code>; 0 = tắt).
+      </p>
+    </section>
+
+    <!-- 04 -->
+    <section class="card" id="s04">
+      <h2 class="sec-title"><span class="sec-num">04</span> Lựa chọn mô hình Backbone (4 loại)</h2>
+      <p class="muted">
+        Notebook so sánh bốn kiến trúc trong <code>EXPERIMENT_GRID["models"]</code>:
+        <strong>ResNet-18</strong>, <strong>EfficientNet-B0</strong>, <strong>ViT-Base/16</strong>, <strong>Swin-Tiny</strong> (tên đầy đủ timm:
+        <code>resnet18</code>, <code>efficientnet_b0</code>, <code>vit_base_patch16_224</code>, <code>swin_tiny_patch4_window7_224</code>).
+        Đầu phân loại tùy chỉnh: backbone trích đặc trưng + MLP (<code>Linear → BatchNorm → ReLU → Dropout → Linear</code>) ra số lớp.
+        Ba chiến lược fine-tuning: <code>frozen</code>, <code>linear_probe</code>, <code>finetune_all</code> (điều chỉnh <code>requires_grad</code> trên backbone).
+      </p>
+      <div class="backbone-grid">
+        <div class="model-card">
+          <header><span>ResNet18</span><span class="tag">CNN</span></header>
+          <div class="ph-chart" style="min-height:160px;">[Sơ đồ / ảnh minh họa ResNet]</div>
+        </div>
+        <div class="model-card">
+          <header><span>EfficientNet-B0</span><span class="tag">CNN</span></header>
+          <div class="ph-chart" style="min-height:160px;">[Sơ đồ MBConv / EfficientNet]</div>
+        </div>
+        <div class="model-card">
+          <header><span>ViT-Base/16</span><span class="tag">Transformer</span></header>
+          <div class="ph-chart" style="min-height:160px;">[Sơ đồ patch embedding + encoder]</div>
+        </div>
+        <div class="model-card">
+          <header><span>Swin-Tiny</span><span class="tag">Transformer</span></header>
+          <div class="ph-chart" style="min-height:160px;">[Sơ đồ hierarchical Swin]</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 -->
+    <section class="card" id="s05">
+      <h2 class="sec-title"><span class="sec-num">05</span> Kết quả Training (Weights &amp; Biases)</h2>
+      <p class="muted">
+        Mỗi run đăng ký W&amp;B (<code>project_name</code> mặc định <code>co3133-btl1-image</code>): log loss/accuracy/F1 theo epoch, learning rate,
+        và artifact hình (confusion matrix, bảng misclassified, v.v.). Dưới đây là khung hiển thị tương tự dashboard — chèn screenshot từ W&amp;B sau.
+      </p>
+      <div class="tabs" role="tablist" aria-label="Nhóm biểu đồ">
+        <span class="tab active">Loss</span>
+        <span class="tab">Accuracy</span>
+        <span class="tab">F1 / Precision / Recall</span>
+      </div>
+      <div class="chart-row">
+        <div class="mini-card">
+          <h4>train/loss — [RUN_GROUP]</h4>
+          <div class="ph-chart" style="min-height:200px;">[W&amp;B: train loss theo step/epoch]</div>
+        </div>
+        <div class="mini-card">
+          <h4>val/loss — [RUN_GROUP]</h4>
+          <div class="ph-chart" style="min-height:200px;">[W&amp;B: validation loss]</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 -->
+    <section class="card" id="s06">
+      <h2 class="sec-title"><span class="sec-num">06</span> Experimental results: tables, charts &amp; discussion</h2>
+      <p class="muted">
+        Sau khi chạy lưới thử nghiệm, notebook gom kết quả vào <code>results.csv</code> (accuracy, precision, recall, F1, tham số, FLOPs ước lượng, thời gian train, v.v.).
+        Có thể lọc theo augmentation và/hoặc chiến lược fine-tune khi so sánh. Phần thảo luận: trade-off độ chính xác vs chi phí tính toán, tác dụng augmentation và từng backbone trên dữ liệu sâu bệnh.
+      </p>
+      <div class="filters">
+        <span class="tab active">All</span>
+        <span class="tab">Aug</span>
+        <span class="tab">No aug</span>
+        <span class="tab">Frozen</span>
+        <span class="tab">Linear probe</span>
+        <span class="tab">Finetune all</span>
+      </div>
+      <h3 style="margin:0.5rem 0 0;font-size:1rem;">Bảng so sánh (placeholder)</h3>
+      <div style="overflow-x:auto;">
+        <table class="results">
+          <thead>
+            <tr>
+              <th>Run / Model config</th>
+              <th>Acc (%) ↑</th>
+              <th>Prec (%) ↑</th>
+              <th>Rec (%) ↑</th>
+              <th>F1 (%) ↑</th>
+              <th>Params (M) ↓</th>
+              <th>FLOPs (G) ↓</th>
+              <th>CKPT (MB) ↓</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>[model_aug_ft_1]</td>
+              <td>[—]</td>
+              <td>[—]</td>
+              <td>[—]</td>
+              <td>[—]</td>
+              <td>[—]</td>
+              <td>[—]</td>
+              <td>[—]</td>
+            </tr>
+            <tr>
+              <td>[model_aug_ft_2]</td>
+              <td>[—]</td>
+              <td>[—]</td>
+              <td>[—]</td>
+              <td>[—]</td>
+              <td>[—]</td>
+              <td>[—]</td>
+              <td>[—]</td>
+            </tr>
+            <tr>
+              <td colspan="8" style="text-align:left;padding-left:0.75rem;color:var(--muted);">… thêm các dòng từ <code>results.csv</code> …</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="muted" style="margin-top:0.75rem;">
+        <strong>Discussion (placeholder):</strong> [Ghi nhận mô hình tốt nhất theo F1/accuracy, ảnh hưởng của augmentation, so CNN vs ViT/Swin trên tập này, và chiến lược fine-tune phù hợp.]
+      </p>
+      <h3 style="margin:1.25rem 0 0.5rem;font-size:1rem;">Confusion matrix theo run (placeholder)</h3>
+      <p class="muted" style="margin-top:0;">File ảnh lưu dạng <code>cm_{run_name}.png</code> trong thư mục artifact — chèn lưới bên dưới.</p>
+      <div class="cm-grid">
+        <div class="ph-img" style="aspect-ratio:1.1;">[CM — run 1]</div>
+        <div class="ph-img" style="aspect-ratio:1.1;">[CM — run 2]</div>
+        <div class="ph-img" style="aspect-ratio:1.1;">[CM — run 3]</div>
+        <div class="ph-img" style="aspect-ratio:1.1;">[CM — run 4]</div>
+        <div class="ph-img" style="aspect-ratio:1.1;">[CM — …]</div>
+        <div class="ph-img" style="aspect-ratio:1.1;">[CM — …]</div>
+        <div class="ph-img" style="aspect-ratio:1.1;">[CM — …]</div>
+        <div class="ph-img" style="aspect-ratio:1.1;">[CM — …]</div>
+      </div>
+    </section>
+
+    <!-- 07 -->
+    <section class="card" id="s07">
+      <h2 class="sec-title"><span class="sec-num">07</span> Trực quan hóa GradCAM / EigenCAM</h2>
+      <p class="muted">
+        Notebook dùng <code>pytorch-grad-cam</code>: <strong>GradCAM</strong> cho backbone CNN, <strong>EigenCAM</strong> cho ViT/Swin (theo cờ <code>use_eigen</code> khi vẽ).
+        Có thể so sánh cùng một ảnh khó giữa các run (aug vs no-aug, hoặc giữa backbone) để thấy vùng ảnh model chú ý.
+      </p>
+      <h3 style="margin:1rem 0 0.5rem;font-size:1rem;">Mẫu 1: [Mô tả mẫu — ví dụ ảnh khó / sai lớp trước khi aug]</h3>
+      <div class="cam-grid">
+        <div class="cam-card">
+          <h4>CNN: [ResNet18 vs EfficientNet-B0] — GradCAM</h4>
+          <div class="tri-img">
+            <div class="ph-img">Original<br />[label]</div>
+            <div class="ph-img">[Model A + heatmap]</div>
+            <div class="ph-img">[Model B + heatmap]</div>
+          </div>
+        </div>
+        <div class="cam-card">
+          <h4>Transformer: [ViT vs Swin] — EigenCAM</h4>
+          <div class="tri-img">
+            <div class="ph-img">Original<br />[label]</div>
+            <div class="ph-img">[Model A + heatmap]</div>
+            <div class="ph-img">[Model B + heatmap]</div>
+          </div>
+        </div>
+        <div class="cam-card">
+          <h4>CNN (có aug): [cấu hình …] — GradCAM</h4>
+          <div class="tri-img">
+            <div class="ph-img">Original</div>
+            <div class="ph-img">[heatmap A]</div>
+            <div class="ph-img">[heatmap B]</div>
+          </div>
+        </div>
+        <div class="cam-card">
+          <h4>Transformer (có aug): [cấu hình …] — EigenCAM</h4>
+          <div class="tri-img">
+            <div class="ph-img">Original</div>
+            <div class="ph-img">[heatmap A]</div>
+            <div class="ph-img">[heatmap B]</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 08 -->
+    <section class="card" id="s08">
+      <h2 class="sec-title"><span class="sec-num">08</span> Thử nghiệm trực tiếp trên Gradio — Hugging Face Space</h2>
+      <p class="muted">
+        Phần cuối notebook xây giao diện Gradio: chọn backbone / cấu hình đã train, tải trọng số và tiền xử lý tương ứng, hiển thị xác suất lớp.
+        Khi deploy Space HF, nhúng iframe hoặc liên kết trực tiếp vào khung dưới.
+      </p>
+      <div class="gradio-mock">
+        <h3>[Tên demo — ví dụ: Crop Pest / Disease Classifier]</h3>
+        <p class="muted" style="margin:0 0 0.75rem;font-size:0.9rem;">[Nhóm / môn học — placeholder]</p>
+        <p style="margin:0 0 0.5rem;">Phân loại ảnh vào <strong>[NUM_CLASSES]</strong> nhãn bệnh / lá khỏe mạnh. Models: bốn backbone timm × (aug / no aug) × các chiến lược fine-tune đã lưu checkpoint.</p>
+        <div class="mono-block">[class_0] · [class_1] · … · [class_N]</div>
+        <div class="two-col">
+          <div>
+            <span class="field-label">Ảnh / URL</span>
+            <div class="fake-input">[Paste URL hoặc upload — placeholder UI]</div>
+          </div>
+          <div>
+            <span class="field-label">Xác suất lớp</span>
+            <div class="fake-input" style="min-height:4rem;">[Biểu đồ thanh hoặc bảng xác suất sau khi chạy]</div>
+          </div>
+        </div>
+        <p class="muted" style="margin-top:1rem;font-size:0.85rem;">
+          <strong>Embed HF Space (placeholder):</strong><br />
+          <code>&lt;iframe src="[YOUR_SPACE_URL]" …&gt;&lt;/iframe&gt;</code>
+        </p>
+      </div>
+    </section>
+
+    <footer>
+      Báo cáo HTML tĩnh — chủ đề indigo / slate. Cập nhật placeholder sau khi chạy xong <code>DL_BTL1_Image.ipynb</code>.
+    </footer>
+  </div>
 </body>
 
 </html>
