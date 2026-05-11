@@ -1,0 +1,1207 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Báo cáo Bài tập 1 - Phân loại văn bản</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        .section-kicker {
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            font-size: 0.78rem;
+            color: #6b7280;
+            margin: 0 0 8px;
+            font-weight: 700;
+        }
+
+        .section-title {
+            margin: 0 0 10px;
+            font-size: 2rem;
+            line-height: 1.15;
+            letter-spacing: -0.03em;
+        }
+
+        .section-subtitle {
+            max-width: 72ch;
+            color: #4b5563;
+            margin: 0 0 18px;
+        }
+
+        .hero-links {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 12px;
+            margin-top: 18px;
+        }
+
+        .hero-stat {
+            border: 1px solid rgba(120, 120, 120, 0.18);
+            border-radius: 16px;
+            padding: 14px 16px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(250, 248, 240, 0.96));
+            box-shadow: 0 8px 28px rgba(15, 23, 42, 0.06);
+        }
+
+        .hero-stat span {
+            display: block;
+        }
+
+        .hero-stat .label {
+            font-size: 0.76rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #8b5e34;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .hero-stat .value {
+            font-size: 1rem;
+            color: #1f2937;
+            font-weight: 600;
+        }
+
+        .report-grid {
+            display: grid;
+            grid-template-columns: repeat(12, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .report-card {
+            grid-column: span 12;
+            border: 1px solid rgba(120, 120, 120, 0.18);
+            border-radius: 24px;
+            padding: 20px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(251, 249, 241, 0.98));
+            box-shadow: 0 14px 38px rgba(15, 23, 42, 0.06);
+        }
+
+        .half-card {
+            grid-column: span 6;
+        }
+
+        .wide-card {
+            grid-column: span 12;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        .figure-slot {
+            border: 1px solid rgba(129, 107, 78, 0.22);
+            border-radius: 20px;
+            background: linear-gradient(160deg, rgba(255, 255, 255, 0.96), rgba(245, 239, 225, 0.98));
+            overflow: hidden;
+            min-height: 220px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .figure-slot .figure-head {
+            padding: 14px 16px 10px;
+            border-bottom: 1px solid rgba(129, 107, 78, 0.14);
+            font-weight: 800;
+            color: #111827;
+        }
+
+        .figure-slot .figure-body {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 18px;
+            color: #6b7280;
+            text-align: center;
+            background:
+                radial-gradient(circle at top left, rgba(234, 179, 8, 0.12), transparent 34%),
+                radial-gradient(circle at bottom right, rgba(59, 130, 246, 0.12), transparent 32%);
+        }
+
+        .figure-slot .figure-foot {
+            padding: 12px 16px 14px;
+            border-top: 1px solid rgba(129, 107, 78, 0.14);
+            font-size: 0.92rem;
+            color: #4b5563;
+        }
+
+        .metric-pill-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 12px 0 0;
+        }
+
+        .metric-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 14px;
+            border-radius: 999px;
+            background: rgba(17, 24, 39, 0.04);
+            border: 1px solid rgba(17, 24, 39, 0.08);
+            font-weight: 700;
+            color: #111827;
+            font-size: 0.92rem;
+        }
+
+        .metric-pill strong {
+            color: #8b5e34;
+        }
+
+        .class-chip-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 10px;
+            margin-top: 14px;
+        }
+
+        .class-chip {
+            padding: 10px 12px;
+            border-radius: 14px;
+            border: 1px solid rgba(129, 107, 78, 0.16);
+            background: rgba(255, 255, 255, 0.72);
+            color: #374151;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .sample-table td {
+            vertical-align: top;
+            line-height: 1.55;
+        }
+
+        .timeline {
+            display: grid;
+            gap: 12px;
+            margin-top: 14px;
+        }
+
+        .timeline-item {
+            border-left: 4px solid #d9a441;
+            padding: 10px 14px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 12px;
+        }
+
+        .quote-box {
+            padding: 16px 18px;
+            border-radius: 18px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(247, 244, 237, 0.98));
+            border: 1px solid rgba(129, 107, 78, 0.16);
+            color: #374151;
+            line-height: 1.65;
+        }
+
+        .iframe-frame {
+            width: 100%;
+            min-height: 820px;
+            border: 1px solid rgba(120, 120, 120, 0.22);
+            border-radius: 24px;
+            background: #fff;
+            box-shadow: 0 20px 56px rgba(15, 23, 42, 0.12);
+            overflow: hidden;
+        }
+
+        .iframe-frame iframe {
+            width: 100%;
+            height: 820px;
+            border: 0;
+            display: block;
+        }
+
+        .demo-banner {
+            display: grid;
+            grid-template-columns: 1.25fr 0.75fr;
+            gap: 14px;
+            align-items: stretch;
+        }
+
+        .demo-banner .demo-copy,
+        .demo-banner .demo-note {
+            border-radius: 22px;
+            border: 1px solid rgba(120, 120, 120, 0.16);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(249, 245, 234, 0.97));
+            padding: 18px;
+        }
+
+        .demo-note {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .note-chip {
+            display: inline-block;
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: rgba(139, 92, 34, 0.12);
+            color: #8b5e34;
+            font-weight: 700;
+            font-size: 0.82rem;
+            letter-spacing: 0.04em;
+        }
+
+        .compact-table {
+            width: 100%;
+            border-collapse: collapse;
+            overflow: hidden;
+            border-radius: 16px;
+            box-shadow: inset 0 0 0 1px rgba(129, 107, 78, 0.15);
+        }
+
+        .compact-table th,
+        .compact-table td {
+            padding: 14px 16px;
+            border-bottom: 1px solid rgba(129, 107, 78, 0.12);
+            text-align: left;
+            font-size: 0.94rem;
+        }
+
+        .compact-table th {
+            background: rgba(249, 244, 230, 0.98);
+            color: #374151;
+        }
+
+        @media (max-width: 1080px) {
+
+            .hero-links,
+            .demo-banner,
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .half-card {
+                grid-column: span 12;
+            }
+
+            .class-chip-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page-glow"></div>
+
+    <header class="hero container">
+        <p class="hero-kicker">CO3133 - Deep Learning</p>
+        <h1>Báo cáo Phân loại Văn bản — DBPedia 14</h1>
+        <p class="hero-subtitle">Báo cáo này tổng hợp các thí nghiệm trong DL_BTL1_Text_colab.ipynb, tập trung vào
+            EDA, tiền xử lý, BiLSTM, DistilBERT, ensemble và phần demo trực tuyến.</p>
+
+        <div class="hero-links">
+            <div class="hero-stat">
+                <span class="label">Notebook</span>
+                <span class="value">DL_BTL1_Text_colab.ipynb</span>
+            </div>
+            <div class="hero-stat">
+                <span class="label">Dataset</span>
+                <span class="value">DBPedia 14-class text classification</span>
+            </div>
+            <div class="hero-stat">
+                <span class="label">Core models</span>
+                <span class="value">BiLSTM + DistilBERT</span>
+            </div>
+            <div class="hero-stat">
+                <span class="label">Live demo</span>
+                <span class="value">Gradio on Hugging Face Space</span>
+            </div>
+        </div>
+
+        <div class="pill-row" style="margin-top:16px;">
+            <a class="pill" href="#dataset">Giới thiệu & dataset</a>
+            <a class="pill" href="#eda">EDA</a>
+            <a class="pill" href="#demo">Live Demo</a>
+            <a class="pill link-pill" href="notebooks/DL_BTL1_Text_colab.ipynb">Mở notebook</a>
+        </div>
+    </header>
+
+    <main class="container report-grid">
+        <section id="dataset" class="report-card wide-card">
+            <p class="section-kicker">01. Giới thiệu và mô tả bài toán</p>
+            <h2 class="section-title">DBPedia 14 là một benchmark 14-class phù hợp để so sánh các kiến trúc mô hình.
+            </h2>
+            <p class="section-subtitle">Quy trình thực nghiệm được triển khai theo hướng tuần tự: khảo sát dữ liệu,
+                xây dựng pipeline, so sánh BiLSTM với DistilBERT, sau đó mở rộng sang ensemble, calibration,
+                robustness, efficiency và interpretability.</p>
+            <div class="metric-pill-row">
+                <div class="metric-pill"><strong>14</strong> nhãn đầu ra</div>
+                <div class="metric-pill"><strong>560k</strong> train</div>
+                <div class="metric-pill"><strong>70k</strong> test</div>
+                <!-- <div class="metric-pill"><strong>25200</strong> train sampled</div>
+                <div class="metric-pill"><strong>7700</strong> test sampled</div> -->
+            </div>
+            <div class="class-chip-grid" aria-label="Danh sách 14 lớp DBPedia">
+                <div class="class-chip">Company</div>
+                <div class="class-chip">EducationalInstitution</div>
+                <div class="class-chip">Artist</div>
+                <div class="class-chip">Athlete</div>
+                <div class="class-chip">OfficeHolder</div>
+                <div class="class-chip">MeanOfTransportation</div>
+                <div class="class-chip">Building</div>
+                <div class="class-chip">NaturalPlace</div>
+                <div class="class-chip">Village</div>
+                <div class="class-chip">Animal</div>
+                <div class="class-chip">Plant</div>
+                <div class="class-chip">Album</div>
+                <div class="class-chip">Film</div>
+                <div class="class-chip">WrittenWork</div>
+            </div>
+
+            <h3 style="margin-top:20px; margin-bottom:12px; font-weight:700; font-size:1rem;">Sample Text Examples</h3>
+            <div style="overflow-x:auto; margin-bottom:16px;">
+                <table class="compact-table sample-table">
+                    <thead>
+                        <tr>
+                            <th>Index</th>
+                            <th>Text</th>
+                            <th>Label</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>0</td>
+                            <td>Nigua river (salinas puerto rico). The nigua river (salinas puerto rico) is a river of
+                                puerto rico.</td>
+                            <td><strong>7</strong> (NaturalPlace)</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Bulbophyllum smitinandii. Bulbophyllum smitinandii is a species of orchid in the genus
+                                bulbophyllum.</td>
+                            <td><strong>10</strong> (Plant)</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Xanthophyllum. Xanthophyllum is a genus of about 94 species of trees and shrubs of the
+                                plant family polygalaceae. The generic name is from the greek meaning yellow leaf
+                                referring to how the leaves are often yellow when dry. In borneo it is known as minyak
+                                berok in malay or nyalin in the iban language.</td>
+                            <td><strong>10</strong> (Plant)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">Mục tiêu chính là đánh giá các mô hình trên cùng dữ liệu, cùng phép chia và
+                    cùng pipeline để bảo đảm tính công bằng của kết luận.</div>
+                <div class="timeline-item">Hai mô hình nền tảng được sử dụng là BiLSTM, đại diện cho hướng mô hình
+                    tuần tự gọn nhẹ, và DistilBERT, đại diện cho mô hình ngôn ngữ tiền huấn luyện.</div>
+                <div class="timeline-item">Các nội dung mở rộng gồm ensemble, calibration, kiểm tra dưới nhiễu,
+                    chiến lược fine-tuning, ablation và phân tích lỗi.</div>
+            </div>
+        </section>
+
+        <section id="eda" class="report-card wide-card">
+            <p class="section-kicker">02. EDA</p>
+            <h2 class="section-title">EDA để chốt `MAX_LEN` và đọc phân bố dữ liệu.</h2>
+            <p class="section-subtitle">Các biểu đồ và bảng dưới đây phản ánh trực tiếp output từ notebook; chúng được
+                sắp xếp theo hướng ngắn gọn, nhất quán và phù hợp với trình bày báo cáo.</p>
+
+            <div class="gallery-grid">
+                <div class="figure-slot" style="min-height: auto; grid-column: span 2;">
+                    <img src="notebooks/DL_BTL1_Text_colab_files/word-count%20distribution%20and%20balanced%20classs%20distribution%20in%20train%20subset.png"
+                        alt="Word-count and balanced class distribution" style="max-width: 100%; border-radius: 12px;">
+                </div>
+                <div class="figure-slot" style="min-height: auto;">
+                    <div class="figure-head">Phân bố độ dài (word_len, char_len)</div>
+                    <div class="figure-body" style="padding: 0; text-align: left; align-items: stretch;">
+                        <div style="overflow-x: auto; padding: 16px; font-size: 0.8rem;">
+                            <table class="compact-table">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>word_len</th>
+                                        <th>char_len</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>mean</td>
+                                        <td>49.03</td>
+                                        <td>302.15</td>
+                                    </tr>
+                                    <tr>
+                                        <td>std</td>
+                                        <td>22.55</td>
+                                        <td>136.58</td>
+                                    </tr>
+                                    <tr>
+                                        <td>min</td>
+                                        <td>5.00</td>
+                                        <td>27.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>50%</td>
+                                        <td>49.00</td>
+                                        <td>303.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>95%</td>
+                                        <td>83.00</td>
+                                        <td>498.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>max</td>
+                                        <td>310.00</td>
+                                        <td>2130.00</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="figure-foot">Phân bố này cho thấy lựa chọn `MAX_LEN = 256` là phù hợp với dữ liệu.</div>
+                </div>
+                <div class="figure-slot" style="min-height: auto;">#
+                    <img src="notebooks/DL_BTL1_Text_colab_files/top%20frequent%20tokens.png" alt="Top frequent tokens"
+                        style="max-width: 100%; border-radius: 12px;">
+                </div>
+                <div class="figure-slot" style="min-height: auto;">
+                    <div class="figure-head">Độ dài theo nhãn (Class-wise)</div>
+                    <div class="figure-body" style="padding: 0; text-align: left; align-items: stretch;">
+                        <div style="overflow-x: auto; padding: 16px; font-size: 0.75rem;">
+                            <table class="compact-table">
+                                <thead>
+                                    <tr>
+                                        <th>Label</th>
+                                        <th>Mean</th>
+                                        <th>Min</th>
+                                        <th>Max</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Building</td>
+                                        <td>58.8</td>
+                                        <td>7</td>
+                                        <td>145</td>
+                                    </tr>
+                                    <tr>
+                                        <td>EducationalInstitution</td>
+                                        <td>55.0</td>
+                                        <td>9</td>
+                                        <td>167</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Artist</td>
+                                        <td>51.3</td>
+                                        <td>8</td>
+                                        <td>310</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Animal</td>
+                                        <td>34.4</td>
+                                        <td>7</td>
+                                        <td>278</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="figure-foot">Những khác biệt này phản ánh đặc trưng ngữ nghĩa của từng lớp.</div>
+                </div>
+            </div>
+
+            <div style="margin-top:16px;" class="quote-box">
+                <strong>Kết luận EDA:</strong> DBPedia có phân bố độ dài tương đối ổn định, nhưng vẫn đủ đa dạng để tạo
+                ra chênh lệch rõ giữa mô hình tuần tự và mô hình tiền huấn luyện. Do đó, pipeline cần được giữ nhất
+                quán và việc so sánh phải xét đồng thời chất lượng lẫn chi phí tính toán.
+            </div>
+        </section>
+
+        <section class="report-card wide-card">
+            <p class="section-kicker">03. Tiền xử lý dữ liệu</p>
+            <h2 class="section-title">Preprocessing</h2>
+            <p class="section-subtitle">Quy trình tiền xử lý được áp dụng nhất quán cho cả hai mô hình RNN và
+                Transformer, với hai chế độ khác nhau để so sánh ảnh hưởng của độ aggressiveness.</p>
+
+            <div style="margin-top:16px;">
+                <h3 style="font-weight:700; font-size:0.95rem; margin:16px 0 10px; color:#374151;">1. Minimal Mode (Chế
+                    độ tối thiểu)</h3>
+                <div class="quote-box" style="margin-bottom:14px;">
+                    <strong>Mục đích:</strong> Giữ lại tối đa tín hiệu ngữ nghĩa của dữ liệu gốc.<br />
+                    <strong>Các bước:</strong>
+                    <ul style="margin:8px 0 0 20px; line-height:1.6;">
+                        <li>Chuyển đổi thành chữ thường (lowercase)</li>
+                        <li>Loại bỏ khoảng trắng thừa với regex <code
+                                style="background:#f0f0f0; padding:2px 4px; border-radius:3px;">\s+</code></li>
+                        <li>Giữ nguyên dấu câu và cấu trúc văn bản</li>
+                        <li>Không loại bỏ stopwords</li>
+                    </ul>
+                    <strong style="display:block; margin-top:8px;">Ưu điểm:</strong> Giữ lại toàn bộ ngữ cảnh và ý
+                    nghĩa; phù hợp cho các mô hình tiền huấn luyện (DistilBERT).<br />
+                    <strong>Nhược điểm:</strong> Có thể chứa nhiều noise từ các từ phổ biến ít có ý nghĩa.
+                </div>
+
+                <h3 style="font-weight:700; font-size:0.95rem; margin:16px 0 10px; color:#374151;">2. Aggressive Mode
+                    (Chế độ tích cực)</h3>
+                <div class="quote-box">
+                    <strong>Mục đích:</strong> Giảm kích thước từ vựng và tập trung vào từ khóa có ý nghĩa.<br />
+                    <strong>Các bước:</strong>
+                    <ul style="margin:8px 0 0 20px; line-height:1.6;">
+                        <li>Chuyển đổi thành chữ thường (lowercase)</li>
+                        <li>Tokenization với regex <code
+                                style="background:#f0f0f0; padding:2px 4px; border-radius:3px;">[a-z0-9']+</code></li>
+                        <li>Loại bỏ English stopwords từ danh sách <code
+                                style="background:#f0f0f0; padding:2px 4px; border-radius:3px;">sklearn.feature_extraction.ENGLISH_STOP_WORDS</code>
+                        </li>
+                        <li>Loại bỏ các từ ngắn (len < 3)</li>
+                        <li>Tái tạo văn bản từ tokens còn lại</li>
+                    </ul>
+                    <strong style="display:block; margin-top:8px;">Ưu điểm:</strong> Loại bỏ noise; tập trung vào từ
+                    khóa; giảm độ phức tạp tính toán; có thể cải thiện BiLSTM với sparse signal.<br />
+                    <strong>Nhược điểm:</strong> Mất đi thông tin ngữ cảnh; có thể làm giảm chất lượng trên Transformer
+                    vì phá vỡ cấu trúc input cho BERT.
+                </div>
+            </div>
+
+            <div style="margin-top:16px;">
+                <h3 style="font-weight:700; font-size:0.95rem; margin:0 0 10px; color:#374151;">Các kỹ thuật chung cho
+                    cả hai mô hình</h3>
+                <div class="timeline">
+                    <div class="timeline-item"><strong>Stratified split:</strong> Duy trì phân bố nhãn giữa train (85%),
+                        validation (15%) và test set riêng biệt để bảo đảm tính công bằng.</div>
+                    <div class="timeline-item"><strong>DistilBERT tokenizer:</strong> Được dùng chung cho BiLSTM
+                        (embedding) và DistilBERT (input) nhằm bảo đảm thống nhất.</div>
+                    <div class="timeline-item"><strong>MAX_LEN = 128:</strong> Được chốt từ EDA; đủ dài để bao phủ ~99%
+                        dữ liệu mà không lãng phí bộ nhớ.</div>
+                    <div class="timeline-item"><strong>Augmentation nhẹ & nhiễu:</strong> Back-translation + Bổ sung bộ
+                        test có nhiễu (typo, rút gọn từ) để kiểm tra robustness mô hình.</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="report-card wide-card">
+            <p class="section-kicker">04. Lựa chọn mô hình</p>
+            <h2 class="section-title">Model Architecture</h2>
+            <div class="timeline">
+                <div class="timeline-item"><strong>BiLSTM (RNN)</strong> là mô hình gọn nhẹ, số tham số huấn luyện
+                    khoảng 2.1M, sử dụng embedding từ DistilBERT và sau đó đưa qua LSTM hai chiều.</div>
+                <div class="timeline-item"><strong>DistilBERT</strong> được fine-tune toàn bộ encoder, có quy mô khoảng
+                    67M tham số và cho kết quả tốt hơn rõ rệt về mặt điểm số.</div>
+                <div class="timeline-item"><strong>Ensemble</strong> sử dụng entropy để điều chỉnh trọng số dự đoán,
+                    hướng tới độ ổn định cao hơn khi đầu vào có nhiễu.</div>
+            </div>
+            <div class="metric-pill-row" style="margin-top:14px;">
+                <div class="metric-pill"><strong>2.1M</strong> BiLSTM params</div>
+                <div class="metric-pill"><strong>67M</strong> DistilBERT params</div>
+                <div class="metric-pill"><strong>bidirectional</strong> LSTM</div>
+                <div class="metric-pill"><strong>full</strong> encoder fine-tune</div>
+            </div>
+            <div class="gallery-grid" style="margin-top:16px;">
+                <div class="figure-slot" style="min-height: 250px;">
+                    <div class="figure-head">Sơ đồ BiLSTM</div>
+                    <div class="figure-body" style="padding: 0;">
+                        <img src="notebooks/DL_BTL1_Text_colab_files/bilstm_architecture.png" alt="BiLSTM architecture"
+                            style="width: 100%; display: block; object-fit: cover; min-height: 260px;">
+                    </div>
+                    <div class="figure-foot">BiLSTM biểu diễn tín hiệu tuần tự với chi phí mô hình thấp hơn.</div>
+                </div>
+                <div class="figure-slot" style="min-height: 250px;">
+                    <div class="figure-head">Sơ đồ DistilBERT</div>
+                    <div class="figure-body" style="padding: 0;">
+                        <img src="notebooks/DL_BTL1_Text_colab_files/distilbert_architecture.webp"
+                            alt="DistilBERT architecture"
+                            style="width: 100%; display: block; object-fit: cover; min-height: 260px;">
+                    </div>
+                    <div class="figure-foot">DistilBERT tận dụng backbone tiền huấn luyện để cải thiện chất lượng.</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="report-card wide-card">
+            <p class="section-kicker">05. Kết quả training</p>
+            <h2 class="section-title">Training Curves</h2>
+            <p class="section-subtitle">Các đường cong huấn luyện cho thấy BiLSTM cải thiện dần theo epoch, trong khi
+                DistilBERT hội tụ nhanh hơn và đạt chất lượng cao hơn trên tập kiểm thử.</p>
+            <div class="gallery-grid">
+                <div class="figure-slot" style="min-height: auto;">
+                    <img src="notebooks/DL_BTL1_Text_colab_files/RNNtrainlossw%26b.png" alt="RNN Train Loss"
+                        style="max-width: 100%; border-radius: 12px;">
+                </div>
+                <div class="figure-slot" style="min-height: auto;">
+                    <img src="notebooks/DL_BTL1_Text_colab_files/rnnvalidationmacrof1w%26b.png"
+                        alt="RNN Validation Macro-F1" style="max-width: 100%; border-radius: 12px;">
+                </div>
+                <div class="figure-slot" style="min-height: auto;">
+                    <img src="notebooks/DL_BTL1_Text_colab_files/Transformer%20train%20loss%20(w%26b).png"
+                        alt="Transformer Train Loss" style="max-width: 100%; border-radius: 12px;">
+                </div>
+                <div class="figure-slot" style="min-height: auto;">
+                    <img src="notebooks/DL_BTL1_Text_colab_files/transformervalidationmacrof1w%26b.png"
+                        alt="Transformer Validation Macro-F1" style="max-width: 100%; border-radius: 12px;">
+                </div>
+            </div>
+
+            <h3 style="margin-top:16px; margin-bottom:12px;">Model Performance & Metrics</h3>
+            <div class="demo-banner">
+                <div class="demo-copy">
+                    <table class="compact-table">
+                        <thead>
+                            <tr>
+                                <th>Model</th>
+                                <th>Accuracy</th>
+                                <th>Macro-F1</th>
+                                <th>Weighted-F1</th>
+                                <th>Train Time</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>BiLSTM (RNN)</td>
+                                <td>0.9529</td>
+                                <td>0.9528</td>
+                                <td>0.9528</td>
+                                <td>391.8s</td>
+                            </tr>
+                            <tr>
+                                <td>DistilBERT</td>
+                                <td>0.9914</td>
+                                <td>0.9914</td>
+                                <td>0.9914</td>
+                                <td>6382.5s</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Adaptive Ensemble</strong></td>
+                                <td><strong>0.9917</strong></td>
+                                <td><strong>0.9917</strong></td>
+                                <td><strong>0.9917</strong></td>
+                                <td>-</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="timeline" style="margin-top:14px;">
+                        <div class="timeline-item">BiLSTM cho thấy xu hướng tăng ổn định qua các epoch và đạt mức
+                            hiệu năng tốt ở giai đoạn cuối của quá trình huấn luyện.</div>
+                        <div class="timeline-item">DistilBERT hội tụ nhanh hơn đáng kể, đồng thời duy trì chất lượng dự
+                            đoán cao trên tập đánh giá.</div>
+                        <div class="timeline-item">Ensemble cho kết quả nhỉnh hơn một mức rất nhỏ so với mô hình
+                            DistilBERT đơn lẻ.</div>
+                    </div>
+                </div>
+
+                <div class="demo-note">
+                    <div class="note-chip">Ma trận nhầm lẫn</div>
+                    <img src="notebooks/DL_BTL1_Text_colab_files/RNN%20confusion%20matrix.png"
+                        alt="RNN Confusion Matrix" style="max-width: 100%; border-radius: 8px; margin-bottom: 8px;">
+                    <img src="notebooks/DL_BTL1_Text_colab_files/transformer%20confusion%20matrix.png"
+                        alt="Transformer Confusion Matrix" style="max-width: 100%; border-radius: 8px;">
+                </div>
+            </div>
+        </section>
+
+        <section class="report-card wide-card">
+            <p class="section-kicker">06. So sánh cấu hình & ablation</p>
+            <h2 class="section-title">Robustness & Calibration</h2>
+            <p class="section-subtitle">Các biểu đồ và bảng dưới đây cho phép đánh giá mô hình không chỉ theo accuracy,
+                mà còn theo mức suy giảm khi đầu vào bị nhiễu và theo chất lượng hiệu chỉnh xác suất.</p>
+            <div style="overflow-x:auto; margin-bottom: 14px;">
+                <table class="compact-table">
+                    <thead>
+                        <tr>
+                            <th>Setting</th>
+                            <th>Model</th>
+                            <th>Accuracy</th>
+                            <th>Macro-F1</th>
+                            <th>Weighted-F1</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>clean</td>
+                            <td>RNN</td>
+                            <td>0.952987</td>
+                            <td>0.952842</td>
+                            <td>0.952842</td>
+                        </tr>
+                        <tr>
+                            <td>clean</td>
+                            <td>Transformer</td>
+                            <td>0.991429</td>
+                            <td>0.991422</td>
+                            <td>0.991422</td>
+                        </tr>
+                        <tr>
+                            <td>clean</td>
+                            <td><strong>Adaptive Ensemble</strong></td>
+                            <td><strong>0.991688</strong></td>
+                            <td><strong>0.991684</strong></td>
+                            <td><strong>0.991684</strong></td>
+                        </tr>
+                        <tr>
+                            <td>noisy</td>
+                            <td>RNN</td>
+                            <td>0.842987</td>
+                            <td>0.842169</td>
+                            <td>0.842169</td>
+                        </tr>
+                        <tr>
+                            <td>noisy</td>
+                            <td>Transformer</td>
+                            <td>0.942987</td>
+                            <td>0.942424</td>
+                            <td>0.942424</td>
+                        </tr>
+                        <tr>
+                            <td>noisy</td>
+                            <td><strong>Adaptive Ensemble</strong></td>
+                            <td><strong>0.947922</strong></td>
+                            <td><strong>0.947379</strong></td>
+                            <td><strong>0.947379</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="gallery-grid">
+                <div class="figure-slot" style="min-height:auto; grid-column: span 2;">
+                    <img src="notebooks/DL_BTL1_Text_colab_files/accuracyunderclean%20vs%20noisytexxt.png"
+                        alt="Clean vs noisy accuracy" style="max-width:100%; border-radius:12px;">
+                    <img src="notebooks/DL_BTL1_Text_colab_files/ecebeforevsaftercalibration.png"
+                        alt="ECE before and after calibration"
+                        style="max-width:100%; border-radius:12px; margin-top:10px;">
+                </div>
+                <div class="figure-slot" style="min-height:auto; grid-column: span 2;">
+                    <img src="notebooks/DL_BTL1_Text_colab_files/reliability%20diagram%20raw%20and%20calibrated.png"
+                        alt="Reliability diagram raw and calibrated"
+                        style="width:100%; max-width:none; border-radius:12px;">
+                </div>
+                <div class="figure-slot" style="min-height:auto;">
+                    <div class="figure-head">Robustness summary</div>
+                    <div class="figure-body" style="padding:0; text-align:left;">
+                        <div style="overflow-x:auto; padding:16px; font-size:0.8rem;">
+                            <table class="compact-table">
+                                <thead>
+                                    <tr>
+                                        <th>Model</th>
+                                        <th>Clean</th>
+                                        <th>Noisy</th>
+                                        <th>Drop</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>BiLSTM</td>
+                                        <td>0.953</td>
+                                        <td>0.843</td>
+                                        <td>0.110</td>
+                                    </tr>
+                                    <tr>
+                                        <td>DistilBERT</td>
+                                        <td>0.991</td>
+                                        <td>0.943</td>
+                                        <td>0.048</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Ensemble</td>
+                                        <td><strong>0.992</strong></td>
+                                        <td><strong>0.948</strong></td>
+                                        <td><strong>0.044</strong></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="figure-foot">Kết quả cho thấy Transformer và ensemble ổn định hơn BiLSTM khi có nhiễu.
+                    </div>
+                </div>
+                <div class="figure-slot" style="min-height:auto;">
+                    <div class="figure-head">Calibration summary</div>
+                    <div class="figure-body" style="padding:0; text-align:left;">
+                        <div style="overflow-x:auto; padding:16px; font-size:0.8rem;">
+                            <table class="compact-table">
+                                <tbody>
+                                    <tr>
+                                        <td>Best temperature</td>
+                                        <td>2.3644</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ECE raw</td>
+                                        <td>0.0082</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ECE calibrated</td>
+                                        <td><strong>0.0005</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Interpretation</td>
+                                        <td>Temperature scaling giảm overconfidence rõ rệt.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="figure-foot">Hiệu chỉnh nhiệt độ giúp xác suất dự đoán sát thực tế hơn.</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="report-card wide-card">
+            <p class="section-kicker">07. Phần mở rộng</p>
+            <h2 class="section-title">Strategy & Efficiency</h2>
+            <p class="section-subtitle">Bảng dưới đây tổng hợp 6 cấu hình ablation đã chạy trong notebook, để so sánh
+                trực tiếp ảnh hưởng của `preprocess`, `max_len` và `strategy` lên kết quả validation.</p>
+            <div style="overflow-x:auto; margin-bottom: 16px;">
+                <table class="compact-table">
+                    <thead>
+                        <tr>
+                            <th>Config</th>
+                            <th>Preprocess</th>
+                            <th>Aug</th>
+                            <th>MAX_LEN</th>
+                            <th>Strategy</th>
+                            <th>Val Acc</th>
+                            <th>Val Macro-F1</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>c01</td>
+                            <td>minimal</td>
+                            <td>none</td>
+                            <td>96</td>
+                            <td>freeze</td>
+                            <td>0.9582</td>
+                            <td>0.9580</td>
+                        </tr>
+                        <tr>
+                            <td>c02</td>
+                            <td>minimal</td>
+                            <td>none</td>
+                            <td>96</td>
+                            <td><strong>full</strong></td>
+                            <td>0.9827</td>
+                            <td>0.9826</td>
+                        </tr>
+                        <tr>
+                            <td>c03</td>
+                            <td>minimal</td>
+                            <td>none</td>
+                            <td>128</td>
+                            <td>freeze</td>
+                            <td>0.9531</td>
+                            <td>0.9528</td>
+                        </tr>
+                        <tr>
+                            <td>c04</td>
+                            <td>minimal</td>
+                            <td>none</td>
+                            <td>128</td>
+                            <td><strong>full</strong></td>
+                            <td><strong>0.9878</strong></td>
+                            <td><strong>0.9878</strong></td>
+                        </tr>
+                        <tr>
+                            <td>c05</td>
+                            <td>minimal</td>
+                            <td>none</td>
+                            <td>192</td>
+                            <td><strong>full</strong></td>
+                            <td>0.9878</td>
+                            <td>0.9878</td>
+                        </tr>
+                        <tr>
+                            <td>c06</td>
+                            <td>aggressive</td>
+                            <td>none</td>
+                            <td>128</td>
+                            <td>freeze</td>
+                            <td>0.8918</td>
+                            <td>0.8873</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="gallery-grid">
+                <div class="figure-slot" style="min-height:auto;">
+                    <div class="figure-head">Fine-tuning strategy</div>
+                    <div class="figure-body" style="padding:0; text-align:left;">
+                        <div style="overflow-x:auto; padding:16px; font-size:0.8rem;">
+                            <table class="compact-table">
+                                <thead>
+                                    <tr>
+                                        <th>Setting</th>
+                                        <th>Accuracy</th>
+                                        <th>Time</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Freeze Encoder</td>
+                                        <td>0.9849</td>
+                                        <td>972.3s</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Full Fine-tune</td>
+                                        <td><strong>0.9889</strong></td>
+                                        <td>2976.3s</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="figure-foot">Full fine-tune cho chất lượng tốt hơn nhưng chi phí lớn hơn.</div>
+                </div>
+                <div class="figure-slot" style="min-height:auto;">
+                    <div class="figure-head">Efficiency</div>
+                    <div class="figure-body" style="padding:0; text-align:left;">
+                        <div style="overflow-x:auto; padding:16px; font-size:0.8rem;">
+                            <table class="compact-table">
+                                <thead>
+                                    <tr>
+                                        <th>Model</th>
+                                        <th>Params</th>
+                                        <th>Latency / batch</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>BiLSTM</td>
+                                        <td><strong>2.1M</strong></td>
+                                        <td><strong>0.0082s</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td>DistilBERT</td>
+                                        <td><strong>67M</strong></td>
+                                        <td><strong>0.0527s</strong></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="figure-foot">Mô hình nhỏ có lợi thế về tốc độ, trong khi mô hình lớn có lợi thế về chất
+                        lượng.</div>
+                </div>
+                <div class="figure-slot" style="min-height:auto;">
+                    <div class="figure-head">Interpretability samples</div>
+                    <div class="figure-body" style="padding:0; text-align:left;">
+                        <div style="padding:16px; font-size:0.82rem; line-height:1.6;">
+                            <strong>Plant:</strong> botanical, species, genus, leaf, flower<br />
+                            <strong>Company:</strong> business, corporation, headquarters, revenue, founded<br />
+                            <strong>Album:</strong> track, song, released, label, band<br />
+                            <strong>Village:</strong> population, municipality, county, located, region
+                        </div>
+                    </div>
+                    <div class="figure-foot">Các token đặc trưng cho thấy mô hình khai thác được tín hiệu ngữ nghĩa của
+                        lớp.</div>
+                </div>
+                <div class="figure-slot" style="min-height:auto;">
+                    <div class="figure-head">Conclusions</div>
+                    <div class="figure-body" style="padding:0; text-align:left;">
+                        <div style="padding:16px; font-size:0.82rem; line-height:1.7;">
+                            DistilBERT thắng rõ rệt về chất lượng tổng thể, BiLSTM vẫn hữu ích nếu cần mô hình nhỏ và
+                            nhanh, còn ensemble / calibration giúp hệ thống đáng tin hơn khi đưa vào demo.
+                        </div>
+                    </div>
+                    <div class="figure-foot">Phần tổng kết này có thể được dùng làm khung kết luận của báo cáo.</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="report-card wide-card">
+            <p class="section-kicker">08. Inference samples</p>
+            <h2 class="section-title">Sample Inference</h2>
+            <p class="section-subtitle">Các giá trị in đậm là confidence cao nhất trong từng nhóm ví dụ. Phần này
+                minh họa trực tiếp cách hệ thống phản hồi trên câu đầu vào thực tế.</p>
+
+            <div style="overflow-x:auto;">
+                <table class="compact-table sample-table">
+                    <thead>
+                        <tr>
+                            <th>Text preview</th>
+                            <th>Model</th>
+                            <th>Pred label</th>
+                            <th>Confidence</th>
+                            <th>Latency (ms)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>The football team won the national championship after a dramatic final match.</td>
+                            <td>transformer</td>
+                            <td><strong>EducationalInstitution</strong></td>
+                            <td><strong>0.9934</strong></td>
+                            <td>10.48</td>
+                        </tr>
+                        <tr>
+                            <td>The football team won the national championship after a dramatic final match.</td>
+                            <td>rnn</td>
+                            <td>Athlete</td>
+                            <td>0.7333</td>
+                            <td>23.44</td>
+                        </tr>
+                        <tr>
+                            <td>The football team won the national championship after a dramatic final match.</td>
+                            <td>ensemble</td>
+                            <td>EducationalInstitution</td>
+                            <td>0.8804</td>
+                            <td>60.38</td>
+                        </tr>
+                        <tr>
+                            <td>Researchers introduced a more efficient transformer architecture for long context.</td>
+                            <td>transformer</td>
+                            <td><strong>Company</strong></td>
+                            <td><strong>0.9402</strong></td>
+                            <td>8.54</td>
+                        </tr>
+                        <tr>
+                            <td>Researchers introduced a more efficient transformer architecture for long context.</td>
+                            <td>rnn</td>
+                            <td>Plant</td>
+                            <td>0.2083</td>
+                            <td>3.38</td>
+                        </tr>
+                        <tr>
+                            <td>Researchers introduced a more efficient transformer architecture for long context.</td>
+                            <td>ensemble</td>
+                            <td>Company</td>
+                            <td>0.9208</td>
+                            <td>12.87</td>
+                        </tr>
+                        <tr>
+                            <td>A new electric vehicle model announced improved battery and autonomous driving features.
+                            </td>
+                            <td>transformer</td>
+                            <td><strong>MeanOfTransportation</strong></td>
+                            <td><strong>1.0000</strong></td>
+                            <td>8.87</td>
+                        </tr>
+                        <tr>
+                            <td>A new electric vehicle model announced improved battery and autonomous driving features.
+                            </td>
+                            <td>rnn</td>
+                            <td>MeanOfTransportation</td>
+                            <td>0.2247</td>
+                            <td>3.56</td>
+                        </tr>
+                        <tr>
+                            <td>A new electric vehicle model announced improved battery and autonomous driving features.
+                            </td>
+                            <td>ensemble</td>
+                            <td><strong>MeanOfTransportation</strong></td>
+                            <td><strong>0.9999</strong></td>
+                            <td>11.68</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="report-card wide-card">
+            <p class="section-kicker">09. Error Analysis</p>
+            <h2 class="section-title">Error Analysis</h2>
+            <p class="section-subtitle">Phần này phân tích các case nhầm lẫn có confidence cao từ mô hình transformer,
+                sử dụng highlighting để chỉ ra tín hiệu mà mô hình tập trung vào.</p>
+
+            <div style="margin-top:14px;">
+                <div
+                    style="border:2px solid #d9a441;border-radius:12px;padding:16px;margin-bottom:14px;background:linear-gradient(180deg,rgba(255,255,255,0.98),rgba(249,244,230,0.96));">
+                    <div style="font-weight:700;margin-bottom:8px;"><strong>Case 1</strong> | <strong>True:</strong>
+                        Film | <strong>Pred:</strong> Album | <strong>Conf:</strong> 1.000</div>
+                    <div style="margin:12px 0;line-height:1.8;font-size:0.95rem;">
+                        <span style="background:#ffe082;padding:2px 4px;border-radius:3px;margin:2px;">by</span> sea.
+                        <span style="background:#c8e6c9;padding:2px 4px;border-radius:3px;margin:2px;">sea</span> is a
+                        <span style="background:#ffcdd2;padding:2px 4px;border-radius:3px;margin:2px;">video</span>
+                        recording by
+                        <span style="background:#ffcdd2;padding:2px 4px;border-radius:3px;margin:2px;">english</span>
+                        <span style="background:#ffe082;padding:2px 4px;border-radius:3px;margin:2px;">band</span> oasis
+                        <span style="background:#ffcdd2;padding:2px 4px;border-radius:3px;margin:2px;">live</span> on
+                        dvd.
+                    </div>
+                    <div style="font-size:0.85rem;margin:8px 0;">
+                        <span style="background:#c8e6c9;padding:2px 4px;border-radius:3px;margin-right:8px;">▪
+                            true-cue</span>
+                        <span style="background:#ffcdd2;padding:2px 4px;border-radius:3px;margin-right:8px;">▪
+                            pred-cue</span>
+                        <span style="background:#ffe082;padding:2px 4px;border-radius:3px;">▪ overlap</span>
+                    </div>
+                    <div style="font-size:0.9rem;margin-top:10px;color:#374151;font-style:italic;">
+                        <strong>Reasoning:</strong> Lexical cues in this text align more strongly with predicted class
+                        than true class. True=Film, Pred=Album, confidence=1.000. True-cue hits=[and, for, from,
+                        released, the] | Pred-cue hits=[and, band, for, from, live, released, rock, the]
+                    </div>
+                </div>
+
+                <div
+                    style="border:2px solid #d9a441;border-radius:12px;padding:16px;margin-bottom:14px;background:linear-gradient(180deg,rgba(255,255,255,0.98),rgba(249,244,230,0.96));">
+                    <div style="font-weight:700;margin-bottom:8px;"><strong>Case 2</strong> | <strong>True:</strong>
+                        Artist | <strong>Pred:</strong> OfficeHolder | <strong>Conf:</strong> 1.000</div>
+                    <div style="margin:12px 0;line-height:1.8;font-size:0.95rem;">
+                        george edward ellis. george edward ellis (8 august 1814 – 20
+                        <span style="background:#ffcdd2;padding:2px 4px;border-radius:3px;margin:2px;">december</span>
+                        1894)
+                        <span style="background:#ffe082;padding:2px 4px;border-radius:3px;margin:2px;">was</span> a
+                        unitarian
+                        <span style="background:#ffcdd2;padding:2px 4px;border-radius:3px;margin:2px;">clergyman</span>
+                        <span style="background:#ffcdd2;padding:2px 4px;border-radius:3px;margin:2px;">historian</span>.
+                    </div>
+                    <div style="font-size:0.85rem;margin:8px 0;">
+                        <span style="background:#c8e6c9;padding:2px 4px;border-radius:3px;margin-right:8px;">▪
+                            true-cue</span>
+                        <span style="background:#ffcdd2;padding:2px 4px;border-radius:3px;margin-right:8px;">▪
+                            pred-cue</span>
+                        <span style="background:#ffe082;padding:2px 4px;border-radius:3px;">▪ overlap</span>
+                    </div>
+                    <div style="font-size:0.9rem;margin-top:10px;color:#374151;font-style:italic;">
+                        <strong>Reasoning:</strong> Signal overlap exists across classes; boundary is likely
+                        semantically close. True=Artist, Pred=OfficeHolder, confidence=1.000. True-cue hits=[and, was] |
+                        Pred-cue hits=[and, december, was]
+                    </div>
+                </div>
+
+                <div
+                    style="border:2px solid #d9a441;border-radius:12px;padding:16px;background:linear-gradient(180deg,rgba(255,255,255,0.98),rgba(249,244,230,0.96));">
+                    <div style="font-weight:700;margin-bottom:8px;"><strong>Case 3</strong> | <strong>True:</strong>
+                        Film | <strong>Pred:</strong> WrittenWork | <strong>Conf:</strong> 1.000</div>
+                    <div style="margin:12px 0;line-height:1.8;font-size:0.95rem;">
+                        boy in
+                        <span style="background:#ffcdd2;padding:2px 4px;border-radius:3px;margin:2px;">bush</span>. boy
+                        in
+                        <span style="background:#ffcdd2;padding:2px 4px;border-radius:3px;margin:2px;">bush</span> is a
+                        <span style="background:#ffe082;padding:2px 4px;border-radius:3px;margin:2px;">film</span> by d.
+                        h. lawrence set in western australia
+                        <span style="background:#ffe082;padding:2px 4px;border-radius:3px;margin:2px;">in</span> 1924.
+                        it is derived
+                        <span style="background:#ffcdd2;padding:2px 4px;border-radius:3px;margin:2px;">from</span> a
+                        <span style="background:#ffcdd2;padding:2px 4px;border-radius:3px;margin:2px;">novel</span> in a
+                        <span style="background:#ffcdd2;padding:2px 4px;border-radius:3px;margin:2px;">manuscript</span>
+                        given to lawrence by mollie skinner entitled
+                        <span style="background:#ffcdd2;padding:2px 4px;border-radius:3px;margin:2px;">house</span> of
+                        ellis.
+                    </div>
+                    <div style="font-size:0.85rem;margin:8px 0;">
+                        <span style="background:#c8e6c9;padding:2px 4px;border-radius:3px;margin-right:8px;">▪
+                            true-cue</span>
+                        <span style="background:#ffcdd2;padding:2px 4px;border-radius:3px;margin-right:8px;">▪
+                            pred-cue</span>
+                        <span style="background:#ffe082;padding:2px 4px;border-radius:3px;">▪ overlap</span>
+                    </div>
+                    <div style="font-size:0.9rem;margin-top:10px;color:#374151;font-style:italic;">
+                        <strong>Reasoning:</strong> Signal overlap exists across classes; boundary is likely
+                        semantically close. True=Film, Pred=WrittenWork, confidence=1.000. True-cue hits=[and, first,
+                        from, his, in] | Pred-cue hits=[and, first, from, his, novel, published, story, the]
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="demo" class="report-card wide-card">
+            <p class="section-kicker">10. Live Demo</p>
+            <h2 class="section-title">Live Demo</h2>
+            <p class="section-subtitle">Khối bên dưới nhúng trực tiếp giao diện Gradio của hệ thống.</p>
+
+            <div class="iframe-frame" style="margin-top:14px;">
+                <iframe src="https://hoangcao2510-dl-classificattion-text.hf.space" frameborder="0" width="100%"
+                    height="820"></iframe>
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>

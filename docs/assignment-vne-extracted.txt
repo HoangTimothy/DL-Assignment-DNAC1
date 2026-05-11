@@ -1,0 +1,169 @@
+ĐẠI HỌC BÁCH KHOA
+Khoa Khoa học và Kỹ thuật Máy tính
+Bài tập lớn số 1
+Học sâu và ứng dụng
+Mã môn học: CO3133
+Năm học & Học kỳ: 2025–2026, Học kỳ 2
+Giảng viên: Lê Thành Sách
+Đề bài giao cho sinh viên thực hiện
+
+Contents
+1 Chủ đề và hình thức thực hiện 2
+1.1 Chủ đề . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+1.2 Hình thức thực hiện . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+2 Mục tiêu 2
+3 Yêu cầu về tập dữ liệu 2
+3.1 Ràng buộc (để tránh chọn tập quá đơn giản) . . . . . . . . . . . . . . . . . 3
+4 Yêu cầu về kỹ thuật 3
+4.1 Với tập dữ liệu ảnh . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+4.2 Với tập dữ liệu văn bản . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+4.3 Với tập dữ liệu đa phương thức . . . . . . . . . . . . . . . . . . . . . . . . 4
+4.4 Metric đánh giá . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+5 Tiêu chí chấm điểm 4
+6 Yêu cầu về báo cáo và sản phẩm nộp 5
+6.1 Landing page (GitHub Pages) . . . . . . . . . . . . . . . . . . . . . . . . . 5
+6.1.1 Trang chung (trang chủ) . . . . . . . . . . . . . . . . . . . . . . . . 5
+6.1.2 Trang cho mỗi bài tập lớn . . . . . . . . . . . . . . . . . . . . . . . 5
+7 Nộp báo cáo và hạn nộp 6
+7.1 Yêu cầu nộp báo cáo . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+7.2 Hạn nộp . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+1
+
+1 Chủ đề và hình thức thực hiện
+1.1 Chủ đề
+Bài toán phân loại (classification) trên ba loại dữ liệu: ảnh, văn bản và đa phương thức
+(ảnh + văn bản).
+1.2 Hình thức thực hiện
+• Thực hiện theo nhóm 3–4 sinh viên .
+• Sinh viên đăng ký nhóm theo link công bố trên LMS.
+• Lưu ý: Nhóm đăng ký sẽ thực hiện chung cho tất cả bài tập lớn trong môn học, không
+riêng bài tập lớn số 1.
+2 Mục tiêu
+Sau khi hoàn thành bài tập lớn này, sinh viên có khả năng:
+• Vận dụng mô hình pretrained (CNN, ViT, RNN, Transformer, mô hình đa phương
+thức) để giải bài toán phân loại trên dữ liệu ảnh, văn bản và đa phương thức.
+• Chuẩn bị dữ liệu (Dataset, DataLoader), áp dụng augmentation phù hợp và thiết lập
+quy trình huấn luyện/đánh giá.
+• So sánh và phân tích kết quả giữa các họ mô hình (CNN vs. ViT, RNN vs. Transformer,
+zero-shot vs. few-shot) qua bảng số liệu và biểu đồ.
+• Trình bày và bảo vệ kết quả qua báo cáo, video demo và video trình bày; tổ chức mã
+nguồn và tài liệu trên GitHub Pages.
+• (Tùy chọn) Mở rộng bằng kỹ thuật giải thích mô hình (interpretability) hoặc hướng
+tiếp cận khác để nâng cao điểm số.
+3 Yêu cầu về tập dữ liệu
+Mỗi nhóm cần sử dụng đủ ba loại tập dữ liệu sau (tự chọn hoặc theo gợi ý của giảng
+viên):
+1. Tập dữ liệu ảnh cho phân loại (image classification).
+2. Tập dữ liệu văn bản cho phân loại (text classification).
+3. Tập dữ liệu đa phương thức cho phân loại (multimodal: ảnh + văn bản).
+2
+
+3.1 Ràng buộc (để tránh chọn tập quá đơn giản)
+Các tập dữ liệu phải đạt ít nhất các mức sau; nếu không, bài làm có thể bị đánh giá thấp
+hoặc yêu cầu đổi dataset:
+• Số lớp: ít nhất 5 lớp cho mỗi tập (ảnh, văn bản, đa phương thức). Bài toán nhị phân
+hoặc 3–4 lớp đơn giản không đủ để thể hiện so sánh mô hình.
+• Kích thước: tập huấn luyện ít nhất vài nghìn mẫu trở lên (ví dụ ≥ 5 000 mẫu cho
+ảnh/văn bản). Dataset quá nhỏ (vài trăm mẫu) không đủ để đánh giá CNN/ViT hoặc
+RNN/Transformer một cách thuyết phục.
+• Độ khó: ưu tiên tập có độ phân biệt lớp vừa phải trở lên. Ví dụ với ảnh: tránh chỉ
+dùng MNIST; có thể dùng CIF AR-10/100, Fashion-MNIST. Với văn bản: tránh tập
+quá ngắn hoặc quá dễ (ví dụ sentiment 2 lớp trên câu rất ngắn); nên có độ dài và ngữ
+nghĩa đa dạng.
+• Đa phương thức: tập đa phương thức phải có cặp ảnh–văn bản thực sự (cùng mô
+tả một thực thể/sự kiện), không phải ghép ngẫu nhiên ảnh với văn bản. Ví dụ: COCO
+captions, Flickr30k, hoặc dataset tương đương.
+Nhóm nên nêu rõ trong báo cáo lý do chọn từng dataset và cách đáp ứng các ràng buộc
+trên. Nếu có thắc mắc về tính hợp lệ của dataset, nên trao đổi với giảng viên trước khi
+triển khai.
+4 Yêu cầu về kỹ thuật
+4.1 Với tập dữ liệu ảnh
+So sánh được các mô hình thuộc hai nhóm :
+• CNN (Convolutional Neural Networks)
+• ViT (Vision Transformer)
+(Sử dụng mô hình pretrained, huấn luyện/fine-tune và đánh giá; trình bày so sánh kết
+quả.)
+4.2 Với tập dữ liệu văn bản
+So sánh được các mô hình thuộc hai nhóm :
+• RNN (Recurrent Neural Networks, ví dụ LSTM)
+• Transformer
+3
+
+4.3 Với tập dữ liệu đa phương thức
+So sánh được hai cách tiếp cận :
+• Zero-shot classification
+• Few-shot classification
+4.4 Metric đánh giá
+Nhóm cần báo cáo ít nhất accuracy (và F1 khi lớp mất cân bằng); nên thống nhất
+metric giữa các mô hình để so sánh công bằng. Có thể bổ sung metric khác (precision,
+recall, confusion matrix) nếu phù hợp.
+5 Tiêu chí chấm điểm
+• 60% điểm: Từ kết quả sử dụng mô hình pretrained, huấn luyện (fine-tune) và đánh
+giá trên ba loại dữ liệu (ảnh, văn bản, đa phương thức) theo đúng yêu cầu so sánh ở
+Mục 4.
+• 40% điểm: Từ các phần mở rộng do nhóm tự chọn. Gợi ý:
+– Giải thích mô hình (interpretability): mô hình đã “nhìn” vào vùng nào của
+ảnh hoặc văn bản để đưa ra quyết định phân loại (ví dụ: attention visualization,
+saliency map, Grad-CAM, v.v.).
+– Phân tích lỗi: phân loại lỗi (confusion, mẫu khó), minh họa vài trường hợp sai
+và giải thích ngắn gọn.
+– So sánh chiến lược fine-tune: freeze backbone vs fine-tune toàn bộ vs learning
+rate theo tầng; báo cáo accuracy và thời gian huấn luyện.
+– Augmentation & robustness: so sánh có/không augmentation (RandAugment,
+MixUp, CutMix cho ảnh; back-translation cho văn bản); hoặc thử robustness với
+nhiễu/corruption nhẹ.
+– Hiệu quả mô hình (efficiency): so sánh accuracy vs kích thước mô hình / thời
+gian suy luận; (tùy chọn) nén đơn giản: pruning, quantization, hoặc mô hình nhỏ
+(MobileNet, DistilBERT).
+– Ensemble: kết hợp ít nhất hai mô hình (ví dụ CNN + ViT, RNN + Transformer);
+so sánh single model vs ensemble.
+– Demo ứng dụng: giao diện đơn giản (Gradio, Streamlit, Flask) cho người dùng
+thử nghiệm; có thể kèm giải thích trực quan.
+4
+
+– Calibration: đánh giá độ tin cậy dự đoán (ECE, reliability diagram); so sánh
+mô hình nào “tự tin đúng” hơn.
+– Dữ liệu mất cân bằng: nếu tập dữ liệu lệch lớp, thử reweighting, oversampling
+hoặc focal loss; báo cáo metric theo từng lớp.
+– Hướng khác: nhóm có thể đề xuất hình thức mở rộng khác (nên nêu rõ trong
+báo cáo và có thể trao đổi với giảng viên).
+6 Yêu cầu về báo cáo và sản phẩm nộp
+6.1 Landing page (GitHub Pages)
+Các nhóm phải tạo một landing page trên GitHub Pages để giới thiệu về tất cả bài
+tập lớn của môn học (bao gồm bài tập lớn số 1).
+6.1.1 Trang chung (trang chủ)
+Trang chung cần chứa:
+• Tên nhóm
+• Tên các thành viên
+• Tên giảng viên môn học
+• Link đến từng bài tập lớn của môn học (bao gồm bài tập lớn số 1)
+6.1.2 Trang cho mỗi bài tập lớn
+Với mỗi bài tập lớn (trong đó có bài tập lớn số 1), cần có một trang riêng chứa:
+• Tên bài tập lớn
+• (Ngắn gọn) Tên thành viên + giảng viên
+• Link đến video demo của bài tập này
+• Link đến video (YouTube) trình bày báo cáo của bài tập này. Lưu ý: giảng viên
+sẽ xem video trong quá trình chấm nếu các nhóm chưa kịp báo cáo trực tiếp.
+• Link đến code của bài tập này
+• Link đến nội dung trình bày của bài tập này, gồm ít nhất:
+1. Báo cáo tìm hiểu về bài toán và tập dữ liệu (EDA)
+2. Báo cáo về chuẩn bị Dataset, Dataloader và Augmentation
+5
+
+3. Báo cáo về xây dựng, huấn luyện, đánh giá và so sánh mô hình
+4. Báo cáo kết quả thực nghiệm: bảng số liệu; biểu đồ; phân tích và thảo luận
+5. Các báo cáo mở rộng khác (nếu có)
+7 Nộp báo cáo và hạn nộp
+7.1 Yêu cầu nộp báo cáo
+Ngoài nội dung đã đăng trên GitHub Pages, mỗi nhóm cần nộp slide trình bày tổng
+hợp các nội dung đã thực hiện (theo đúng hình thức và đường dẫn quy định trên LMS).
+Báo cáo được nộp theo hai đợt dưới đây. Điểm đánh giá phần trình bày dựa trên báo cáo
+lần 1 và báo cáo cuối theo tỷ lệ nêu tại mục Hạn nộp. Giảng viên sẽ yêu cầu các nhóm
+trình bày xuyên suốt quá trình thực hiện bài tập.
+7.2 Hạn nộp
+• Báo cáo lần 1 (tương đương 50% điểm phần trình bày): 23h59, ngày 26/03/2026.
+• Báo cáo cuối (tương đương 100% điểm phần trình bày): 23h59, ngày 06/04/2026.
+• Nộp trễ: Mỗi tuần nộp trễ so với hạn tương ứng bị trừ 20% điểm phần trình bày của
+đợt đó.
+Đường dẫn nộp bài và quy định chi tiết (định dạng file, tên file) được công bố trên LMS.
+6

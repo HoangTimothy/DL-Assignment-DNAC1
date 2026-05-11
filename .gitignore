@@ -1,0 +1,75 @@
+# Python environments
+.venv/
+venv/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+
+# Large artifacts (adjust as needed)
+*.pt
+*.pth
+*.ckpt
+*.h5
+*.onnx
+*.npy
+*.npz
+*.pkl
+*.joblib
+*.safetensors
+*.log
+# Virtual environments
+.venv/
+.venv-1/
+.venv-2/
+.conda-cuda/
+venv/
+ENV/
+# Data
+data/
+# Hoặc cụ thể hơn nếu bạn muốn giữ lại cấu trúc thư mục nhưng bỏ qua file:
+# data/raw/
+# data/dataset/
+# data/cleaned_source_dataset/
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+# Bỏ qua toàn bộ thư mục dữ liệu
+data/
+
+# Bỏ qua log của Weights & Biases
+wandb/
+.wandb_logs/
+**/wandb/
+**/.wandb_logs/
+
+# Bỏ qua các file ảnh riêng lẻ nếu lỡ nằm ngoài thư mục data
+*.jpg
+*.jpeg
+*.png
+.conda-cuda/
+.venv*/
+.conda*/
+data/
+wandb/
+*.jpg
