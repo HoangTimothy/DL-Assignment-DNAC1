@@ -589,7 +589,7 @@
         <span class="badge">Dataset: Crop Pest &amp; Disease Detection (Kaggle)</span>
         <span class="badge">Framework: PyTorch + timm</span>
         <span class="badge">Tracking: Weights &amp; Biases</span>
-        <span class="badge">Giải thích: GradCAM / EigenCAM</span>
+        <span class="badge">Giải thích: GradCAM</span>
       </div>
     </header>
 
@@ -1047,8 +1047,9 @@
       </figure>
       <figure class="report-figure">
         <img src="Image_DL/top_confident.png" alt="Top confident wrong predictions" loading="lazy" />
-        <figcaption><strong>top_confident.png</strong> — Các mẫu sai nhưng model tự tin cao (phân tích lỗi).
-        </figcaption>
+        <figcaption><strong>top_confident.png</strong> — Các mẫu sai nhưng model tự tin cao (phân tích lỗi). Số liệu
+          trên ảnh: <strong>conf = 0.943</strong>, <strong>p_true = 0.01</strong>; <strong>conf = 0.936</strong>,
+          <strong>p_true = 0.006</strong>.</figcaption>
       </figure>
 
       <p class="muted" style="margin-top:1rem;">
@@ -1065,45 +1066,45 @@
         nhất (~148 FPS) — trade-off độ chính xác / chi phí suy luận cần cân nhắc khi triển khai.
       </p>
 
-      <p class="muted" style="margin:0.75rem 0 0.25rem;">Ma trận nhầm lẫn do notebook lưu vào
-        <code>artifacts_image/cm_*.png</code> và <code>artifacts_image/cm_norm_*.png</code> (cùng cấp với file HTML
-        này).</p>
+      <p class="muted" style="margin:0.75rem 0 0.25rem;">Ma trận nhầm lẫn hiển thị từ
+        <code>Image_DL/cm_*.png</code> và <code>Image_DL/cm_norm_*.png</code> (cùng cấp với file HTML
+        này; có thể copy từ <code>artifacts_image/</code> sau khi chạy notebook nếu cần).</p>
       <h3 style="margin:1.25rem 0 0.5rem;font-size:1rem;">Confusion matrix (counts) — <code>cm_*.png</code></h3>
       <div class="cm-all-grid">
-        <figure class="report-figure"><img src="artifacts_image/cm_efficientnet_b0_aug_finetune_all.png"
+        <figure class="report-figure"><img src="Image_DL/cm_efficientnet_b0_aug_finetune_all.png"
             alt="CM EfficientNet aug finetune" loading="lazy" />
           <figcaption><strong>cm_efficientnet_b0_aug_finetune_all.png</strong> — Ma trận nhầm lẫn (số đếm), run tốt
             nhất.</figcaption>
         </figure>
-        <figure class="report-figure"><img src="artifacts_image/cm_efficientnet_b0_noaug_frozen.png"
+        <figure class="report-figure"><img src="Image_DL/cm_efficientnet_b0_noaug_frozen.png"
             alt="CM EfficientNet noaug frozen" loading="lazy" />
           <figcaption><strong>cm_efficientnet_b0_noaug_frozen.png</strong> — EfficientNet đông lạnh, không aug.
           </figcaption>
         </figure>
-        <figure class="report-figure"><img src="artifacts_image/cm_resnet18_aug_frozen.png" alt="CM ResNet18 aug frozen"
+        <figure class="report-figure"><img src="Image_DL/cm_resnet18_aug_frozen.png" alt="CM ResNet18 aug frozen"
             loading="lazy" />
           <figcaption><strong>cm_resnet18_aug_frozen.png</strong> — ResNet18 aug, backbone frozen.</figcaption>
         </figure>
-        <figure class="report-figure"><img src="artifacts_image/cm_resnet18_aug_linear_probe.png"
+        <figure class="report-figure"><img src="Image_DL/cm_resnet18_aug_linear_probe.png"
             alt="CM ResNet18 aug linear" loading="lazy" />
           <figcaption><strong>cm_resnet18_aug_linear_probe.png</strong> — ResNet18 aug, linear probe.</figcaption>
         </figure>
-        <figure class="report-figure"><img src="artifacts_image/cm_resnet18_noaug_finetune_all.png"
+        <figure class="report-figure"><img src="Image_DL/cm_resnet18_noaug_finetune_all.png"
             alt="CM ResNet18 noaug finetune" loading="lazy" />
           <figcaption><strong>cm_resnet18_noaug_finetune_all.png</strong> — ResNet18 full fine-tune, không aug.
           </figcaption>
         </figure>
-        <figure class="report-figure"><img src="artifacts_image/cm_swin_tiny_patch4_window7_224_aug_frozen.png"
+        <figure class="report-figure"><img src="Image_DL/cm_swin_tiny_patch4_window7_224_aug_frozen.png"
             alt="CM Swin aug frozen" loading="lazy" />
           <figcaption><strong>cm_swin_tiny_patch4_window7_224_aug_frozen.png</strong> — Swin-Tiny aug, frozen.
           </figcaption>
         </figure>
-        <figure class="report-figure"><img src="artifacts_image/cm_vit_base_patch16_224_aug_linear_probe.png"
+        <figure class="report-figure"><img src="Image_DL/cm_vit_base_patch16_224_aug_linear_probe.png"
             alt="CM ViT aug linear" loading="lazy" />
           <figcaption><strong>cm_vit_base_patch16_224_aug_linear_probe.png</strong> — ViT aug, linear probe.
           </figcaption>
         </figure>
-        <figure class="report-figure"><img src="artifacts_image/cm_vit_base_patch16_224_noaug_finetune_all.png"
+        <figure class="report-figure"><img src="Image_DL/cm_vit_base_patch16_224_noaug_finetune_all.png"
             alt="CM ViT noaug finetune" loading="lazy" />
           <figcaption><strong>cm_vit_base_patch16_224_noaug_finetune_all.png</strong> — ViT full fine-tune, không aug.
           </figcaption>
@@ -1113,36 +1114,36 @@
       <h3 style="margin:1.25rem 0 0.5rem;font-size:1rem;">Confusion matrix chuẩn hóa theo dòng —
         <code>cm_norm_*.png</code></h3>
       <div class="cm-all-grid">
-        <figure class="report-figure"><img src="artifacts_image/cm_norm_efficientnet_b0_aug_finetune_all.png"
+        <figure class="report-figure"><img src="Image_DL/cm_norm_efficientnet_b0_aug_finetune_all.png"
             alt="CM norm EfficientNet aug finetune" loading="lazy" />
           <figcaption><strong>cm_norm_efficientnet_b0_aug_finetune_all.png</strong> — Recall theo lớp thật (chuẩn hóa).
           </figcaption>
         </figure>
-        <figure class="report-figure"><img src="artifacts_image/cm_norm_efficientnet_b0_noaug_frozen.png"
+        <figure class="report-figure"><img src="Image_DL/cm_norm_efficientnet_b0_noaug_frozen.png"
             alt="CM norm EfficientNet noaug frozen" loading="lazy" />
           <figcaption><strong>cm_norm_efficientnet_b0_noaug_frozen.png</strong></figcaption>
         </figure>
-        <figure class="report-figure"><img src="artifacts_image/cm_norm_resnet18_aug_frozen.png"
+        <figure class="report-figure"><img src="Image_DL/cm_norm_resnet18_aug_frozen.png"
             alt="CM norm ResNet18 aug frozen" loading="lazy" />
           <figcaption><strong>cm_norm_resnet18_aug_frozen.png</strong></figcaption>
         </figure>
-        <figure class="report-figure"><img src="artifacts_image/cm_norm_resnet18_aug_linear_probe.png"
+        <figure class="report-figure"><img src="Image_DL/cm_norm_resnet18_aug_linear_probe.png"
             alt="CM norm ResNet18 aug linear" loading="lazy" />
           <figcaption><strong>cm_norm_resnet18_aug_linear_probe.png</strong></figcaption>
         </figure>
-        <figure class="report-figure"><img src="artifacts_image/cm_norm_resnet18_noaug_finetune_all.png"
+        <figure class="report-figure"><img src="Image_DL/cm_norm_resnet18_noaug_finetune_all.png"
             alt="CM norm ResNet18 noaug finetune" loading="lazy" />
           <figcaption><strong>cm_norm_resnet18_noaug_finetune_all.png</strong></figcaption>
         </figure>
-        <figure class="report-figure"><img src="artifacts_image/cm_norm_swin_tiny_patch4_window7_224_aug_frozen.png"
+        <figure class="report-figure"><img src="Image_DL/cm_norm_swin_tiny_patch4_window7_224_aug_frozen.png"
             alt="CM norm Swin" loading="lazy" />
           <figcaption><strong>cm_norm_swin_tiny_patch4_window7_224_aug_frozen.png</strong></figcaption>
         </figure>
-        <figure class="report-figure"><img src="artifacts_image/cm_norm_vit_base_patch16_224_aug_linear_probe.png"
+        <figure class="report-figure"><img src="Image_DL/cm_norm_vit_base_patch16_224_aug_linear_probe.png"
             alt="CM norm ViT aug linear" loading="lazy" />
           <figcaption><strong>cm_norm_vit_base_patch16_224_aug_linear_probe.png</strong></figcaption>
         </figure>
-        <figure class="report-figure"><img src="artifacts_image/cm_norm_vit_base_patch16_224_noaug_finetune_all.png"
+        <figure class="report-figure"><img src="Image_DL/cm_norm_vit_base_patch16_224_noaug_finetune_all.png"
             alt="CM norm ViT noaug" loading="lazy" />
           <figcaption><strong>cm_norm_vit_base_patch16_224_noaug_finetune_all.png</strong></figcaption>
         </figure>
@@ -1151,18 +1152,18 @@
 
     <!-- 07 -->
     <section class="card" id="s07">
-      <h2 class="sec-title"><span class="sec-num">07</span> Trực quan hóa GradCAM / EigenCAM</h2>
+      <h2 class="sec-title"><span class="sec-num">07</span> Trực quan hóa GradCAM</h2>
       <p class="muted">
-        Notebook dùng <code>pytorch-grad-cam</code>: <strong>GradCAM</strong> cho CNN (ResNet, EfficientNet),
-        <strong>EigenCAM</strong> cho ViT/Swin khi bật <code>use_eigen</code>.
+        Notebook dùng <code>pytorch-grad-cam</code>: <strong>GradCAM</strong> cho CNN (ResNet, EfficientNet). Có thể bật
+        EigenCAM cho ViT/Swin trong code, nhưng ảnh báo cáo dưới đây dùng bản <strong>GradCAM-only</strong> để tránh artifact.
         Dưới đây là ảnh tĩnh trong <code>Image_DL/</code> (tự lưu sau khi gọi
         <code>cam_visualize(..., save_overlay_path=...)</code> hoặc hàm visualize có tham số <code>save_path</code>
         trong notebook).
       </p>
       <figure class="report-figure">
         <img src="Image_DL/grad_cam.png" alt="GradCAM và heatmap overlay" loading="lazy" />
-        <figcaption><strong>grad_cam.png</strong> — Heatmap GradCAM/EigenCAM: vùng ảnh model chú ý khi dự đoán (overlay
-          lên ảnh gốc).</figcaption>
+        <figcaption><strong>grad_cam.png</strong> — Chỉ GradCAM (bỏ EigenCAM): heatmap overlay vùng ảnh model chú ý khi
+          dự đoán.</figcaption>
       </figure>
       <figure class="report-figure">
         <img src="Image_DL/visualize_hard_sample.png" alt="So sánh mẫu khó nhiều backbone" loading="lazy" />
