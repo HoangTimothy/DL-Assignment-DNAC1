@@ -4,14 +4,751 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>BTL 3 - Deep Learning</title>
+    <title>Báo cáo Bài tập 1 - Multimodal CLIP + LoRA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Grotesk:wght@500;600;700&display=swap"
+        rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
+    <style>
+        .hero {
+            padding: 64px 0 28px;
+        }
+
+        .hero-kicker,
+        .section-kicker {
+            margin: 0;
+            color: var(--primary);
+            font-size: 0.93rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        h1,
+        .section-title,
+        h2 {
+            font-family: "Space Grotesk", "Segoe UI", sans-serif;
+            letter-spacing: -0.03em;
+        }
+
+        h1 {
+            margin: 10px 0 8px;
+            font-size: clamp(2.1rem, 5vw, 3.35rem);
+            line-height: 1.08;
+        }
+
+        .hero-subtitle,
+        .section-subtitle,
+        .muted {
+            color: var(--muted);
+        }
+
+        .hero-subtitle {
+            margin: 0;
+            max-width: 78ch;
+            font-size: 1.02rem;
+        }
+
+        .pill-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 18px;
+        }
+
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 12px;
+            border-radius: 999px;
+            border: 1px solid #b6dedb;
+            background: var(--primary-soft);
+            color: #0b5f60;
+            font-size: 0.88rem;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .link-pill {
+            border-color: #f4c9af;
+            background: #fde9dd;
+            color: #a04c20;
+        }
+
+        .hero-links {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .hero-stat,
+        .report-card,
+        .figure-slot,
+        .compact-table,
+        .quote-box {
+            border: 1px solid rgba(129, 107, 78, 0.16);
+            border-radius: 22px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(249, 245, 234, 0.98));
+            box-shadow: 0 14px 38px rgba(15, 23, 42, 0.06);
+        }
+
+        .hero-stat {
+            padding: 14px 16px;
+        }
+
+        .hero-stat span {
+            display: block;
+        }
+
+        .hero-stat .label,
+        .mini-label {
+            font-size: 0.76rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #8b5e34;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+
+        .hero-stat .value {
+            font-size: 1rem;
+            color: #1f2937;
+            font-weight: 700;
+        }
+
+        .report-grid {
+            display: grid;
+            grid-template-columns: repeat(12, minmax(0, 1fr));
+            gap: 18px;
+            padding-bottom: 54px;
+        }
+
+        .report-card {
+            grid-column: span 12;
+            padding: 22px;
+        }
+
+        .wide-card {
+            grid-column: span 12;
+        }
+
+        .half-card {
+            grid-column: span 6;
+        }
+
+        .section-title {
+            margin: 0 0 10px;
+            font-size: 2rem;
+            line-height: 1.15;
+        }
+
+        .section-subtitle {
+            max-width: 76ch;
+            margin: 0;
+        }
+
+        .metric-pill-row,
+        .tag-row,
+        .badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 14px;
+        }
+
+        .metric-pill,
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 14px;
+            border-radius: 999px;
+            border: 1px solid rgba(17, 24, 39, 0.08);
+            background: rgba(17, 24, 39, 0.04);
+            color: #111827;
+            font-weight: 700;
+            font-size: 0.92rem;
+        }
+
+        .metric-pill strong,
+        .badge strong {
+            color: #8b5e34;
+        }
+
+        .split-row,
+        .grid-3,
+        .grid-2,
+        .result-grid {
+            display: grid;
+            gap: 14px;
+            margin-top: 16px;
+        }
+
+        .grid-3 {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .grid-2 {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .split-row,
+        .result-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .split-card,
+        .timeline-item,
+        .quote-box,
+        .figure-slot,
+        .model-card,
+        .stat-box {
+            background: rgba(255, 255, 255, 0.7);
+        }
+
+        .stat-box,
+        .timeline-item,
+        .model-card {
+            border: 1px solid rgba(129, 107, 78, 0.16);
+            border-radius: 18px;
+            padding: 14px 16px;
+        }
+
+        .stat-box .label {
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--muted);
+        }
+
+        .stat-box .value {
+            font-weight: 800;
+            font-size: 1.05rem;
+            margin-top: 0.2rem;
+            color: var(--text);
+        }
+
+        .figure-slot {
+            overflow: hidden;
+            min-height: 220px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .figure-head {
+            padding: 14px 16px 10px;
+            border-bottom: 1px solid rgba(129, 107, 78, 0.14);
+            font-weight: 800;
+            color: #111827;
+        }
+
+        .figure-body {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 18px;
+            color: #6b7280;
+            text-align: center;
+            background:
+                radial-gradient(circle at top left, rgba(234, 179, 8, 0.12), transparent 34%),
+                radial-gradient(circle at bottom right, rgba(59, 130, 246, 0.12), transparent 32%);
+        }
+
+        .figure-foot {
+            padding: 12px 16px 14px;
+            border-top: 1px solid rgba(129, 107, 78, 0.14);
+            font-size: 0.92rem;
+            color: #4b5563;
+        }
+
+        .compact-table {
+            width: 100%;
+            border-collapse: collapse;
+            overflow: hidden;
+        }
+
+        .compact-table th,
+        .compact-table td {
+            padding: 14px 16px;
+            border-bottom: 1px solid rgba(129, 107, 78, 0.12);
+            text-align: left;
+            font-size: 0.94rem;
+        }
+
+        .compact-table th {
+            background: rgba(249, 244, 230, 0.98);
+            color: #374151;
+        }
+
+        .timeline {
+            display: grid;
+            gap: 12px;
+            margin-top: 14px;
+        }
+
+        .timeline-item {
+            border-left: 4px solid #d9a441;
+        }
+
+        .timeline-item strong,
+        .quote-box strong {
+            color: #7c4f22;
+        }
+
+        .quote-box {
+            padding: 16px 18px;
+            line-height: 1.65;
+        }
+
+        .toc-box {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 14px;
+        }
+
+        .toc-box a {
+            text-decoration: none;
+        }
+
+        .class-chip-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 10px;
+            margin-top: 14px;
+        }
+
+        .class-chip {
+            padding: 10px 12px;
+            border-radius: 14px;
+            border: 1px solid rgba(129, 107, 78, 0.16);
+            background: rgba(255, 255, 255, 0.72);
+            color: #374151;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .sample-table td {
+            vertical-align: top;
+            line-height: 1.55;
+        }
+
+        .mini-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 12px;
+            margin-top: 14px;
+        }
+
+        .mini-card {
+            border: 1px solid rgba(129, 107, 78, 0.16);
+            border-radius: 18px;
+            padding: 14px;
+            background: rgba(255, 255, 255, 0.68);
+        }
+
+        .mini-card h3 {
+            margin: 0 0 8px;
+            font-size: 1rem;
+            color: #111827;
+        }
+
+        .mini-card p {
+            margin: 0;
+            color: #4b5563;
+            font-size: 0.94rem;
+        }
+
+        @media (max-width: 1080px) {
+            .hero-links,
+            .grid-2,
+            .grid-3,
+            .split-row,
+            .result-grid,
+            .class-chip-grid,
+            .mini-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .half-card {
+                grid-column: span 12;
+            }
+        }
+
+        @media (max-width: 720px) {
+            .hero {
+                padding-top: 48px;
+            }
+
+            .report-card {
+                padding: 18px;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <main class="container">
-        <h1>Bai tap lon 3</h1>
-        <p>Cap nhat noi dung theo cung mau voi BTL 1.</p>
+    <div class="page-glow"></div>
+
+    <header class="hero container">
+        <p class="hero-kicker">CO3133 - Deep Learning</p>
+        <h1>Báo cáo Multimodal CLIP + LoRA trên CUB-200-2011</h1>
+        <p class="hero-subtitle">Trang này tổng hợp pipeline trong DL_BTL1_Multimodal.ipynb: chuẩn bị dữ liệu ảnh +
+            text, xây dựng CUBMultimodalDataset, domain adaptation bằng LoRA trên CLIP, trích xuất đặc trưng, đánh giá
+            zero-shot / few-shot, và so sánh Vanilla CLIP với mô hình đã thích nghi.</p>
+
+        <div class="hero-links">
+            <div class="hero-stat">
+                <span class="label">Notebook</span>
+                <span class="value">DL_BTL1_Multimodal.ipynb</span>
+            </div>
+            <div class="hero-stat">
+                <span class="label">Dataset</span>
+                <span class="value">CUB-200-2011 multimodal</span>
+            </div>
+            <div class="hero-stat">
+                <span class="label">Core model</span>
+                <span class="value">CLIP ViT-B/16 + LoRA</span>
+            </div>
+            <div class="hero-stat">
+                <span class="label">Evaluation</span>
+                <span class="value">Zero-shot, Linear Probe, Tip-Adapter</span>
+            </div>
+        </div>
+
+        <div class="pill-row">
+            <a class="pill" href="#overview">Tổng quan</a>
+            <a class="pill" href="#dataset">Dữ liệu</a>
+            <a class="pill" href="#lora">LoRA</a>
+            <a class="pill" href="#evaluation">Đánh giá</a>
+            <a class="pill link-pill" href="notebooks/DL_BTL1_Multimodal.ipynb">Mở notebook</a>
+        </div>
+    </header>
+
+    <main class="container report-grid">
+        <section id="overview" class="report-card wide-card">
+            <p class="section-kicker">01. Mục tiêu và quy trình</p>
+            <h2 class="section-title">Pipeline được thiết kế để khai thác đồng thời tín hiệu ảnh và mô tả văn bản của từng loài chim.</h2>
+            <p class="section-subtitle">Notebook dùng CUB-200-2011 làm bài toán fine-grained classification. Phần text được lấy từ các caption đi kèm ảnh, còn phần ảnh được encode bằng CLIP. Sau khi domain adaptation bằng LoRA, mô hình được đánh giá trên các lớp novel bằng zero-shot và few-shot.</p>
+
+            <div class="metric-pill-row">
+                <div class="metric-pill"><strong>200</strong> lớp chim</div>
+                <div class="metric-pill"><strong>100 / 50 / 50</strong> train / val / test</div>
+                <div class="metric-pill"><strong>5</strong> prompt templates</div>
+                <div class="metric-pill"><strong>5</strong> mức few-shot: 1, 2, 4, 8, 16</div>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item"><strong>Bước 1:</strong> tải dataset, tạo class split và chuẩn hóa đường dẫn ảnh + caption.</div>
+                <div class="timeline-item"><strong>Bước 2:</strong> xây dựng <code>CUBMultimodalDataset</code> để trả về image, text và nhãn địa phương.</div>
+                <div class="timeline-item"><strong>Bước 3:</strong> fine-tune CLIP bằng LoRA trên base classes, rồi chuyển sang novel classes để đánh giá.</div>
+                <div class="timeline-item"><strong>Bước 4:</strong> so sánh zero-shot, linear probe và Tip-Adapter trên cùng feature space.</div>
+            </div>
+        </section>
+
+        <section id="dataset" class="report-card wide-card">
+            <p class="section-kicker">02. Chuẩn bị dữ liệu</p>
+            <h2 class="section-title">CUBMultimodalDataset gom ảnh, caption và nhãn về cùng một interface.</h2>
+            <p class="section-subtitle">Mỗi sample đọc ảnh JPEG, tìm tệp caption tương ứng theo đường dẫn, chọn caption ngẫu nhiên khi train và dùng caption đầu tiên khi evaluation để đảm bảo tính ổn định.</p>
+
+            <div class="grid-2">
+                <div class="stat-box">
+                    <div class="mini-label">Class split</div>
+                    <div class="value">100 base classes, 50 validation classes, 50 test classes</div>
+                    <p class="muted">Random seed được cố định để giữ split tái lập giữa các lần chạy notebook.</p>
+                </div>
+                <div class="stat-box">
+                    <div class="mini-label">Processor</div>
+                    <div class="value">CLIPProcessor với padding, truncation và max_length = 77</div>
+                    <p class="muted">Ảnh và text được encode đồng bộ để đưa trực tiếp vào CLIPModel.</p>
+                </div>
+            </div>
+
+            <div class="mini-grid">
+                <div class="mini-card">
+                    <h3>Train mode</h3>
+                    <p>Chọn caption ngẫu nhiên để tăng đa dạng ngôn ngữ và giảm overfitting lên một câu mô tả duy nhất.</p>
+                </div>
+                <div class="mini-card">
+                    <h3>Evaluation mode</h3>
+                    <p>Dùng caption đầu tiên nhằm đảm bảo kết quả zero-shot và few-shot nhất quán giữa các lần đánh giá.</p>
+                </div>
+                <div class="mini-card">
+                    <h3>Few-shot support</h3>
+                    <p>Lấy k shots mỗi lớp từ tập test để dựng support set, phần còn lại trở thành query set.</p>
+                </div>
+            </div>
+
+            <div style="margin-top:16px; overflow-x:auto;">
+                <table class="compact-table sample-table">
+                    <thead>
+                        <tr>
+                            <th>Thành phần</th>
+                            <th>Mô tả</th>
+                            <th>Tác dụng trong pipeline</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>images.txt + image_class_labels.txt</td>
+                            <td>Ghép file ảnh với class_id tương ứng.</td>
+                            <td>Tạo dataframe gốc để lọc theo split.</td>
+                        </tr>
+                        <tr>
+                            <td>cvpr2016_cub/text_c10</td>
+                            <td>Chứa caption text tương ứng với từng ảnh.</td>
+                            <td>Cung cấp tín hiệu ngôn ngữ cho CLIP.</td>
+                        </tr>
+                        <tr>
+                            <td>processor output</td>
+                            <td>input_ids, attention_mask, pixel_values, label.</td>
+                            <td>Dùng trực tiếp trong training và evaluation.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="class-chip-grid" aria-label="Các lớp train / val / test được chọn ngẫu nhiên">
+                <div class="class-chip">Train classes: 100 loài</div>
+                <div class="class-chip">Validation classes: 50 loài</div>
+                <div class="class-chip">Test classes: 50 loài</div>
+                <div class="class-chip">Local label mapping: 0-based theo split</div>
+            </div>
+        </section>
+
+        <section class="report-card half-card">
+            <p class="section-kicker">03. EDA</p>
+            <h2 class="section-title">Khảo sát nhanh dữ liệu giúp kiểm tra cân bằng lớp và cấu trúc caption.</h2>
+            <p class="section-subtitle">Notebook tập trung vào việc xác nhận ảnh và text đều tồn tại, lớp được chia ổn định, và sample trong train mode thay đổi đủ để hỗ trợ learning.</p>
+
+            <div class="figure-slot" style="margin-top:16px; min-height: 250px;">
+                <div class="figure-head">Quan sát mẫu multimodal</div>
+                <div class="figure-body">
+                    <div>
+                        <strong style="display:block; color:#111827; margin-bottom:8px;">Ảnh + caption + nhãn</strong>
+                        Mỗi sample gồm ảnh RGB, caption mô tả loài chim, và local label theo split hiện tại.
+                        <div style="margin-top:12px; display:grid; gap:8px; text-align:left;">
+                            <div class="mini-card" style="padding:10px 12px;">Train: caption sampling ngẫu nhiên</div>
+                            <div class="mini-card" style="padding:10px 12px;">Eval: caption cố định để so sánh công bằng</div>
+                            <div class="mini-card" style="padding:10px 12px;">Few-shot: support/query tách từ test classes</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="figure-foot">Phần EDA trong notebook chủ yếu phục vụ xác minh dữ liệu đầu vào và cách tạo sample cho từng chế độ.</div>
+            </div>
+        </section>
+
+        <section class="report-card half-card">
+            <p class="section-kicker">04. Dataset mechanics</p>
+            <h2 class="section-title">Một sample được xử lý như thế nào trong notebook?</h2>
+            <p class="section-subtitle">Khối dưới đây tóm tắt logic chính trong lớp dataset và giải thích vì sao nó phù hợp với pipeline CLIP.</p>
+
+            <div class="quote-box" style="margin-top:16px;">
+                <strong>Luồng xử lý:</strong>
+                <ol style="margin:10px 0 0 20px; padding:0; line-height:1.65;">
+                    <li>Tìm file ảnh từ <code>images/...</code> và file text từ <code>text_c10/...</code>.</li>
+                    <li>Đọc toàn bộ caption hợp lệ, loại bỏ dòng trống.</li>
+                    <li>Chọn caption ngẫu nhiên khi train, caption đầu tiên khi eval.</li>
+                    <li>Tokenize text và chuẩn hóa ảnh qua processor của CLIP.</li>
+                    <li>Trả về tensor với <code>pixel_values</code>, <code>input_ids</code>, <code>attention_mask</code> và nhãn.</li>
+                </ol>
+            </div>
+
+            <div class="split-row">
+                <div class="split-card">
+                    <strong>77</strong>
+                    <span class="muted">max token length cho text</span>
+                </div>
+                <div class="split-card">
+                    <strong>RGB</strong>
+                    <span class="muted">ảnh được convert sang 3 kênh màu</span>
+                </div>
+                <div class="split-card">
+                    <strong>0-based</strong>
+                    <span class="muted">nhãn local theo active split</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="lora" class="report-card wide-card">
+            <p class="section-kicker">05. LoRA domain adaptation</p>
+            <h2 class="section-title">CLIP được thích nghi nhẹ bằng LoRA thay vì fine-tune toàn bộ backbone.</h2>
+            <p class="section-subtitle">Notebook dùng <code>openai/clip-vit-base-patch32</code> cho giai đoạn training và áp LoRA lên các module attention như q_proj, k_proj, v_proj, out_proj. Mục tiêu là giữ phần lớn tri thức nền tảng của CLIP nhưng vẫn cho phép mô hình thích nghi với CUB.</p>
+
+            <div class="grid-3">
+                <div class="model-card">
+                    <div class="mini-label">Base encoder</div>
+                    <h3 style="margin:0 0 8px;">CLIPModel + CLIPProcessor</h3>
+                    <p class="muted">Ảnh và text đi qua cùng không gian nhúng để tận dụng tương đồng đa phương thức.</p>
+                </div>
+                <div class="model-card">
+                    <div class="mini-label">LoRA config</div>
+                    <h3 style="margin:0 0 8px;">r = 8, alpha = 16, dropout = 0.1</h3>
+                    <p class="muted">Chỉ cập nhật adapter nhỏ, giúp tiết kiệm bộ nhớ và giảm chi phí huấn luyện.</p>
+                </div>
+                <div class="model-card">
+                    <div class="mini-label">Loss</div>
+                    <h3 style="margin:0 0 8px;">CrossEntropy trên similarity logits</h3>
+                    <p class="muted">Image feature được so với text feature của 100 base classes để tạo phân lớp.</p>
+                </div>
+            </div>
+
+            <div class="grid-2" style="margin-top:16px;">
+                <div class="quote-box">
+                    <strong>Điểm chính của training loop:</strong>
+                    <ul style="margin:8px 0 0 20px; line-height:1.65;">
+                        <li>Lấy batch từ DataLoader rồi đẩy sang GPU.</li>
+                        <li>Chạy <code>vision_model</code> để lấy pooled image feature.</li>
+                        <li>Chiếu feature qua <code>visual_projection</code> và chuẩn hóa L2.</li>
+                        <li>Tính logits bằng cosine similarity với train class text features.</li>
+                        <li>Backprop qua LoRA parameters và cập nhật bằng AdamW.</li>
+                    </ul>
+                </div>
+                <div class="quote-box">
+                    <strong>Điểm cần lưu ý:</strong>
+                    <ul style="margin:8px 0 0 20px; line-height:1.65;">
+                        <li><code>train_class_text_features</code> được tính trước để giữ ổn định trong epoch.</li>
+                        <li>Zero-shot validation được chạy sau mỗi epoch trên novel classes.</li>
+                        <li>Adapter cuối cùng được lưu bằng <code>save_pretrained</code> dưới dạng nhẹ.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="report-card wide-card">
+            <p class="section-kicker">06. Feature extraction và evaluation</p>
+            <h2 class="section-title">Ba chế độ đánh giá dùng chung cùng feature space, chỉ khác lớp classifier phía trên.</h2>
+            <p class="section-subtitle">Phần evaluation của notebook được xây dựng để so sánh công bằng giữa zero-shot, linear probe và Tip-Adapter trên cùng tập query features.</p>
+
+            <div class="grid-3">
+                <div class="mini-card">
+                    <h3>Zero-shot</h3>
+                    <p>Tạo text feature từ 5 prompt template, sau đó lấy dot product với query image features và nhân scale 100.</p>
+                </div>
+                <div class="mini-card">
+                    <h3>Linear probe</h3>
+                    <p>Huấn luyện Logistic Regression trên support features để kiểm tra mức độ tuyến tính của representation.</p>
+                </div>
+                <div class="mini-card">
+                    <h3>Tip-Adapter</h3>
+                    <p>Kết hợp zero-shot logits và cache logits từ support set để tận dụng cả semantics lẫn memory.</p>
+                </div>
+            </div>
+
+            <div class="figure-slot" style="margin-top:16px; min-height: 240px;">
+                <div class="figure-head">Cách tính text feature</div>
+                <div class="figure-body" style="text-align:left; align-items:flex-start;">
+                    <div style="max-width: 900px;">
+                        <p style="margin:0 0 10px;">Notebook dùng 5 template mô tả chim, tính embedding cho từng prompt rồi average để tăng robustness:</p>
+                        <ul style="margin:0 0 0 20px; line-height:1.65; color:#374151;">
+                            <li><code>a photo of a {}, a type of bird.</code></li>
+                            <li><code>a cropped photo of a {}, a bird.</code></li>
+                            <li><code>a close-up photo of a {}, a bird.</code></li>
+                            <li><code>a photo of the {}, a bird.</code></li>
+                            <li><code>this is a photo of a {}, a type of bird.</code></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="figure-foot">Cách ensemble prompt này giúp zero-shot bớt nhạy với cách diễn đạt của một câu mô tả đơn lẻ.</div>
+            </div>
+        </section>
+
+        <section id="evaluation" class="report-card wide-card">
+            <p class="section-kicker">07. Kết quả chính</p>
+            <h2 class="section-title">Adapted CLIP cho kết quả tốt hơn ở zero-shot và Tip-Adapter khi shot count tăng.</h2>
+            <p class="section-subtitle">Bảng dưới đây chép lại summary Top-1 accuracy từ notebook. Con số cho thấy adaptation bằng LoRA cải thiện nhẹ zero-shot, còn Tip-Adapter là phương pháp mạnh nhất khi số shot tăng.</p>
+
+            <div class="metric-pill-row">
+                <div class="metric-pill"><strong>79.34%</strong> Tip-Adapter, adapted, 16-shot</div>
+                <div class="metric-pill"><strong>72.97%</strong> Zero-shot, adapted</div>
+                <div class="metric-pill"><strong>76.52%</strong> Tip-Adapter, adapted, 8-shot</div>
+            </div>
+
+            <div style="margin-top:16px; overflow-x:auto;">
+                <table class="compact-table">
+                    <thead>
+                        <tr>
+                            <th>K</th>
+                            <th>Vanilla ZS</th>
+                            <th>Adapted ZS</th>
+                            <th>Vanilla Tip</th>
+                            <th>Adapted Tip</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>1</strong></td>
+                            <td>0.723441</td>
+                            <td>0.726182</td>
+                            <td>0.733036</td>
+                            <td>0.730980</td>
+                        </tr>
+                        <tr>
+                            <td><strong>2</strong></td>
+                            <td>0.723849</td>
+                            <td>0.726987</td>
+                            <td>0.739540</td>
+                            <td>0.738145</td>
+                        </tr>
+                        <tr>
+                            <td><strong>4</strong></td>
+                            <td>0.722905</td>
+                            <td>0.726156</td>
+                            <td>0.744942</td>
+                            <td>0.743858</td>
+                        </tr>
+                        <tr>
+                            <td><strong>8</strong></td>
+                            <td>0.724299</td>
+                            <td>0.728583</td>
+                            <td>0.761293</td>
+                            <td>0.765187</td>
+                        </tr>
+                        <tr>
+                            <td><strong>16</strong></td>
+                            <td>0.726015</td>
+                            <td>0.729705</td>
+                            <td>0.791052</td>
+                            <td>0.793358</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="grid-3" style="margin-top:16px;">
+                <div class="quote-box">
+                    <strong>Nhận xét 1:</strong> LoRA không phá vỡ năng lực zero-shot gốc, mà còn tạo cải thiện nhẹ trên novel classes.
+                </div>
+                <div class="quote-box">
+                    <strong>Nhận xét 2:</strong> Tip-Adapter tận dụng support set tốt hơn khi shot count lớn, đặc biệt từ 8-shot trở lên.
+                </div>
+                <div class="quote-box">
+                    <strong>Nhận xét 3:</strong> Linear probe trong notebook đóng vai trò baseline kiểm tra tính tách biệt của feature space, dù summary cuối cùng tập trung vào zero-shot và Tip-Adapter.
+                </div>
+            </div>
+        </section>
+
+        <section class="report-card wide-card">
+            <p class="section-kicker">08. Kết luận</p>
+            <h2 class="section-title">Notebook cho thấy CLIP + LoRA là một pipeline hợp lý cho bài toán multimodal fine-grained classification.</h2>
+            <p class="section-subtitle">Điểm mạnh của hướng này là giữ được tính linh hoạt của CLIP, dễ thêm support set cho few-shot, và chỉ cần lưu adapter nhỏ thay vì toàn bộ backbone. Điều này phù hợp với bài toán cần so sánh nhiều chế độ suy luận trên cùng feature extractor.</p>
+
+            <div class="timeline">
+                <div class="timeline-item"><strong>Giá trị của adaptation:</strong> cải thiện nhẹ nhưng ổn định trên zero-shot so với vanilla CLIP.</div>
+                <div class="timeline-item"><strong>Giá trị của Tip-Adapter:</strong> tận dụng cache từ support set và cho kết quả tốt nhất khi số shot tăng.</div>
+                <div class="timeline-item"><strong>Tái sử dụng:</strong> có thể mở rộng notebook cho các backbone CLIP khác hoặc thay processor để thử nghiệm thêm.</div>
+            </div>
+
+            <div class="pill-row" style="margin-top:18px;">
+                <a class="pill link-pill" href="notebooks/DL_BTL1_Multimodal.ipynb">Mở notebook gốc</a>
+                <a class="pill" href="#overview">Quay lại đầu trang</a>
+            </div>
+        </section>
     </main>
 </body>
 
