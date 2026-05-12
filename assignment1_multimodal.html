@@ -526,20 +526,22 @@
             <h2 class="section-title">Khảo sát nhanh dữ liệu giúp kiểm tra cân bằng lớp và cấu trúc caption.</h2>
             <p class="section-subtitle">Notebook tập trung vào việc xác nhận ảnh và text đều tồn tại, lớp được chia ổn định, và sample trong train mode thay đổi đủ để hỗ trợ learning.</p>
 
-            <div class="figure-slot" style="margin-top:16px; min-height: 250px;">
-                <div class="figure-head">Quan sát mẫu multimodal</div>
-                <div class="figure-body">
-                    <div>
-                        <strong style="display:block; color:#111827; margin-bottom:8px;">Ảnh + caption + nhãn</strong>
-                        Mỗi sample gồm ảnh RGB, caption mô tả loài chim, và local label theo split hiện tại.
-                        <div style="margin-top:12px; display:grid; gap:8px; text-align:left;">
-                            <div class="mini-card" style="padding:10px 12px;">Train: caption sampling ngẫu nhiên</div>
-                            <div class="mini-card" style="padding:10px 12px;">Eval: caption cố định để so sánh công bằng</div>
-                            <div class="mini-card" style="padding:10px 12px;">Few-shot: support/query tách từ test classes</div>
-                        </div>
+            <div style="margin-top:16px; display:grid; gap:14px;">
+                <div class="figure-slot" style="min-height: 400px;">
+                    <div class="figure-head">Class Distribution (CUB-200)</div>
+                    <div class="figure-body" style="padding:0;">
+                        <img src="Image_DL_MD/class_dist.png" style="width:100%; height:100%; object-fit:contain;" alt="Class Distribution Chart"/>
                     </div>
+                    <div class="figure-foot">Biểu đồ phân bố số ảnh theo 200 loài chim CUB-200-2011. Được tạo bằng <code style="font-size:0.8rem;">sns.countplot()</code></div>
                 </div>
-                <div class="figure-foot">Phần EDA trong notebook chủ yếu phục vụ xác minh dữ liệu đầu vào và cách tạo sample cho từng chế độ.</div>
+
+                <div class="figure-slot" style="min-height: 400px;">
+                    <div class="figure-head">Sample Images & Captions</div>
+                    <div class="figure-body" style="padding:0;">
+                        <img src="Image_DL_MD/sample.png" style="width:100%; height:100%; object-fit:contain;" alt="Sample Images and Captions"/>
+                    </div>
+                    <div class="figure-foot">Các ảnh sample từ CUBMultimodalDataset đi kèm caption mô tả loài chim. Mỗi sample được chọn ngẫu nhiên khi training.</div>
+                </div>
             </div>
         </section>
 
@@ -580,7 +582,15 @@
             <h2 class="section-title">CLIP được thích nghi nhẹ bằng LoRA thay vì fine-tune toàn bộ backbone.</h2>
             <p class="section-subtitle">Notebook dùng <code>openai/clip-vit-base-patch32</code> cho giai đoạn training và áp LoRA lên các module attention như q_proj, k_proj, v_proj, out_proj. Mục tiêu là giữ phần lớn tri thức nền tảng của CLIP nhưng vẫn cho phép mô hình thích nghi với CUB.</p>
 
-            <div class="grid-3">
+            <div class="figure-slot" style="margin-top:18px; min-height: 380px;">
+                <div class="figure-head">CLIP Architecture</div>
+                <div class="figure-body" style="padding:0;">
+                    <img src="Image_DL_MD/clip_arch.webp" style="width:100%; height:100%; object-fit:contain;" alt="CLIP Architecture"/>
+                </div>
+                <div class="figure-foot">CLIP xử lý ảnh và text song song: Vision Transformer mã hóa ảnh, Text Transformer mã hóa text, sau đó tính cosine similarity giữa hai embedding space để tạo contrastive loss.</div>
+            </div>
+
+            <div class="grid-3" style="margin-top:16px;">
                 <div class="model-card">
                     <div class="mini-label">Base encoder</div>
                     <h3 style="margin:0 0 8px;">CLIPModel + CLIPProcessor</h3>
@@ -618,6 +628,14 @@
                     </ul>
                 </div>
             </div>
+
+            <div class="figure-slot" style="margin-top:18px; min-height: 380px;">
+                <div class="figure-head">Training Loss Curve (10 epochs)</div>
+                <div class="figure-body" style="padding:0;">
+                    <img src="Image_DL_MD/loss.png" style="width:100%; height:100%; object-fit:contain;" alt="Training Loss Curve"/>
+                </div>
+                <div class="figure-foot">Contrastive loss giảm từ ~2.46 xuống ~1.68 qua 10 epoch. Tính bằng symmetric contrastive loss từ logits_per_image và logits_per_text.</div>
+            </div>
         </section>
 
         <section class="report-card wide-card">
@@ -625,7 +643,15 @@
             <h2 class="section-title">Ba chế độ đánh giá dùng chung cùng feature space, chỉ khác lớp classifier phía trên.</h2>
             <p class="section-subtitle">Phần evaluation của notebook được xây dựng để so sánh công bằng giữa zero-shot, linear probe và Tip-Adapter trên cùng tập query features.</p>
 
-            <div class="grid-3">
+            <div class="figure-slot" style="margin-top:16px; min-height: 380px;">
+                <div class="figure-head">Tip-Adapter Architecture</div>
+                <div class="figure-body" style="padding:0;">
+                    <img src="Image_DL_MD/tip_adapter.png" style="width:100%; height:100%; object-fit:contain;" alt="Tip-Adapter Architecture"/>
+                </div>
+                <div class="figure-foot">Tip-Adapter kết hợp zero-shot logits từ CLIP text features với cache logits tính từ support set images. Sử dụng hai tham số α và β để cân bằng giữa prior knowledge (zero-shot) và data-dependent information (cache).</div>
+            </div>
+
+            <div class="grid-3" style="margin-top:16px;">
                 <div class="mini-card">
                     <h3>Zero-shot</h3>
                     <p>Tạo text feature từ 5 prompt template, sau đó lấy dot product với query image features và nhân scale 100.</p>
@@ -660,61 +686,89 @@
 
         <section id="evaluation" class="report-card wide-card">
             <p class="section-kicker">07. Kết quả chính</p>
-            <h2 class="section-title">Adapted CLIP cho kết quả tốt hơn ở zero-shot và Tip-Adapter khi shot count tăng.</h2>
-            <p class="section-subtitle">Bảng dưới đây chép lại summary Top-1 accuracy từ notebook. Con số cho thấy adaptation bằng LoRA cải thiện nhẹ zero-shot, còn Tip-Adapter là phương pháp mạnh nhất khi số shot tăng.</p>
+            <h2 class="section-title">Vanilla Zero-Shot là baseline mạnh, nhưng Vanilla Tip-Adapter cho hiệu suất tốt nhất khi shot count tăng.</h2>
+            <p class="section-subtitle">Bảng dưới đây chép lại kết quả đầy đủ từ notebook với Top-1, Top-5 và F1 Macro cho tất cả các phương pháp. Dữ liệu cho thấy LoRA không cải thiện zero-shot mà ngược lại làm giảm hiệu suất (69.4% → 54.9%), nhưng Vanilla Tip-Adapter là phương pháp mạnh nhất với khả năng mở rộng tốt theo shot count.</p>
 
             <div class="metric-pill-row">
-                <div class="metric-pill"><strong>79.34%</strong> Tip-Adapter, adapted, 16-shot</div>
-                <div class="metric-pill"><strong>72.97%</strong> Zero-shot, adapted</div>
-                <div class="metric-pill"><strong>76.52%</strong> Tip-Adapter, adapted, 8-shot</div>
+                <div class="metric-pill"><strong>75.65%</strong> Vanilla Tip-Adapter, 16-shot (Top-1)</div>
+                <div class="metric-pill"><strong>69.43%</strong> Vanilla Zero-Shot (Top-1, ổn định)</div>
+                <div class="metric-pill"><strong>79.89%</strong> Linear Probe Adapted, 16-shot (Top-1, riêng lẻ)</div>
             </div>
 
-            <div style="margin-top:16px; overflow-x:auto;">
-                <table class="compact-table">
+            <div class="figure-slot" style="margin-top:16px; min-height: 400px;">
+                <div class="figure-head">Experiment Results Visualization</div>
+                <div class="figure-body" style="padding:0;">
+                    <img src="Image_DL_MD/experiment.png" style="width:100%; height:100%; object-fit:contain;" alt="Experiment Results"/>
+                </div>
+                <div class="figure-foot">So sánh Top-1 accuracy: Vanilla Tip-Adapter cho kết quả tốt nhất (75.65% ở 16-shot), vượt hơn phiên bản Adapted. Dữ liệu từ full experiment trên 50 novel classes.</div>
+            </div>
+
+            <div style="margin-top:18px; overflow-x:auto;">
+                <table class="compact-table" style="font-size:0.8rem;">
                     <thead>
                         <tr>
-                            <th>K</th>
-                            <th>Vanilla ZS</th>
-                            <th>Adapted ZS</th>
-                            <th>Vanilla Tip</th>
-                            <th>Adapted Tip</th>
+                            <th rowspan="2">K</th>
+                            <th colspan="3">Vanilla ZS</th>
+                            <th colspan="3">Adapted ZS</th>
+                            <th colspan="3">Vanilla LP</th>
+                            <th colspan="3">Adapted LP</th>
+                            <th colspan="3">Vanilla Tip</th>
+                            <th colspan="3">Adapted Tip</th>
+                        </tr>
+                        <tr>
+                            <th>T1</th><th>T5</th><th>F1</th>
+                            <th>T1</th><th>T5</th><th>F1</th>
+                            <th>T1</th><th>T5</th><th>F1</th>
+                            <th>T1</th><th>T5</th><th>F1</th>
+                            <th>T1</th><th>T5</th><th>F1</th>
+                            <th>T1</th><th>T5</th><th>F1</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td><strong>1</strong></td>
-                            <td>0.723441</td>
-                            <td>0.726182</td>
-                            <td>0.733036</td>
-                            <td>0.730980</td>
+                            <td>0.6943</td><td>0.9596</td><td>0.6769</td>
+                            <td>0.5504</td><td>0.8944</td><td>0.5201</td>
+                            <td>0.4626</td><td>0.8307</td><td>0.4450</td>
+                            <td>0.4805</td><td>0.8441</td><td>0.4536</td>
+                            <td>0.7005</td><td>0.9613</td><td>0.6833</td>
+                            <td>0.5679</td><td>0.9034</td><td>0.5375</td>
                         </tr>
                         <tr>
                             <td><strong>2</strong></td>
-                            <td>0.723849</td>
-                            <td>0.726987</td>
-                            <td>0.739540</td>
-                            <td>0.738145</td>
+                            <td>0.6942</td><td>0.9599</td><td>0.6766</td>
+                            <td>0.5488</td><td>0.8954</td><td>0.5183</td>
+                            <td>0.5234</td><td>0.8937</td><td>0.5052</td>
+                            <td>0.5373</td><td>0.8923</td><td>0.5127</td>
+                            <td>0.7022</td><td>0.9634</td><td>0.6843</td>
+                            <td>0.5795</td><td>0.9139</td><td>0.5504</td>
                         </tr>
                         <tr>
                             <td><strong>4</strong></td>
-                            <td>0.722905</td>
-                            <td>0.726156</td>
-                            <td>0.744942</td>
-                            <td>0.743858</td>
+                            <td>0.6936</td><td>0.9599</td><td>0.6759</td>
+                            <td>0.5509</td><td>0.8963</td><td>0.5204</td>
+                            <td>0.6297</td><td>0.9411</td><td>0.6201</td>
+                            <td>0.6561</td><td>0.9361</td><td>0.6406</td>
+                            <td>0.7070</td><td>0.9668</td><td>0.6896</td>
+                            <td>0.6012</td><td>0.9270</td><td>0.5734</td>
                         </tr>
                         <tr>
                             <td><strong>8</strong></td>
-                            <td>0.724299</td>
-                            <td>0.728583</td>
-                            <td>0.761293</td>
-                            <td>0.765187</td>
+                            <td>0.6947</td><td>0.9595</td><td>0.6768</td>
+                            <td>0.5495</td><td>0.8968</td><td>0.5185</td>
+                            <td>0.7177</td><td>0.9681</td><td>0.7132</td>
+                            <td>0.7278</td><td>0.9653</td><td>0.7171</td>
+                            <td>0.7278</td><td>0.9704</td><td>0.7123</td>
+                            <td>0.6484</td><td>0.9447</td><td>0.6257</td>
                         </tr>
                         <tr>
                             <td><strong>16</strong></td>
-                            <td>0.726015</td>
-                            <td>0.729705</td>
-                            <td>0.791052</td>
-                            <td>0.793358</td>
+                            <td>0.6942</td><td>0.9589</td><td>0.6768</td>
+                            <td>0.5480</td><td>0.8976</td><td>0.5168</td>
+                            <td>0.7989</td><td>0.9829</td><td>0.7964</td>
+                            <td>0.7906</td><td>0.9792</td><td>0.7847</td>
+                            <td>0.7565</td><td>0.9797</td><td>0.7449</td>
+                            <td>0.7080</td><td>0.9599</td><td>0.6878</td>
                         </tr>
                     </tbody>
                 </table>
@@ -722,13 +776,13 @@
 
             <div class="grid-3" style="margin-top:16px;">
                 <div class="quote-box">
-                    <strong>Nhận xét 1:</strong> LoRA không phá vỡ năng lực zero-shot gốc, mà còn tạo cải thiện nhẹ trên novel classes.
+                    <strong>Nhận xét 1:</strong> LoRA làm giảm hiệu suất zero-shot (69.4% → 54.9%), gợi ý rằng adaptation vào CUB-200-2011 đã thay đổi ngữ nghĩa của CLIP không thuận lợi cho zero-shot.
                 </div>
                 <div class="quote-box">
-                    <strong>Nhận xét 2:</strong> Tip-Adapter tận dụng support set tốt hơn khi shot count lớn, đặc biệt từ 8-shot trở lên.
+                    <strong>Nhận xét 2:</strong> Vanilla Tip-Adapter vượt hơn phiên bản Adapted và cho kết quả tốt nhất (75.65% ở 16-shot). Khả năng scaling từ 1-shot (70.05%) đến 16-shot (75.65%) rất tốt.
                 </div>
                 <div class="quote-box">
-                    <strong>Nhận xét 3:</strong> Linear probe trong notebook đóng vai trò baseline kiểm tra tính tách biệt của feature space, dù summary cuối cùng tập trung vào zero-shot và Tip-Adapter.
+                    <strong>Nhận xét 3:</strong> Linear Probe cho thấy feature space được tách biệt tốt (tăng từ 46.26% lên 79.89% khi K tăng), nhưng Tip-Adapter vẫn là lựa chọn tốt nhất do cân bằng giữa zero-shot và few-shot.
                 </div>
             </div>
         </section>
@@ -739,9 +793,9 @@
             <p class="section-subtitle">Điểm mạnh của hướng này là giữ được tính linh hoạt của CLIP, dễ thêm support set cho few-shot, và chỉ cần lưu adapter nhỏ thay vì toàn bộ backbone. Điều này phù hợp với bài toán cần so sánh nhiều chế độ suy luận trên cùng feature extractor.</p>
 
             <div class="timeline">
-                <div class="timeline-item"><strong>Giá trị của adaptation:</strong> cải thiện nhẹ nhưng ổn định trên zero-shot so với vanilla CLIP.</div>
-                <div class="timeline-item"><strong>Giá trị của Tip-Adapter:</strong> tận dụng cache từ support set và cho kết quả tốt nhất khi số shot tăng.</div>
-                <div class="timeline-item"><strong>Tái sử dụng:</strong> có thể mở rộng notebook cho các backbone CLIP khác hoặc thay processor để thử nghiệm thêm.</div>
+                <div class="timeline-item"><strong>Giá trị của Vanilla CLIP:</strong> zero-shot baseline mạnh (69.4%), ổn định trên novel classes, không bị ảnh hưởng bởi số lượng support sample.</div>
+                <div class="timeline-item"><strong>Giá trị của Tip-Adapter:</strong> tận dụng support set thông qua weighted sum của zero-shot logits và cache logits, cho kết quả tốt nhất (75.65% ở 16-shot).</div>
+                <div class="timeline-item"><strong>Tái sử dụng:</strong> có thể mở rộng notebook cho các backbone CLIP khác, thử LoRA trên các tác vụ khác nơi zero-shot là ưu tiên, hoặc so sánh các thuật toán few-shot khác.</div>
             </div>
 
             <div class="pill-row" style="margin-top:18px;">
