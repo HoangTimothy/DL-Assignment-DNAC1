@@ -7,7 +7,9 @@
   <title>BTL 1 — Phân loại ảnh (Crop Pest &amp; Disease)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet" />
   <style>
     :root {
       --bg0: #0f172a;
@@ -578,7 +580,10 @@
       </p>
       <p class="muted" style="margin:0 0 1rem;">
         <strong>Dashboard W&amp;B (training):</strong>
-        <a class="wandb-link" href="https://wandb.ai/hai-trinh220970-ho-chi-minh-city-university-of-technology/co3133-btl1-image" target="_blank" rel="noopener noreferrer">https://wandb.ai/hai-trinh220970-ho-chi-minh-city-university-of-technology/co3133-btl1-image</a>
+        <a class="wandb-link"
+          href="https://wandb.ai/hai-trinh220970-ho-chi-minh-city-university-of-technology/co3133-btl1-image"
+          target="_blank"
+          rel="noopener noreferrer">https://wandb.ai/hai-trinh220970-ho-chi-minh-city-university-of-technology/co3133-btl1-image</a>
       </p>
       <div class="badges">
         <span class="badge">Dataset: Crop Pest &amp; Disease Detection (Kaggle)</span>
@@ -605,9 +610,11 @@
     <section class="card" id="s01">
       <h2 class="sec-title"><span class="sec-num">01</span> Giới thiệu và mô tả bài toán</h2>
       <p class="muted">
-        Bài toán <strong>phân loại đa lớp</strong> trên ảnh lá cây / sâu bệnh: mỗi ảnh thuộc một nhãn lớp tương ứng thư mục trong
+        Bài toán <strong>phân loại đa lớp</strong> trên ảnh lá cây / sâu bệnh: mỗi ảnh thuộc một nhãn lớp tương ứng thư
+        mục trong
         <code>crop-pest-and-disease-detection</code>. Ảnh đầu vào được resize / crop về <strong>224×224</strong>.
-        Mục tiêu tối ưu các metric như <strong>Accuracy</strong> và <strong>Macro F1</strong> trên tập test, đồng thời ghi nhận chi phí (tham số, thời gian train, suy luận).
+        Mục tiêu tối ưu các metric như <strong>Accuracy</strong> và <strong>Macro F1</strong> trên tập test, đồng thời
+        ghi nhận chi phí (tham số, thời gian train, suy luận).
       </p>
       <div class="grid-4">
         <div class="stat-box">
@@ -629,7 +636,8 @@
       </div>
       <figure class="report-figure">
         <img src="Image_DL/output.png" alt="Output tổng quan từ notebook" loading="lazy" />
-        <figcaption><strong>output.png</strong> — Ảnh export từ notebook (tổng quan output / log chạy thử nghiệm).</figcaption>
+        <figcaption><strong>output.png</strong> — Ảnh export từ notebook (tổng quan output / log chạy thử nghiệm).
+        </figcaption>
       </figure>
     </section>
 
@@ -637,15 +645,19 @@
     <section class="card" id="s02">
       <h2 class="sec-title"><span class="sec-num">02</span> EDA (Exploratory Data Analysis)</h2>
       <p class="muted">
-        Notebook quét thư mục dữ liệu, xây <code>DataFrame</code> đường dẫn–nhãn, in kích thước tập và số lớp, vẽ phân bố số ảnh theo lớp,
+        Notebook quét thư mục dữ liệu, xây <code>DataFrame</code> đường dẫn–nhãn, in kích thước tập và số lớp, vẽ phân
+        bố số ảnh theo lớp,
         và hiển thị lưới ảnh mẫu để kiểm tra chất lượng / độ lệch lớp trước khi huấn luyện.
       </p>
-      <p><strong>Thống kê từ cell:</strong> Kích thước tập (trước subsample tùy chọn): <strong>25 170</strong> ảnh, <strong>22</strong> lớp.
+      <p><strong>Thống kê từ cell:</strong> Kích thước tập (trước subsample tùy chọn): <strong>25 170</strong> ảnh,
+        <strong>22</strong> lớp.
         Subsample stratified <strong>fraction = 0.5</strong>: <strong>25 170 → 12 590</strong> dòng.
         Số lớp duy nhất: <strong>22</strong>; min / max mẫu mỗi lớp: <strong>103</strong> — <strong>1 372</strong>.</p>
       <figure class="report-figure">
-        <img src="Image_DL/classs_distribution%20and%20random%20samples.png" alt="EDA: phân bố lớp và ảnh mẫu ngẫu nhiên" loading="lazy" />
-        <figcaption><strong>classs_distribution and random samples.png</strong> — EDA: histogram phân bố số ảnh theo lớp và lưới ảnh mẫu ngẫu nhiên có nhãn.</figcaption>
+        <img src="Image_DL/classs_distribution%20and%20random%20samples.png"
+          alt="EDA: phân bố lớp và ảnh mẫu ngẫu nhiên" loading="lazy" />
+        <figcaption><strong>classs_distribution and random samples.png</strong> — EDA: histogram phân bố số ảnh theo lớp
+          và lưới ảnh mẫu ngẫu nhiên có nhãn.</figcaption>
       </figure>
     </section>
 
@@ -653,22 +665,31 @@
     <section class="card" id="s03">
       <h2 class="sec-title"><span class="sec-num">03</span> Dataset, DataLoader &amp; Augmentation pipeline</h2>
       <p class="muted">
-        Chia tập <strong>stratify theo nhãn</strong>: <strong>70% train</strong> / <strong>15% validation</strong> / <strong>15% test</strong>
-        (tương ứng <code>1 - val_ratio - test_ratio</code> với <code>val_ratio=test_ratio=0.15</code> trong <code>CFG</code>).
+        Chia tập <strong>stratify theo nhãn</strong>: <strong>70% train</strong> / <strong>15% validation</strong> /
+        <strong>15% test</strong>
+        (tương ứng <code>1 - val_ratio - test_ratio</code> với <code>val_ratio=test_ratio=0.15</code> trong
+        <code>CFG</code>).
         <code>ImageClassificationDataset</code> đọc ảnh RGB (PIL), có cơ chế thử lại khi file lỗi/truncated.
-        <code>DataLoader</code> dùng batch size, số worker và pin memory theo cấu hình; Windows notebook thường để <code>num_workers=0</code>.
+        <code>DataLoader</code> dùng batch size, số worker và pin memory theo cấu hình; Windows notebook thường để
+        <code>num_workers=0</code>.
       </p>
       <p class="muted" style="margin-top:0.5rem;">
-        Sau subsample 0.5, split stratified: <strong>train 8 813</strong> (~70.0%) · <strong>val 1 888</strong> (~15.0%) · <strong>test 1 889</strong> (~15.0%) trên <strong>12 590</strong> mẫu.
+        Sau subsample 0.5, split stratified: <strong>train 8 813</strong> (~70.0%) · <strong>val 1 888</strong> (~15.0%)
+        · <strong>test 1 889</strong> (~15.0%) trên <strong>12 590</strong> mẫu.
       </p>
       <div class="split-row">
-        <div class="split-card"><span class="muted">Train</span><strong>8 813</strong><span class="muted" style="display:block;font-size:0.85rem;">~70%</span></div>
-        <div class="split-card"><span class="muted">Validation</span><strong>1 888</strong><span class="muted" style="display:block;font-size:0.85rem;">~15%</span></div>
-        <div class="split-card"><span class="muted">Test</span><strong>1 889</strong><span class="muted" style="display:block;font-size:0.85rem;">~15%</span></div>
+        <div class="split-card"><span class="muted">Train</span><strong>8 813</strong><span class="muted"
+            style="display:block;font-size:0.85rem;">~70%</span></div>
+        <div class="split-card"><span class="muted">Validation</span><strong>1 888</strong><span class="muted"
+            style="display:block;font-size:0.85rem;">~15%</span></div>
+        <div class="split-card"><span class="muted">Test</span><strong>1 889</strong><span class="muted"
+            style="display:block;font-size:0.85rem;">~15%</span></div>
       </div>
       <p class="muted">
-        Mỗi backbone lấy <code>mean</code>/<code>std</code> chuẩn hóa từ <code>timm.data.resolve_model_data_config</code> để khớp pretrain.
-        Khi <code>use_aug=True</code>, pipeline train trong notebook gồm các bước sau (eval chỉ resize + tensor + normalize):
+        Mỗi backbone lấy <code>mean</code>/<code>std</code> chuẩn hóa từ
+        <code>timm.data.resolve_model_data_config</code> để khớp pretrain.
+        Khi <code>use_aug=True</code>, pipeline train trong notebook gồm các bước sau (eval chỉ resize + tensor +
+        normalize):
       </p>
       <ul class="muted">
         <li><code>RandomResizedCrop</code> (scale 0.7–1.0)</li>
@@ -687,7 +708,8 @@
     transforms.Normalize(mean=mean, std=std),  # từ timm theo model_name
 ])</code></pre>
       <p class="muted" style="margin-top:0.75rem;">
-        Huấn luyện có thể bật <strong>early stopping</strong> theo validation macro F1 (<code>early_stopping_patience</code> trong <code>CFG</code>; 0 = tắt).
+        Huấn luyện có thể bật <strong>early stopping</strong> theo validation macro F1
+        (<code>early_stopping_patience</code> trong <code>CFG</code>; 0 = tắt).
       </p>
     </section>
 
@@ -696,10 +718,14 @@
       <h2 class="sec-title"><span class="sec-num">04</span> Lựa chọn mô hình Backbone (4 loại)</h2>
       <p class="muted">
         Notebook so sánh bốn kiến trúc trong <code>EXPERIMENT_GRID["models"]</code>:
-        <strong>ResNet-18</strong>, <strong>EfficientNet-B0</strong>, <strong>ViT-Base/16</strong>, <strong>Swin-Tiny</strong> (tên đầy đủ timm:
-        <code>resnet18</code>, <code>efficientnet_b0</code>, <code>vit_base_patch16_224</code>, <code>swin_tiny_patch4_window7_224</code>).
-        Đầu phân loại tùy chỉnh: backbone trích đặc trưng + MLP (<code>Linear → BatchNorm → ReLU → Dropout → Linear</code>) ra số lớp.
-        Ba chiến lược fine-tuning: <code>frozen</code>, <code>linear_probe</code>, <code>finetune_all</code> (điều chỉnh <code>requires_grad</code> trên backbone).
+        <strong>ResNet-18</strong>, <strong>EfficientNet-B0</strong>, <strong>ViT-Base/16</strong>,
+        <strong>Swin-Tiny</strong> (tên đầy đủ timm:
+        <code>resnet18</code>, <code>efficientnet_b0</code>, <code>vit_base_patch16_224</code>,
+        <code>swin_tiny_patch4_window7_224</code>).
+        Đầu phân loại tùy chỉnh: backbone trích đặc trưng + MLP
+        (<code>Linear → BatchNorm → ReLU → Dropout → Linear</code>) ra số lớp.
+        Ba chiến lược fine-tuning: <code>frozen</code>, <code>linear_probe</code>, <code>finetune_all</code> (điều chỉnh
+        <code>requires_grad</code> trên backbone).
       </p>
       <div class="backbone-grid">
         <div class="model-card">
@@ -713,21 +739,26 @@
           <header><span>EfficientNet-B0</span><span class="tag">CNN</span></header>
           <figure class="report-figure" style="margin:0;">
             <img src="Image_DL/EfficientNet-Architecture-diagram.webp" alt="Sơ đồ EfficientNet" loading="lazy" />
-            <figcaption><strong>EfficientNet-Architecture-diagram.webp</strong> — Sơ đồ compound scaling / MBConv.</figcaption>
+            <figcaption><strong>EfficientNet-Architecture-diagram.webp</strong> — Sơ đồ compound scaling / MBConv.
+            </figcaption>
           </figure>
         </div>
         <div class="model-card">
           <header><span>ViT-Base/16</span><span class="tag">Transformer</span></header>
           <figure class="report-figure" style="margin:0;">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Vision_Transformer_architecture.png/800px-Vision_Transformer_architecture.png" alt="ViT Base Patch 16 224" loading="lazy" />
-            <figcaption><strong>ViT architecture</strong> (Wikimedia Commons) — patch embedding + Transformer encoder; có thể thay bằng <code>Image_DL/vitbase16.png</code> nếu bạn lưu ảnh riêng.</figcaption>
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Vision_Transformer_architecture.png/800px-Vision_Transformer_architecture.png"
+              alt="ViT Base Patch 16 224" loading="lazy" />
+            <figcaption><strong>ViT architecture</strong> (Wikimedia Commons) — patch embedding + Transformer encoder;
+              có thể thay bằng <code>Image_DL/vitbase16.png</code> nếu bạn lưu ảnh riêng.</figcaption>
           </figure>
         </div>
         <div class="model-card">
           <header><span>Swin-Tiny</span><span class="tag">Transformer</span></header>
           <figure class="report-figure" style="margin:0;">
             <img src="Image_DL/swintiny.webp" alt="Swin Transformer Tiny" loading="lazy" />
-            <figcaption><strong>swintiny.webp</strong> — Swin-Tiny: cửa sổ shifted windows, hierarchical features.</figcaption>
+            <figcaption><strong>swintiny.webp</strong> — Swin-Tiny: cửa sổ shifted windows, hierarchical features.
+            </figcaption>
           </figure>
         </div>
       </div>
@@ -737,12 +768,15 @@
     <section class="card" id="s05">
       <h2 class="sec-title"><span class="sec-num">05</span> Kết quả Training (Weights &amp; Biases)</h2>
       <p class="muted">
-        Ảnh chụp màn hình W&amp;B dưới đây cần file <code>.png</code> trong <code>Image_DL/</code> (notebook không tự export tên này). Nếu ảnh vỡ, hãy tải từ project W&amp;B và đặt đúng tên file như trong <code>src</code>.
+        Ảnh chụp màn hình W&amp;B dưới đây cần file <code>.png</code> trong <code>Image_DL/</code> (notebook không tự
+        export tên này). Nếu ảnh vỡ, hãy tải từ project W&amp;B và đặt đúng tên file như trong <code>src</code>.
       </p>
       <p class="muted">
-        Mỗi run đăng ký W&amp;B (project <code>co3133-btl1-image</code>): log loss / accuracy / F1 theo epoch, learning rate và artifact.
+        Mỗi run đăng ký W&amp;B (project <code>co3133-btl1-image</code>): log loss / accuracy / F1 theo epoch, learning
+        rate và artifact.
         <strong>Project đầy đủ:</strong>
-        <a href="https://wandb.ai/hai-trinh220970-ho-chi-minh-city-university-of-technology/co3133-btl1-image" target="_blank" rel="noopener noreferrer">wandb.ai/…/co3133-btl1-image</a>
+        <a href="https://wandb.ai/hai-trinh220970-ho-chi-minh-city-university-of-technology/co3133-btl1-image"
+          target="_blank" rel="noopener noreferrer">wandb.ai/…/co3133-btl1-image</a>
       </p>
       <div class="tabs" role="tablist" aria-label="Nhóm biểu đồ">
         <span class="tab active">Train loss (screenshot)</span>
@@ -752,15 +786,19 @@
         <div class="mini-card">
           <h4>train/loss — ResNet18 · aug · frozen</h4>
           <figure class="report-figure" style="margin:0;">
-            <img src="Image_DL/trainlosswandbresnet18_aug_frozen.png" alt="W&B train loss ResNet18 aug frozen" loading="lazy" />
-            <figcaption><strong>trainlosswandbresnet18_aug_frozen.png</strong> — Đường train loss theo epoch trên W&amp;B (ví dụ run nhẹ, backbone đông lạnh).</figcaption>
+            <img src="Image_DL/trainlosswandbresnet18_aug_frozen.png" alt="W&B train loss ResNet18 aug frozen"
+              loading="lazy" />
+            <figcaption><strong>trainlosswandbresnet18_aug_frozen.png</strong> — Đường train loss theo epoch trên
+              W&amp;B (ví dụ run nhẹ, backbone đông lạnh).</figcaption>
           </figure>
         </div>
         <div class="mini-card">
           <h4>train/loss — ViT-Base/16 · noaug · finetune_all</h4>
           <figure class="report-figure" style="margin:0;">
-            <img src="Image_DL/trainlosswandbvit_base_patch16_224_noaug_finetune.png" alt="W&B train loss ViT noaug finetune" loading="lazy" />
-            <figcaption><strong>trainlosswandbvit_base_patch16_224_noaug_finetune.png</strong> — Train loss ViT full fine-tune không augmentation.</figcaption>
+            <img src="Image_DL/trainlosswandbvit_base_patch16_224_noaug_finetune.png"
+              alt="W&B train loss ViT noaug finetune" loading="lazy" />
+            <figcaption><strong>trainlosswandbvit_base_patch16_224_noaug_finetune.png</strong> — Train loss ViT full
+              fine-tune không augmentation.</figcaption>
           </figure>
         </div>
       </div>
@@ -770,8 +808,11 @@
     <section class="card" id="s06">
       <h2 class="sec-title"><span class="sec-num">06</span> Kết quả thử nghiệm: bảng, biểu đồ &amp; thảo luận</h2>
       <p class="muted">
-        Kết quả gom từ notebook (tương đương <code>results.csv</code>): accuracy / precision / recall / F1 trên tập test, tham số, checkpoint, thời gian train, độ trễ suy luận.
-        Liên kết theo dõi đầy đủ: <a href="https://wandb.ai/hai-trinh220970-ho-chi-minh-city-university-of-technology/co3133-btl1-image" target="_blank" rel="noopener noreferrer">W&amp;B — co3133-btl1-image</a>.
+        Kết quả gom từ notebook (tương đương <code>results.csv</code>): accuracy / precision / recall / F1 trên tập
+        test, tham số, checkpoint, thời gian train, độ trễ suy luận.
+        Liên kết theo dõi đầy đủ: <a
+          href="https://wandb.ai/hai-trinh220970-ho-chi-minh-city-university-of-technology/co3133-btl1-image"
+          target="_blank" rel="noopener noreferrer">W&amp;B — co3133-btl1-image</a>.
       </p>
       <div class="filters" aria-hidden="true">
         <span class="tab active">All runs</span>
@@ -805,10 +846,10 @@
               <td>efficientnet_b0</td>
               <td>aug</td>
               <td>finetune_all</td>
-              <td>90.31</td>
-              <td>88.76</td>
-              <td>89.91</td>
-              <td>89.07</td>
+              <td><strong>90.31</strong></td>
+              <td><strong>88.76</strong></td>
+              <td><strong>89.91</strong></td>
+              <td><strong>89.07</strong></td>
               <td>4.68</td>
               <td>4.68</td>
               <td>18.14</td>
@@ -827,8 +868,8 @@
               <td>86.20</td>
               <td>85.46</td>
               <td>328.92</td>
-              <td>870.7</td>
-              <td>7.34</td>
+              <td><strong>870.7</strong></td>
+              <td><strong>7.34</strong></td>
             </tr>
             <tr>
               <td style="text-align:left;">resnet18_aug_linear_probe</td>
@@ -869,9 +910,9 @@
               <td>85.38</td>
               <td>84.11</td>
               <td>84.35</td>
-              <td>86.20</td>
-              <td>86.20</td>
-              <td>328.92</td>
+              <td><strong>86.20</strong></td>
+              <td><strong>86.20</strong></td>
+              <td><strong>328.92</strong></td>
               <td>577.2</td>
               <td>4.81</td>
             </tr>
@@ -923,7 +964,8 @@
           </tbody>
         </table>
       </div>
-      <p class="muted" style="margin-top:0.5rem;font-size:0.8rem;">FLOPs trong notebook trả về NaN — cột bỏ qua. <code>train_time_sec = 0</code> với một số run ResNet18 tương ứng cell đo thời gian / epoch không ghi nhận.</p>
+      <p class="muted" style="margin-top:0.5rem;font-size:0.8rem;">FLOPs trong notebook trả về NaN — cột bỏ qua.
+        <code>train_time_sec = 0</code> với một số run ResNet18 tương ứng cell đo thời gian / epoch không ghi nhận.</p>
 
       <h3 style="margin:1.25rem 0 0.5rem;font-size:1rem;">Độ trễ suy luận &amp; throughput (ms/ảnh, FPS)</h3>
       <div style="overflow-x:auto;">
@@ -936,69 +978,174 @@
             </tr>
           </thead>
           <tbody>
-            <tr><td style="text-align:left;">resnet18_aug_frozen</td><td>2.573</td><td>388.65</td></tr>
-            <tr><td style="text-align:left;">resnet18_aug_linear_probe</td><td>2.134</td><td>468.56</td></tr>
-            <tr><td style="text-align:left;">resnet18_noaug_finetune_all</td><td>2.188</td><td>457.13</td></tr>
-            <tr><td style="text-align:left;">efficientnet_b0_aug_finetune_all</td><td>5.022</td><td>199.10</td></tr>
-            <tr><td style="text-align:left;">efficientnet_b0_noaug_frozen</td><td>4.927</td><td>202.94</td></tr>
-            <tr><td style="text-align:left;">vit_base_patch16_224_aug_linear_probe</td><td>3.961</td><td>252.49</td></tr>
-            <tr><td style="text-align:left;">vit_base_patch16_224_noaug_finetune_all</td><td>4.219</td><td>237.00</td></tr>
-            <tr><td style="text-align:left;">swin_tiny_patch4_window7_224_aug_frozen</td><td>6.759</td><td>147.95</td></tr>
+            <tr>
+              <td style="text-align:left;">resnet18_aug_frozen</td>
+              <td>2.573</td>
+              <td>388.65</td>
+            </tr>
+            <tr>
+              <td style="text-align:left;">resnet18_aug_linear_probe</td>
+              <td>2.134</td>
+              <td><strong>468.56</strong></td>
+            </tr>
+            <tr>
+              <td style="text-align:left;">resnet18_noaug_finetune_all</td>
+              <td>2.188</td>
+              <td>457.13</td>
+            </tr>
+            <tr>
+              <td style="text-align:left;">efficientnet_b0_aug_finetune_all</td>
+              <td>5.022</td>
+              <td>199.10</td>
+            </tr>
+            <tr>
+              <td style="text-align:left;">efficientnet_b0_noaug_frozen</td>
+              <td>4.927</td>
+              <td>202.94</td>
+            </tr>
+            <tr>
+              <td style="text-align:left;">vit_base_patch16_224_aug_linear_probe</td>
+              <td>3.961</td>
+              <td>252.49</td>
+            </tr>
+            <tr>
+              <td style="text-align:left;">vit_base_patch16_224_noaug_finetune_all</td>
+              <td>4.219</td>
+              <td>237.00</td>
+            </tr>
+            <tr>
+              <td style="text-align:left;">swin_tiny_patch4_window7_224_aug_frozen</td>
+              <td><strong>6.759</strong></td>
+              <td>147.95</td>
+            </tr>
           </tbody>
         </table>
       </div>
 
       <h3 style="margin:1.25rem 0 0.5rem;font-size:1rem;">Top Aug / Top No-Aug (tóm tắt cell)</h3>
-      <p class="muted" style="margin:0 0 0.5rem;">Top Aug: EfficientNet-B0 aug finetune_all (early stop epoch 10); ViT aug linear_probe (10 epoch); ResNet18 aug linear_probe (0 epoch ghi nhận); Swin aug frozen; ResNet18 aug frozen. Top No-Aug: ResNet18 noaug finetune_all (9 epoch, early stop); ViT noaug finetune_all; EfficientNet noaug frozen.</p>
+      <p class="muted" style="margin:0 0 0.5rem;">Top Aug: EfficientNet-B0 aug finetune_all (early stop epoch 10); ViT
+        aug linear_probe (10 epoch); ResNet18 aug linear_probe (0 epoch ghi nhận); Swin aug frozen; ResNet18 aug frozen.
+        Top No-Aug: ResNet18 noaug finetune_all (9 epoch, early stop); ViT noaug finetune_all; EfficientNet noaug
+        frozen.</p>
 
       <figure class="report-figure">
-        <img src="Image_DL/accbackbonexfinetunestrategy.png" alt="Accuracy theo backbone và chiến lược fine-tune" loading="lazy" />
-        <figcaption><strong>accbackbonexfinetunestrategy.png</strong> — So sánh accuracy theo backbone × chiến lược fine-tuning (aug / no-aug).</figcaption>
+        <img src="Image_DL/accbackbonexfinetunestrategy.png" alt="Accuracy theo backbone và chiến lược fine-tune"
+          loading="lazy" />
+        <figcaption><strong>accbackbonexfinetunestrategy.png</strong> — So sánh accuracy theo backbone × chiến lược
+          fine-tuning (aug / no-aug).</figcaption>
       </figure>
       <figure class="report-figure">
-        <img src="Image_DL/Macrof1%20backbone%20x%20aug%20and%20noaug.png" alt="Macro F1 backbone aug noaug" loading="lazy" />
-        <figcaption><strong>Macrof1 backbone x aug and noaug.png</strong> — Macro F1 theo backbone, tách nhánh augmentation có / không.</figcaption>
+        <img src="Image_DL/Macrof1%20backbone%20x%20aug%20and%20noaug.png" alt="Macro F1 backbone aug noaug"
+          loading="lazy" />
+        <figcaption><strong>Macrof1 backbone x aug and noaug.png</strong> — Macro F1 theo backbone, tách nhánh
+          augmentation có / không.</figcaption>
       </figure>
       <figure class="report-figure">
         <img src="Image_DL/efficiencyinferencemsimage.png" alt="Hiệu năng suy luận theo run" loading="lazy" />
-        <figcaption><strong>efficiencyinferencemsimage.png</strong> — Hiệu quả suy luận (ms trên ảnh / throughput) giữa các run.</figcaption>
+        <figcaption><strong>efficiencyinferencemsimage.png</strong> — Hiệu quả suy luận (ms trên ảnh / throughput) giữa
+          các run.</figcaption>
       </figure>
       <figure class="report-figure">
         <img src="Image_DL/top_confident.png" alt="Top confident wrong predictions" loading="lazy" />
-        <figcaption><strong>top_confident.png</strong> — Các mẫu sai nhưng model tự tin cao (phân tích lỗi).</figcaption>
+        <figcaption><strong>top_confident.png</strong> — Các mẫu sai nhưng model tự tin cao (phân tích lỗi).
+        </figcaption>
       </figure>
 
       <p class="muted" style="margin-top:1rem;">
-        <strong>Thảo luận ngắn:</strong> Run tốt nhất toàn cụm là <strong>efficientnet_b0_aug_finetune_all</strong> (accuracy <strong>90.31%</strong>, F1 <strong>89.07%</strong>), đứng đầu cả accuracy, precision, recall và F1 trong bảng xếp hạng metric.
-        <strong>Augmentation</strong> giúp EfficientNet vượt trội so với cùng backbone <code>noaug + frozen</code> (82.05% acc).
-        <strong>ViT + linear_probe + aug</strong> đạt acc/F1 cao thứ hai với phần lớn tham số chỉ huấn luyện phần đầu (trainable ~85.5M).
-        <strong>ResNet18</strong>: linear_probe + aug rất cạnh tranh (88.25% acc) với ít tham số train hơn full finetune; frozen + aug yếu hơn rõ (80.73%).
-        <strong>Throughput:</strong> ResNet18 aug linear_probe nhanh nhất trong bảng đo (~468 FPS); Swin aug frozen chậm nhất (~148 FPS) — trade-off độ chính xác / chi phí suy luận cần cân nhắc khi triển khai.
+        <strong>Thảo luận ngắn:</strong> Run tốt nhất toàn cụm là <strong>efficientnet_b0_aug_finetune_all</strong>
+        (accuracy <strong>90.31%</strong>, F1 <strong>89.07%</strong>), đứng đầu cả accuracy, precision, recall và F1
+        trong bảng xếp hạng metric.
+        <strong>Augmentation</strong> giúp EfficientNet vượt trội so với cùng backbone <code>noaug + frozen</code>
+        (82.05% acc).
+        <strong>ViT + linear_probe + aug</strong> đạt acc/F1 cao thứ hai với phần lớn tham số chỉ huấn luyện phần đầu
+        (trainable ~85.5M).
+        <strong>ResNet18</strong>: linear_probe + aug rất cạnh tranh (88.25% acc) với ít tham số train hơn full
+        finetune; frozen + aug yếu hơn rõ (80.73%).
+        <strong>Throughput:</strong> ResNet18 aug linear_probe nhanh nhất trong bảng đo (~468 FPS); Swin aug frozen chậm
+        nhất (~148 FPS) — trade-off độ chính xác / chi phí suy luận cần cân nhắc khi triển khai.
       </p>
 
-      <p class="muted" style="margin:0.75rem 0 0.25rem;">Ma trận nhầm lẫn do notebook lưu vào <code>artifacts_image/cm_*.png</code> và <code>artifacts_image/cm_norm_*.png</code> (cùng cấp với file HTML này).</p>
+      <p class="muted" style="margin:0.75rem 0 0.25rem;">Ma trận nhầm lẫn do notebook lưu vào
+        <code>artifacts_image/cm_*.png</code> và <code>artifacts_image/cm_norm_*.png</code> (cùng cấp với file HTML
+        này).</p>
       <h3 style="margin:1.25rem 0 0.5rem;font-size:1rem;">Confusion matrix (counts) — <code>cm_*.png</code></h3>
       <div class="cm-all-grid">
-        <figure class="report-figure"><img src="artifacts_image/cm_efficientnet_b0_aug_finetune_all.png" alt="CM EfficientNet aug finetune" loading="lazy" /><figcaption><strong>cm_efficientnet_b0_aug_finetune_all.png</strong> — Ma trận nhầm lẫn (số đếm), run tốt nhất.</figcaption></figure>
-        <figure class="report-figure"><img src="artifacts_image/cm_efficientnet_b0_noaug_frozen.png" alt="CM EfficientNet noaug frozen" loading="lazy" /><figcaption><strong>cm_efficientnet_b0_noaug_frozen.png</strong> — EfficientNet đông lạnh, không aug.</figcaption></figure>
-        <figure class="report-figure"><img src="artifacts_image/cm_resnet18_aug_frozen.png" alt="CM ResNet18 aug frozen" loading="lazy" /><figcaption><strong>cm_resnet18_aug_frozen.png</strong> — ResNet18 aug, backbone frozen.</figcaption></figure>
-        <figure class="report-figure"><img src="artifacts_image/cm_resnet18_aug_linear_probe.png" alt="CM ResNet18 aug linear" loading="lazy" /><figcaption><strong>cm_resnet18_aug_linear_probe.png</strong> — ResNet18 aug, linear probe.</figcaption></figure>
-        <figure class="report-figure"><img src="artifacts_image/cm_resnet18_noaug_finetune_all.png" alt="CM ResNet18 noaug finetune" loading="lazy" /><figcaption><strong>cm_resnet18_noaug_finetune_all.png</strong> — ResNet18 full fine-tune, không aug.</figcaption></figure>
-        <figure class="report-figure"><img src="artifacts_image/cm_swin_tiny_patch4_window7_224_aug_frozen.png" alt="CM Swin aug frozen" loading="lazy" /><figcaption><strong>cm_swin_tiny_patch4_window7_224_aug_frozen.png</strong> — Swin-Tiny aug, frozen.</figcaption></figure>
-        <figure class="report-figure"><img src="artifacts_image/cm_vit_base_patch16_224_aug_linear_probe.png" alt="CM ViT aug linear" loading="lazy" /><figcaption><strong>cm_vit_base_patch16_224_aug_linear_probe.png</strong> — ViT aug, linear probe.</figcaption></figure>
-        <figure class="report-figure"><img src="artifacts_image/cm_vit_base_patch16_224_noaug_finetune_all.png" alt="CM ViT noaug finetune" loading="lazy" /><figcaption><strong>cm_vit_base_patch16_224_noaug_finetune_all.png</strong> — ViT full fine-tune, không aug.</figcaption></figure>
+        <figure class="report-figure"><img src="artifacts_image/cm_efficientnet_b0_aug_finetune_all.png"
+            alt="CM EfficientNet aug finetune" loading="lazy" />
+          <figcaption><strong>cm_efficientnet_b0_aug_finetune_all.png</strong> — Ma trận nhầm lẫn (số đếm), run tốt
+            nhất.</figcaption>
+        </figure>
+        <figure class="report-figure"><img src="artifacts_image/cm_efficientnet_b0_noaug_frozen.png"
+            alt="CM EfficientNet noaug frozen" loading="lazy" />
+          <figcaption><strong>cm_efficientnet_b0_noaug_frozen.png</strong> — EfficientNet đông lạnh, không aug.
+          </figcaption>
+        </figure>
+        <figure class="report-figure"><img src="artifacts_image/cm_resnet18_aug_frozen.png" alt="CM ResNet18 aug frozen"
+            loading="lazy" />
+          <figcaption><strong>cm_resnet18_aug_frozen.png</strong> — ResNet18 aug, backbone frozen.</figcaption>
+        </figure>
+        <figure class="report-figure"><img src="artifacts_image/cm_resnet18_aug_linear_probe.png"
+            alt="CM ResNet18 aug linear" loading="lazy" />
+          <figcaption><strong>cm_resnet18_aug_linear_probe.png</strong> — ResNet18 aug, linear probe.</figcaption>
+        </figure>
+        <figure class="report-figure"><img src="artifacts_image/cm_resnet18_noaug_finetune_all.png"
+            alt="CM ResNet18 noaug finetune" loading="lazy" />
+          <figcaption><strong>cm_resnet18_noaug_finetune_all.png</strong> — ResNet18 full fine-tune, không aug.
+          </figcaption>
+        </figure>
+        <figure class="report-figure"><img src="artifacts_image/cm_swin_tiny_patch4_window7_224_aug_frozen.png"
+            alt="CM Swin aug frozen" loading="lazy" />
+          <figcaption><strong>cm_swin_tiny_patch4_window7_224_aug_frozen.png</strong> — Swin-Tiny aug, frozen.
+          </figcaption>
+        </figure>
+        <figure class="report-figure"><img src="artifacts_image/cm_vit_base_patch16_224_aug_linear_probe.png"
+            alt="CM ViT aug linear" loading="lazy" />
+          <figcaption><strong>cm_vit_base_patch16_224_aug_linear_probe.png</strong> — ViT aug, linear probe.
+          </figcaption>
+        </figure>
+        <figure class="report-figure"><img src="artifacts_image/cm_vit_base_patch16_224_noaug_finetune_all.png"
+            alt="CM ViT noaug finetune" loading="lazy" />
+          <figcaption><strong>cm_vit_base_patch16_224_noaug_finetune_all.png</strong> — ViT full fine-tune, không aug.
+          </figcaption>
+        </figure>
       </div>
 
-      <h3 style="margin:1.25rem 0 0.5rem;font-size:1rem;">Confusion matrix chuẩn hóa theo dòng — <code>cm_norm_*.png</code></h3>
+      <h3 style="margin:1.25rem 0 0.5rem;font-size:1rem;">Confusion matrix chuẩn hóa theo dòng —
+        <code>cm_norm_*.png</code></h3>
       <div class="cm-all-grid">
-        <figure class="report-figure"><img src="artifacts_image/cm_norm_efficientnet_b0_aug_finetune_all.png" alt="CM norm EfficientNet aug finetune" loading="lazy" /><figcaption><strong>cm_norm_efficientnet_b0_aug_finetune_all.png</strong> — Recall theo lớp thật (chuẩn hóa).</figcaption></figure>
-        <figure class="report-figure"><img src="artifacts_image/cm_norm_efficientnet_b0_noaug_frozen.png" alt="CM norm EfficientNet noaug frozen" loading="lazy" /><figcaption><strong>cm_norm_efficientnet_b0_noaug_frozen.png</strong></figcaption></figure>
-        <figure class="report-figure"><img src="artifacts_image/cm_norm_resnet18_aug_frozen.png" alt="CM norm ResNet18 aug frozen" loading="lazy" /><figcaption><strong>cm_norm_resnet18_aug_frozen.png</strong></figcaption></figure>
-        <figure class="report-figure"><img src="artifacts_image/cm_norm_resnet18_aug_linear_probe.png" alt="CM norm ResNet18 aug linear" loading="lazy" /><figcaption><strong>cm_norm_resnet18_aug_linear_probe.png</strong></figcaption></figure>
-        <figure class="report-figure"><img src="artifacts_image/cm_norm_resnet18_noaug_finetune_all.png" alt="CM norm ResNet18 noaug finetune" loading="lazy" /><figcaption><strong>cm_norm_resnet18_noaug_finetune_all.png</strong></figcaption></figure>
-        <figure class="report-figure"><img src="artifacts_image/cm_norm_swin_tiny_patch4_window7_224_aug_frozen.png" alt="CM norm Swin" loading="lazy" /><figcaption><strong>cm_norm_swin_tiny_patch4_window7_224_aug_frozen.png</strong></figcaption></figure>
-        <figure class="report-figure"><img src="artifacts_image/cm_norm_vit_base_patch16_224_aug_linear_probe.png" alt="CM norm ViT aug linear" loading="lazy" /><figcaption><strong>cm_norm_vit_base_patch16_224_aug_linear_probe.png</strong></figcaption></figure>
-        <figure class="report-figure"><img src="artifacts_image/cm_norm_vit_base_patch16_224_noaug_finetune_all.png" alt="CM norm ViT noaug" loading="lazy" /><figcaption><strong>cm_norm_vit_base_patch16_224_noaug_finetune_all.png</strong></figcaption></figure>
+        <figure class="report-figure"><img src="artifacts_image/cm_norm_efficientnet_b0_aug_finetune_all.png"
+            alt="CM norm EfficientNet aug finetune" loading="lazy" />
+          <figcaption><strong>cm_norm_efficientnet_b0_aug_finetune_all.png</strong> — Recall theo lớp thật (chuẩn hóa).
+          </figcaption>
+        </figure>
+        <figure class="report-figure"><img src="artifacts_image/cm_norm_efficientnet_b0_noaug_frozen.png"
+            alt="CM norm EfficientNet noaug frozen" loading="lazy" />
+          <figcaption><strong>cm_norm_efficientnet_b0_noaug_frozen.png</strong></figcaption>
+        </figure>
+        <figure class="report-figure"><img src="artifacts_image/cm_norm_resnet18_aug_frozen.png"
+            alt="CM norm ResNet18 aug frozen" loading="lazy" />
+          <figcaption><strong>cm_norm_resnet18_aug_frozen.png</strong></figcaption>
+        </figure>
+        <figure class="report-figure"><img src="artifacts_image/cm_norm_resnet18_aug_linear_probe.png"
+            alt="CM norm ResNet18 aug linear" loading="lazy" />
+          <figcaption><strong>cm_norm_resnet18_aug_linear_probe.png</strong></figcaption>
+        </figure>
+        <figure class="report-figure"><img src="artifacts_image/cm_norm_resnet18_noaug_finetune_all.png"
+            alt="CM norm ResNet18 noaug finetune" loading="lazy" />
+          <figcaption><strong>cm_norm_resnet18_noaug_finetune_all.png</strong></figcaption>
+        </figure>
+        <figure class="report-figure"><img src="artifacts_image/cm_norm_swin_tiny_patch4_window7_224_aug_frozen.png"
+            alt="CM norm Swin" loading="lazy" />
+          <figcaption><strong>cm_norm_swin_tiny_patch4_window7_224_aug_frozen.png</strong></figcaption>
+        </figure>
+        <figure class="report-figure"><img src="artifacts_image/cm_norm_vit_base_patch16_224_aug_linear_probe.png"
+            alt="CM norm ViT aug linear" loading="lazy" />
+          <figcaption><strong>cm_norm_vit_base_patch16_224_aug_linear_probe.png</strong></figcaption>
+        </figure>
+        <figure class="report-figure"><img src="artifacts_image/cm_norm_vit_base_patch16_224_noaug_finetune_all.png"
+            alt="CM norm ViT noaug" loading="lazy" />
+          <figcaption><strong>cm_norm_vit_base_patch16_224_noaug_finetune_all.png</strong></figcaption>
+        </figure>
       </div>
     </section>
 
@@ -1006,51 +1153,32 @@
     <section class="card" id="s07">
       <h2 class="sec-title"><span class="sec-num">07</span> Trực quan hóa GradCAM / EigenCAM</h2>
       <p class="muted">
-        Notebook dùng <code>pytorch-grad-cam</code>: <strong>GradCAM</strong> cho CNN (ResNet, EfficientNet), <strong>EigenCAM</strong> cho ViT/Swin khi bật <code>use_eigen</code>.
-        Dưới đây là ảnh tĩnh trong <code>Image_DL/</code> (tự lưu sau khi gọi <code>cam_visualize(..., save_overlay_path=...)</code> hoặc hàm visualize có tham số <code>save_path</code> trong notebook).
+        Notebook dùng <code>pytorch-grad-cam</code>: <strong>GradCAM</strong> cho CNN (ResNet, EfficientNet),
+        <strong>EigenCAM</strong> cho ViT/Swin khi bật <code>use_eigen</code>.
+        Dưới đây là ảnh tĩnh trong <code>Image_DL/</code> (tự lưu sau khi gọi
+        <code>cam_visualize(..., save_overlay_path=...)</code> hoặc hàm visualize có tham số <code>save_path</code>
+        trong notebook).
       </p>
       <figure class="report-figure">
         <img src="Image_DL/grad_cam.png" alt="GradCAM và heatmap overlay" loading="lazy" />
-        <figcaption><strong>grad_cam.png</strong> — Heatmap GradCAM/EigenCAM: vùng ảnh model chú ý khi dự đoán (overlay lên ảnh gốc).</figcaption>
+        <figcaption><strong>grad_cam.png</strong> — Heatmap GradCAM/EigenCAM: vùng ảnh model chú ý khi dự đoán (overlay
+          lên ảnh gốc).</figcaption>
       </figure>
       <figure class="report-figure">
         <img src="Image_DL/visualize_hard_sample.png" alt="So sánh mẫu khó nhiều backbone" loading="lazy" />
-        <figcaption><strong>visualize_hard_sample.png</strong> — Trực quan mẫu khó: nhiều panel so sánh dự đoán / nhãn thật giữa các backbone trên cùng ảnh.</figcaption>
+        <figcaption><strong>visualize_hard_sample.png</strong> — Trực quan mẫu khó: nhiều panel so sánh dự đoán / nhãn
+          thật giữa các backbone trên cùng ảnh.</figcaption>
       </figure>
     </section>
 
-    <!-- 08 -->
-    <section class="card" id="s08">
-      <h2 class="sec-title"><span class="sec-num">08</span> Thử nghiệm trực tiếp trên Gradio — Hugging Face Space</h2>
-      <p class="muted">
-        Phần cuối notebook xây giao diện Gradio: chọn backbone / cấu hình đã train, tải trọng số và tiền xử lý tương ứng, hiển thị xác suất lớp.
-        Khi deploy Space HF, nhúng iframe hoặc liên kết trực tiếp vào khung dưới.
-      </p>
-      <div class="gradio-mock">
-        <h3>[Tên demo — ví dụ: Crop Pest / Disease Classifier]</h3>
-        <p class="muted" style="margin:0 0 0.75rem;font-size:0.9rem;">[Nhóm / môn học — placeholder]</p>
-        <p style="margin:0 0 0.5rem;">Phân loại ảnh vào <strong>22</strong> nhãn (crop pest &amp; disease). Models: bốn backbone timm × (aug / no aug) × frozen / linear_probe / finetune_all — checkpoint đã lưu theo từng run.</p>
-        <div class="mono-block">22 classes — xem nhãn đầy đủ trong notebook / metadata dataset Kaggle.</div>
-        <div class="two-col">
-          <div>
-            <span class="field-label">Ảnh / URL</span>
-            <div class="fake-input">[Paste URL hoặc upload — placeholder UI]</div>
-          </div>
-          <div>
-            <span class="field-label">Xác suất lớp</span>
-            <div class="fake-input" style="min-height:4rem;">[Biểu đồ thanh hoặc bảng xác suất sau khi chạy]</div>
-          </div>
-        </div>
-        <p class="muted" style="margin-top:1rem;font-size:0.85rem;">
-          <strong>Embed HF Space (placeholder):</strong><br />
-          <code>&lt;iframe src="[YOUR_SPACE_URL]" …&gt;&lt;/iframe&gt;</code>
-        </p>
-      </div>
-    </section>
+
 
     <footer>
-      Báo cáo HTML tĩnh — dữ liệu &amp; ảnh đồng bộ với output <code>DL_BTL1_Image.ipynb</code> và thư mục <code>Image_DL/</code>.
-      Training logs: <a href="https://wandb.ai/hai-trinh220970-ho-chi-minh-city-university-of-technology/co3133-btl1-image" target="_blank" rel="noopener noreferrer">Weights &amp; Biases — co3133-btl1-image</a>.
+      Báo cáo HTML tĩnh — dữ liệu &amp; ảnh đồng bộ với output <code>DL_BTL1_Image.ipynb</code> và thư mục
+      <code>Image_DL/</code>.
+      Training logs: <a
+        href="https://wandb.ai/hai-trinh220970-ho-chi-minh-city-university-of-technology/co3133-btl1-image"
+        target="_blank" rel="noopener noreferrer">Weights &amp; Biases — co3133-btl1-image</a>.
     </footer>
   </div>
 </body>

@@ -402,12 +402,12 @@
         <section id="eda" class="report-card wide-card">
             <p class="section-kicker">02. EDA</p>
             <h2 class="section-title">EDA để chốt `MAX_LEN` và đọc phân bố dữ liệu.</h2>
-            <p class="section-subtitle">Các biểu đồ và bảng dưới đây phản ánh trực tiếp output từ notebook; chúng được
-                sắp xếp theo hướng ngắn gọn, nhất quán và phù hợp với trình bày báo cáo.</p>
+            <p class="section-subtitle">Các biểu đồ dưới đây lấy từ thư mục <code>Image_DL_text/</code> (export từ
+                notebook / Colab); tên file đã được khớp với asset trong repo.</p>
 
             <div class="gallery-grid">
                 <div class="figure-slot" style="min-height: auto; grid-column: span 2;">
-                    <img src="notebooks/DL_BTL1_Text_colab_files/word-count%20distribution%20and%20balanced%20classs%20distribution%20in%20train%20subset.png"
+                    <img src="Image_DL_text/word_count_distribution%20and%20balanced%20class%20distribution.png"
                         alt="Word-count and balanced class distribution" style="max-width: 100%; border-radius: 12px;">
                 </div>
                 <div class="figure-slot" style="min-height: auto;">
@@ -459,8 +459,8 @@
                     </div>
                     <div class="figure-foot">Phân bố này cho thấy lựa chọn `MAX_LEN = 256` là phù hợp với dữ liệu.</div>
                 </div>
-                <div class="figure-slot" style="min-height: auto;">#
-                    <img src="notebooks/DL_BTL1_Text_colab_files/top%20frequent%20tokens.png" alt="Top frequent tokens"
+                <div class="figure-slot" style="min-height: auto;">
+                    <img src="Image_DL_text/topfrequenttoken.png" alt="Top frequent tokens"
                         style="max-width: 100%; border-radius: 12px;">
                 </div>
                 <div class="figure-slot" style="min-height: auto;">
@@ -599,7 +599,7 @@
                 <div class="figure-slot" style="min-height: 250px;">
                     <div class="figure-head">Sơ đồ BiLSTM</div>
                     <div class="figure-body" style="padding: 0;">
-                        <img src="notebooks/DL_BTL1_Text_colab_files/bilstm_architecture.png" alt="BiLSTM architecture"
+                        <img src="Image_DL_text/bilstmarrchitecture.webp" alt="BiLSTM architecture"
                             style="width: 100%; display: block; object-fit: cover; min-height: 260px;">
                     </div>
                     <div class="figure-foot">BiLSTM biểu diễn tín hiệu tuần tự với chi phí mô hình thấp hơn.</div>
@@ -623,20 +623,20 @@
                 DistilBERT hội tụ nhanh hơn và đạt chất lượng cao hơn trên tập kiểm thử.</p>
             <div class="gallery-grid">
                 <div class="figure-slot" style="min-height: auto;">
-                    <img src="notebooks/DL_BTL1_Text_colab_files/RNNtrainlossw%26b.png" alt="RNN Train Loss"
+                    <img src="Image_DL_text/rnntrainlosswwb.png" alt="RNN Train Loss"
                         style="max-width: 100%; border-radius: 12px;">
                 </div>
                 <div class="figure-slot" style="min-height: auto;">
-                    <img src="notebooks/DL_BTL1_Text_colab_files/rnnvalidationmacrof1w%26b.png"
-                        alt="RNN Validation Macro-F1" style="max-width: 100%; border-radius: 12px;">
+                    <img src="Image_DL_text/rnnvalidationmacrof1wandb.png" alt="RNN Validation Macro-F1"
+                        style="max-width: 100%; border-radius: 12px;">
                 </div>
                 <div class="figure-slot" style="min-height: auto;">
-                    <img src="notebooks/DL_BTL1_Text_colab_files/Transformer%20train%20loss%20(w%26b).png"
-                        alt="Transformer Train Loss" style="max-width: 100%; border-radius: 12px;">
+                    <img src="Image_DL_text/transformertrainlosswwb.png" alt="Transformer Train Loss"
+                        style="max-width: 100%; border-radius: 12px;">
                 </div>
                 <div class="figure-slot" style="min-height: auto;">
-                    <img src="notebooks/DL_BTL1_Text_colab_files/transformervalidationmacrof1w%26b.png"
-                        alt="Transformer Validation Macro-F1" style="max-width: 100%; border-radius: 12px;">
+                    <img src="Image_DL_text/transformervalidationmacrof1wb.png" alt="Transformer Validation Macro-F1"
+                        style="max-width: 100%; border-radius: 12px;">
                 </div>
             </div>
 
@@ -689,10 +689,10 @@
 
                 <div class="demo-note">
                     <div class="note-chip">Ma trận nhầm lẫn</div>
-                    <img src="notebooks/DL_BTL1_Text_colab_files/RNN%20confusion%20matrix.png"
-                        alt="RNN Confusion Matrix" style="max-width: 100%; border-radius: 8px; margin-bottom: 8px;">
-                    <img src="notebooks/DL_BTL1_Text_colab_files/transformer%20confusion%20matrix.png"
-                        alt="Transformer Confusion Matrix" style="max-width: 100%; border-radius: 8px;">
+                    <img src="Image_DL_text/RNNconfusion%20matrix.png" alt="RNN Confusion Matrix"
+                        style="max-width: 100%; border-radius: 8px; margin-bottom: 8px;">
+                    <img src="Image_DL_text/transformerconfusionmatrix.png" alt="Transformer Confusion Matrix"
+                        style="max-width: 100%; border-radius: 8px;">
                 </div>
             </div>
         </section>
@@ -761,14 +761,13 @@
             </div>
             <div class="gallery-grid">
                 <div class="figure-slot" style="min-height:auto; grid-column: span 2;">
-                    <img src="notebooks/DL_BTL1_Text_colab_files/accuracyunderclean%20vs%20noisytexxt.png"
-                        alt="Clean vs noisy accuracy" style="max-width:100%; border-radius:12px;">
-                    <img src="notebooks/DL_BTL1_Text_colab_files/ecebeforevsaftercalibration.png"
-                        alt="ECE before and after calibration"
+                    <img src="Image_DL_text/accundercleanvsnoissytext.png" alt="Clean vs noisy accuracy"
+                        style="max-width:100%; border-radius:12px;">
+                    <img src="Image_DL_text/ecebeforeandaaftercabliration.png" alt="ECE before and after calibration"
                         style="max-width:100%; border-radius:12px; margin-top:10px;">
                 </div>
                 <div class="figure-slot" style="min-height:auto; grid-column: span 2;">
-                    <img src="notebooks/DL_BTL1_Text_colab_files/reliability%20diagram%20raw%20and%20calibrated.png"
+                    <img src="Image_DL_text/reliabilitydiagramraw%20and%20cablirated.png"
                         alt="Reliability diagram raw and calibrated"
                         style="width:100%; max-width:none; border-radius:12px;">
                 </div>

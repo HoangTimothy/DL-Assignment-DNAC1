@@ -69,6 +69,7 @@ wandb/
 *.png
 # Giữ ảnh báo cáo HTML / confusion matrix (override *.png ở trên)
 !Image_DL/**/*.png
+!Image_DL_text/**/*.png
 !artifacts_image/cm_*.png
 !artifacts_image/cm_norm_*.png
 .conda-cuda/
