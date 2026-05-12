@@ -458,29 +458,29 @@
 
             <div class="grid-2">
                 <div class="stat-box">
+                    <div class="mini-label">Dataset overview</div>
+                    <div class="value">11,788 samples, 200 unique classes</div>
+                    <p class="muted">CUB-200-2011 multimodal dataset với cân bằng tương đối giữa các loài (41-60 ảnh/loài).</p>
+                </div>
+                <div class="stat-box">
                     <div class="mini-label">Class split</div>
                     <div class="value">100 base classes, 50 validation classes, 50 test classes</div>
                     <p class="muted">Random seed được cố định để giữ split tái lập giữa các lần chạy notebook.</p>
-                </div>
-                <div class="stat-box">
-                    <div class="mini-label">Processor</div>
-                    <div class="value">CLIPProcessor với padding, truncation và max_length = 77</div>
-                    <p class="muted">Ảnh và text được encode đồng bộ để đưa trực tiếp vào CLIPModel.</p>
                 </div>
             </div>
 
             <div class="mini-grid">
                 <div class="mini-card">
-                    <h3>Train mode</h3>
-                    <p>Chọn caption ngẫu nhiên để tăng đa dạng ngôn ngữ và giảm overfitting lên một câu mô tả duy nhất.</p>
+                    <h3>Min images/class</h3>
+                    <p>41 ảnh - đảm bảo có đủ dữ liệu cho few-shot từ 1 đến 16 shots.</p>
                 </div>
                 <div class="mini-card">
-                    <h3>Evaluation mode</h3>
-                    <p>Dùng caption đầu tiên nhằm đảm bảo kết quả zero-shot và few-shot nhất quán giữa các lần đánh giá.</p>
+                    <h3>Max images/class</h3>
+                    <p>60 ảnh - một số loài chim có nhiều ảnh hơn do rập dị ăn trồn trong tự nhiên.</p>
                 </div>
                 <div class="mini-card">
-                    <h3>Few-shot support</h3>
-                    <p>Lấy k shots mỗi lớp từ tập test để dựng support set, phần còn lại trở thành query set.</p>
+                    <h3>Processor</h3>
+                    <p>CLIPProcessor với padding, truncation và max_length = 77 cho đồng bộ encode.</p>
                 </div>
             </div>
 
@@ -585,7 +585,7 @@
             <div class="figure-slot" style="margin-top:18px; min-height: 380px;">
                 <div class="figure-head">CLIP Architecture</div>
                 <div class="figure-body" style="padding:0;">
-                    <img src="Image_DL_MD/clip_arch.webp" style="width:100%; height:100%; object-fit:contain;" alt="CLIP Architecture"/>
+                    <img src="Image_DL_MD/clip.png" style="width:100%; height:100%; object-fit:contain;" alt="CLIP Architecture"/>
                 </div>
                 <div class="figure-foot">CLIP xử lý ảnh và text song song: Vision Transformer mã hóa ảnh, Text Transformer mã hóa text, sau đó tính cosine similarity giữa hai embedding space để tạo contrastive loss.</div>
             </div>
@@ -774,15 +774,36 @@
                 </table>
             </div>
 
-            <div class="grid-3" style="margin-top:16px;">
-                <div class="quote-box">
-                    <strong>Nhận xét 1:</strong> LoRA làm giảm hiệu suất zero-shot (69.4% → 54.9%), gợi ý rằng adaptation vào CUB-200-2011 đã thay đổi ngữ nghĩa của CLIP không thuận lợi cho zero-shot.
+            <div class="figure-slot" style="margin-top:16px; min-height: 400px;">
+                <div class="figure-head">Confusion Matrix (Vanilla Tip-Adapter, 16-shot)</div>
+                <div class="figure-body" style="padding:0;">
+                    <img src="Image_DL_MD/cm.png" style="width:100%; height:100%; object-fit:contain;" alt="Confusion Matrix"/>
                 </div>
-                <div class="quote-box">
-                    <strong>Nhận xét 2:</strong> Vanilla Tip-Adapter vượt hơn phiên bản Adapted và cho kết quả tốt nhất (75.65% ở 16-shot). Khả năng scaling từ 1-shot (70.05%) đến 16-shot (75.65%) rất tốt.
+                <div class="figure-foot">Ma trận tằm từ các lỗi dự đoán cho thấy các lớp bị nhầm lẫn dì nhất, đặc biệt đối với những loài chim tương tự về hình thái.</div>
+            </div>
+
+            <div class="figure-slot" style="margin-top:16px; min-height: 400px;">
+                <div class="figure-head">Top 5 Most Confused Pairs</div>
+                <div class="figure-body" style="padding:0;">
+                    <img src="Image_DL_MD/confused_pairs.png" style="width:100%; height:100%; object-fit:contain;" alt="Confused Pairs"/>
                 </div>
-                <div class="quote-box">
-                    <strong>Nhận xét 3:</strong> Linear Probe cho thấy feature space được tách biệt tốt (tăng từ 46.26% lên 79.89% khi K tăng), nhưng Tip-Adapter vẫn là lựa chọn tốt nhất do cân bằng giữa zero-shot và few-shot.
+                <div class="figure-foot">Những cặp loài chim bị nhầm lẫn nhất: White-necked Raven vs Common Raven (38 lần), Blue-winged Warbler vs Prothonotary Warbler (26 lần), Common Yellowthroat vs Kentucky Warbler (26 lần), Marsh Wren vs Bewick Wren (15 lần), California Gull vs Glaucous-winged Gull (14 lần) - hầu hết là những dòng không dễ phân biệt.</div>
+            </div>
+
+            <div class="grid-2" style="margin-top:16px;">
+                <div class="figure-slot" style="min-height: 380px;">
+                    <div class="figure-head">t-SNE: Vanilla CLIP Features (Novel Classes)</div>
+                    <div class="figure-body" style="padding:0;">
+                        <img src="Image_DL_MD/tsne_vanilla.png" style="width:100%; height:100%; object-fit:contain;" alt="t-SNE Vanilla CLIP"/>
+                    </div>
+                    <div class="figure-foot">Quãng đầu tiên của Vanilla CLIP: cặp mệnh rõ ràng giữa các loài trên novel classes, cho thấy zero-shot baseline mạnh (69.4% top-1).</div>
+                </div>
+                <div class="figure-slot" style="min-height: 380px;">
+                    <div class="figure-head">t-SNE: Adapted CLIP Features (Novel Classes)</div>
+                    <div class="figure-body" style="padding:0;">
+                        <img src="Image_DL_MD/tsne_adapted.png" style="width:100%; height:100%; object-fit:contain;" alt="t-SNE Adapted CLIP"/>
+                    </div>
+                    <div class="figure-foot">Quãng đầu tiên của Adapted CLIP: các lớp tập trung hơn nhưng overlap cao hơn, giải thích độ zero-shot sáu hơn (54.9% top-1).</div>
                 </div>
             </div>
         </section>
